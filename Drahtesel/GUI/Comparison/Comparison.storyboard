@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tT2-qO-iYc">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Compare Root View Controller-->
+        <scene sceneID="S4X-x1-03p">
+            <objects>
+                <viewController id="tT2-qO-iYc" customClass="CompareRootViewController" customModule="Drahtesel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BDx-lU-k2A">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUh-Xy-0tR">
+                                <rect key="frame" x="-440" y="186" width="667" height="375"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="rHD-PW-6Pi" kind="embed" id="0kq-1B-ouS"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-JB-1vo">
+                                <rect key="frame" x="289" y="227" width="667" height="375"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="m6Q-5L-3zx" kind="embed" id="imj-TG-IEZ"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yni-nS-J6T">
+                                <rect key="frame" x="597" y="20" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wmv-om-sbr"/>
+                                    <constraint firstAttribute="width" constant="50" id="emh-Wl-vYv"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="onCloseClicked:" destination="tT2-qO-iYc" eventType="touchUpInside" id="edH-qc-KRg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqU-81-eDd">
+                                <rect key="frame" x="597" y="90" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="aTK-1W-Yv3"/>
+                                    <constraint firstAttribute="height" constant="50" id="bmf-tf-5FO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="onNextClicked:" destination="tT2-qO-iYc" eventType="touchUpInside" id="6eu-1Z-16P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LOU-Cj-jfW" firstAttribute="trailing" secondItem="yni-nS-J6T" secondAttribute="trailing" constant="20" id="KxZ-SE-MQo"/>
+                            <constraint firstItem="LOU-Cj-jfW" firstAttribute="trailing" secondItem="IqU-81-eDd" secondAttribute="trailing" constant="20" id="VMK-Ms-tLt"/>
+                            <constraint firstItem="IqU-81-eDd" firstAttribute="top" secondItem="yni-nS-J6T" secondAttribute="bottom" constant="20" id="fIM-Nk-mCz"/>
+                            <constraint firstItem="yni-nS-J6T" firstAttribute="top" secondItem="LOU-Cj-jfW" secondAttribute="top" constant="20" id="uim-bM-wM7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LOU-Cj-jfW"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="yni-nS-J6T" id="GKi-ih-7Ow"/>
+                        <outlet property="geoContainer" destination="tUh-Xy-0tR" id="rxo-gw-a0R"/>
+                        <outlet property="nextButton" destination="IqU-81-eDd" id="gnQ-eI-3SO"/>
+                        <outlet property="specContainer" destination="Ztd-JB-1vo" id="Ltm-H1-aw0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fll-O6-Mov" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="643.62818590704649" y="-66.400000000000006"/>
+        </scene>
+        <!--Compare Geometry View Controller-->
+        <scene sceneID="7Eg-NR-rlH">
+            <objects>
+                <viewController storyboardIdentifier="GeoCompareViewController" id="rHD-PW-6Pi" customClass="CompareGeometryViewController" customModule="Drahtesel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4O5-jP-QMz">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geometry Comparison View" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmM-ip-lUn">
+                                <rect key="frame" x="20" y="128" width="627" height="119.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kmM-ip-lUn" firstAttribute="centerY" secondItem="4O5-jP-QMz" secondAttribute="centerY" id="4hR-lh-8jN"/>
+                            <constraint firstItem="kmM-ip-lUn" firstAttribute="centerX" secondItem="4O5-jP-QMz" secondAttribute="centerX" id="DaW-ie-Anh"/>
+                            <constraint firstItem="RUq-An-PpB" firstAttribute="trailing" secondItem="kmM-ip-lUn" secondAttribute="trailing" constant="20" id="FjT-aW-dbU"/>
+                            <constraint firstItem="kmM-ip-lUn" firstAttribute="leading" secondItem="RUq-An-PpB" secondAttribute="leading" constant="20" id="Xva-xs-N5U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RUq-An-PpB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bjV-nS-cOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="644" y="777"/>
+        </scene>
+        <!--Compare Specification View Controller-->
+        <scene sceneID="Iv9-bN-v7P">
+            <objects>
+                <viewController storyboardIdentifier="SpecCompareViewController" id="m6Q-5L-3zx" customClass="CompareSpecificationViewController" customModule="Drahtesel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f8l-JZ-qQ3">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specification Comparison View" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRW-Oo-wn7">
+                                <rect key="frame" x="20" y="128" width="627" height="119.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sRW-Oo-wn7" firstAttribute="centerY" secondItem="f8l-JZ-qQ3" secondAttribute="centerY" id="2IQ-vO-Lqt"/>
+                            <constraint firstItem="sRW-Oo-wn7" firstAttribute="leading" secondItem="GHw-8G-tb2" secondAttribute="leading" constant="20" id="ouH-mf-oqo"/>
+                            <constraint firstItem="GHw-8G-tb2" firstAttribute="trailing" secondItem="sRW-Oo-wn7" secondAttribute="trailing" constant="20" id="qsy-CX-ve1"/>
+                            <constraint firstItem="sRW-Oo-wn7" firstAttribute="centerX" secondItem="f8l-JZ-qQ3" secondAttribute="centerX" id="s9b-gp-9c2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GHw-8G-tb2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7c-qE-262" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1386" y="-66"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.27450980390000002" green="0.91372549020000005" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>
