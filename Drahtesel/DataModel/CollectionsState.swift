@@ -29,11 +29,23 @@ extension CollectionsState
       
       switch action
       {
-      case let action as AppAction.OpenedPage:
+      case let action as MainViewAction.OpenedPage:
          handleOpenedPage(&state, action.page)
 
       case let action as CollectionAction.SetEdit:
          state.isEditing = action.enabled
+      
+      case let action as CollectionAction.Add:
+         handleAdd(&state, action.name)
+         
+      case let action as CollectionAction.Rename:
+         handleRename(&state, action.collection, action.name)
+         
+      case let action as CollectionAction.Duplicate:
+         handleDuplicate(&state, action.collection, action.name)
+         
+      case let action as CollectionAction.Delete:
+         handleDelete(&state, action.collection)
          
       default: break
       }
@@ -59,6 +71,37 @@ extension CollectionsState
       if page == .collectionBrowser {
          updateCollectionData(&state)
       }
+   }
+   
+   static func handleAdd(_ state: inout CollectionsState, _ name: String)
+   {
+      _ = DBAccess.shared.addCollection(name: name)
+      DBAccess.shared.save()
+      updateCollectionData(&state)
+   }
+   
+   static func handleRename(_ state: inout CollectionsState, _ collection: Collection, _ name: String)
+   {
+      collection.name = name
+      DBAccess.shared.save()
+      updateCollectionData(&state)
+   }
+   
+   static func handleDuplicate(_ state: inout CollectionsState, _ collection: Collection, _ name: String)
+   {
+      let newCollection = DBAccess.shared.addCollection(name: name)
+      newCollection.copy(from: collection)
+      newCollection.type = .user
+      newCollection.name = name
+      DBAccess.shared.save()
+      updateCollectionData(&state)
+   }
+   
+   static func handleDelete(_ state: inout CollectionsState, _ collection: Collection)
+   {
+      DBAccess.shared.delete(collection: collection)
+      DBAccess.shared.save()
+      updateCollectionData(&state)
    }
 }
 

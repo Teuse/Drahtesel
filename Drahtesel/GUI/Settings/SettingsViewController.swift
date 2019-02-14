@@ -9,7 +9,7 @@ class SettingsViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: AppAction.OpenedPage(page: .settings))
+      dispatch(action: MainViewAction.OpenedPage(page: .settings))
       subscribe(self)
    }
    

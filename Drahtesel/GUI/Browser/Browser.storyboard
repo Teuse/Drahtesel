@@ -35,20 +35,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-b2-dUE">
-                                <rect key="frame" x="0.0" y="343" width="667" height="32"/>
-                                <items>
-                                    <barButtonItem title="Item" id="1gc-wl-cbI"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qWH-ee-Tb2" firstAttribute="trailing" secondItem="F3g-XP-ifX" secondAttribute="trailing" id="38i-1x-OCb"/>
                             <constraint firstItem="qWH-ee-Tb2" firstAttribute="leading" secondItem="F3g-XP-ifX" secondAttribute="leading" id="5q8-G3-DTL"/>
-                            <constraint firstItem="cYj-b2-dUE" firstAttribute="top" secondItem="F3g-XP-ifX" secondAttribute="bottom" id="C7J-LN-Q1k"/>
-                            <constraint firstItem="cYj-b2-dUE" firstAttribute="trailing" secondItem="F3g-XP-ifX" secondAttribute="trailing" id="Ckk-mG-jGW"/>
-                            <constraint firstItem="cYj-b2-dUE" firstAttribute="leading" secondItem="F3g-XP-ifX" secondAttribute="leading" id="R7b-CC-a9D"/>
                             <constraint firstItem="qWH-ee-Tb2" firstAttribute="top" secondItem="Xkb-ws-1qY" secondAttribute="top" id="UDp-j7-3bz"/>
                             <constraint firstAttribute="bottom" secondItem="qWH-ee-Tb2" secondAttribute="bottom" id="YbX-EM-hkN"/>
                         </constraints>
@@ -61,16 +52,15 @@
                                     <segue destination="sjK-AB-Ycr" kind="presentation" id="StJ-oB-x4i"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="compose" id="Ad9-e0-3Li">
+                            <barButtonItem systemItem="add" id="axq-03-7XW">
                                 <connections>
-                                    <action selector="onEditButton:" destination="bUl-Qe-TaW" id="bB6-Bt-2Eb"/>
+                                    <action selector="onPlusClicked:" destination="bUl-Qe-TaW" id="4QV-UM-Veb"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="qWH-ee-Tb2" id="VVp-25-ymg"/>
-                        <outlet property="toolbar" destination="cYj-b2-dUE" id="MFP-aB-ada"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smw-U1-0R4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,18 +91,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="343"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UKU-t5-UWt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" estimatedRowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UKU-t5-UWt">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="44" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BikeCell" id="Uzw-ae-9ju">
-                                        <rect key="frame" x="0.0" y="28" width="667" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BikeCell" rowHeight="54" id="Uzw-ae-9ju" customClass="BikeCell" customModule="Drahtesel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="667" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uzw-ae-9ju" id="r3Q-1V-1r0">
-                                            <rect key="frame" x="0.0" y="0.0" width="634" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="634" height="53.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdh-m8-EAj">
+                                                    <rect key="frame" x="60" y="30" width="300" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JTk-nj-ypO" customClass="TriangleView" customModule="Drahtesel" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.45098039220000002" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0s-Vl-den">
+                                                    <rect key="frame" x="60" y="10" width="300" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="brandLabel" destination="Tdh-m8-EAj" id="emd-gG-Rfp"/>
+                                            <outlet property="colorFlagView" destination="JTk-nj-ypO" id="6dR-f9-QOu"/>
+                                            <outlet property="nameLabel" destination="V0s-Vl-den" id="c69-3j-vEt"/>
                                             <segue destination="5FZ-gt-6WC" kind="show" id="5Bf-yA-u9x"/>
                                         </connections>
                                     </tableViewCell>
@@ -143,6 +158,11 @@
                             <barButtonItem systemItem="refresh" id="Apb-Ky-zTo">
                                 <connections>
                                     <segue destination="sjK-AB-Ycr" kind="presentation" id="CGZ-NH-rZ0"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="z9M-hd-Oal">
+                                <connections>
+                                    <action selector="onPlusClicked:" destination="mox-NK-HDn" id="jcn-eO-bhw"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="compose" id="SdC-xB-Ku3">
@@ -183,7 +203,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="StJ-oB-x4i"/>
+        <segue reference="CGZ-NH-rZ0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.27450980390000002" green="0.91372549020000005" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

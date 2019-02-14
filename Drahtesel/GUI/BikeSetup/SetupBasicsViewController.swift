@@ -8,7 +8,7 @@ class SetupBasicsViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: AppAction.OpenedPage(page: .setupBasics))
+      dispatch(action: MainViewAction.OpenedPage(page: .setupBasics))
       subscribe(self)
    }
    

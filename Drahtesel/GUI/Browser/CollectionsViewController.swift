@@ -6,8 +6,6 @@ class CollectionsViewController: UIViewController
    private var state = CollectionsState()
    
    @IBOutlet private weak var tableView: UITableView!
-   @IBOutlet private weak var toolbar: UIToolbar!
-
    
    //MARK: - Life Circle
    // -----------------------------------------------------------------------------
@@ -15,7 +13,7 @@ class CollectionsViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: AppAction.OpenedPage(page: .collectionBrowser))
+      dispatch(action: MainViewAction.OpenedPage(page: .collectionBrowser))
       
       tableView.delegate = self
       tableView.dataSource = self
@@ -31,22 +29,62 @@ class CollectionsViewController: UIViewController
       unsubscribe(self)
    }
    
-   @IBAction private func onEditButton(_ sender: UIBarButtonItem)
+   //MARK: - Actions
+   // -----------------------------------------------------------------------------
+   
+   @IBAction private func onPlusClicked(_ sender: UIBarButtonItem)
    {
-      let edit = !state.isEditing
-      dispatch(action: CollectionAction.SetEdit(enabled: edit))
+      let addAction = CollectionAction.Add(name: "")
+      
+      let text = "Please enter the new name for the Collection:"
+      var alertModel = AlertViewModel(headline: "Add New Collction", text: text)
+      alertModel.textField = ""
+      alertModel.showTextField = true
+      alertModel.leftButton(type: .cancel)
+      alertModel.rightButton(type: .ok, action: addAction)
+      
+      dispatch(action: MainViewAction.PresentAlert(model: alertModel))
    }
    
-   private func toolbar(show: Bool, animated: Bool)
+   private func onRenameClicked(_ collection: Collection)
    {
-      let dur = animated ? 0.5 : 0.0
-      UIView.animate(withDuration: dur) {
-         let height = self.view.safeAreaLayoutGuide.layoutFrame.height
-         let yPos = show
-            ? height - self.toolbar.frame.height
-            : self.view.frame.height
-         self.toolbar.frame.origin.y = yPos
-      }
+      let renameAction = CollectionAction.Rename(collection: collection, name: "")
+      
+      let text = "Enter a new name for your Collection"
+      var alertModel = AlertViewModel(headline: "Rename", text: text)
+      alertModel.textField = collection.name ?? ""
+      alertModel.showTextField = true
+      alertModel.leftButton(type: .cancel)
+      alertModel.rightButton(type: .ok, action: renameAction)
+      
+      dispatch(action: MainViewAction.PresentAlert(model: alertModel))
+   }
+   
+   private func onDuplicateClicked(_ collection: Collection)
+   {
+      let duplicateAction = CollectionAction.Duplicate(collection: collection, name: "")
+      
+      let text = "Enter a name for the duplicated Collection"
+      var alertModel = AlertViewModel(headline: "Duplicate", text: text)
+      alertModel.textField = collection.name ?? ""
+      alertModel.showTextField = true
+      alertModel.leftButton(type: .cancel)
+      alertModel.rightButton(type: .ok, action: duplicateAction)
+      
+      dispatch(action: MainViewAction.PresentAlert(model: alertModel))
+   }
+   
+   private func onDeleteClicked(_ collection: Collection)
+   {
+      let deleteAction = CollectionAction.Delete(collection: collection)
+      
+      let text = "Do you really want to delete the Collection: \(collection.name ?? String())?"
+      var alertModel = AlertViewModel(headline: "Delete", text: text)
+      alertModel.showTextField = false
+      alertModel.leftButton(type: .cancel)
+      alertModel.rightButton(type: .delete, action: deleteAction)
+      
+      dispatch(action: MainViewAction.PresentAlert(model: alertModel))
    }
 }
 
@@ -65,7 +103,6 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
       let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath)
       
       let collection = state.collection(at: indexPath)
-      
       cell.textLabel?.text = collection.name
       return cell
    }
@@ -82,6 +119,26 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       let colls = state.collections(at: section)
       return colls.count
+   }
+   
+   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+      let collection = state.collection(at: indexPath)
+      let delete = UITableViewRowAction(style: .destructive, title: "Delete") {_,_ in
+         self.onDeleteClicked(collection)
+      }
+      let duplicate = UITableViewRowAction(style: .normal, title: "Duplicate") {_,_ in
+         self.onDuplicateClicked(collection)
+      }
+      duplicate.backgroundColor = UIColor.blue
+      let rename = UITableViewRowAction(style: .normal, title: "Rename") {_,_ in
+         self.onRenameClicked(collection)
+      }
+   
+      let type = state.collectionTypes[indexPath.section]
+      if type != .factory {
+         return [delete, duplicate, rename]
+      }
+      return [duplicate]
    }
 }
 
@@ -100,7 +157,6 @@ extension CollectionsViewController: StoreSubscriber
       
       if state.isEditing != tableView.isEditing {
          tableView.setEditing(state.isEditing, animated: true)
-         toolbar(show: state.isEditing, animated: true)
       }
    }
 }

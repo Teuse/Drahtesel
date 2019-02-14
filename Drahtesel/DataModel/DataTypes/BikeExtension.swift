@@ -9,4 +9,21 @@ extension Bike
       let idStr = id?.uuidString ?? "nil"
       return "Bike(name=\"\(nameStr)\" brand=\"\(brandStr)\" id=\(idStr)"
    }
+   
+   func copy(from bike: Bike)
+   {
+      name = bike.name
+      brand = bike.brand
+      categoryRaw = bike.categoryRaw
+      color = bike.color
+      compareEnabled = bike.compareEnabled
+      year = bike.year
+      isElectrified = bike.isElectrified
+      
+      assert(bike.geometry != nil, "Bike->copy(): Error, bike.geometry may not be nil")
+      geometry?.copy(from: bike.geometry!)
+      
+      assert(bike.specification != nil, "Bike->copy(): Error, bike.specification may not be nil")
+      specification?.copy(from: bike.specification!)
+   }
 }

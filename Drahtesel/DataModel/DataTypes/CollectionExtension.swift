@@ -31,4 +31,25 @@ extension Collection
       let idStr = id?.uuidString ?? "nil"
       return "Collection(name=\"\(nameStr)\" id=\(idStr) bikes[\(bikes.count)]"
    }
+   
+   func copy(from collection: Collection)
+   {
+      name = collection.name
+      typeRaw = collection.typeRaw
+      
+      for bike in collection.bikes {
+         let new = addBike(name: bike.name!)
+         new.copy(from: bike)
+      }
+   }
+   
+   func delete(bike: Bike)
+   {
+      assert(managedObjectContext != nil, "Collection->delete(bike): managedObjectContext may not be nil.")
+      if let context = managedObjectContext {
+         context.delete(bike.geometry!)
+         context.delete(bike.specification!)
+         context.delete(bike)
+      }
+   }
 }

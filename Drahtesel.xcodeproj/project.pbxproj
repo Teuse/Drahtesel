@@ -26,6 +26,13 @@
 		8A1EA02A22070B470055550A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA02922070B470055550A /* UIViewExtension.swift */; };
 		8A1EA02D2207162C0055550A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1EA02C2207162C0055550A /* Settings.storyboard */; };
 		8A1EA02F22071AFD0055550A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA02E22071AFD0055550A /* SettingsViewController.swift */; };
+		8A35C7FD220EC7EF0026EDF1 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */; };
+		8A35C7FF220EDDE70026EDF1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */; };
+		8A35C801220EF2360026EDF1 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C800220EF2360026EDF1 /* AlertViewModel.swift */; };
+		8A35C804220EF35B0026EDF1 /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C802220EF35A0026EDF1 /* MainViewState.swift */; };
+		8A35C805220EF35B0026EDF1 /* MainViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C803220EF35B0026EDF1 /* MainViewAction.swift */; };
+		8A6E6B122215530300E3ECD4 /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6E6B112215530200E3ECD4 /* BikeCell.swift */; };
+		8A6E6B142215581A00E3ECD4 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6E6B132215581900E3ECD4 /* TriangleView.swift */; };
 		8A6F53772208DB5900BA0229 /* DBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F53762208DB5900BA0229 /* DBConstants.swift */; };
 		8A6F537B2208DF9100BA0229 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F537A2208DF9100BA0229 /* CollectionType.swift */; };
 		8A7192DF22089864002EB98B /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192DE22089864002EB98B /* LoggingMiddleware.swift */; };
@@ -37,12 +44,14 @@
 		8A7192F02208D02A002EB98B /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192EF2208D02A002EB98B /* Pages.swift */; };
 		8A7192F32208D19E002EB98B /* BikesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F12208D19E002EB98B /* BikesState.swift */; };
 		8A7192F42208D19E002EB98B /* CollectionsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F22208D19E002EB98B /* CollectionsState.swift */; };
-		8A7192F62208D3B3002EB98B /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F52208D3B3002EB98B /* AppAction.swift */; };
 		8A7192F82208D817002EB98B /* SetupBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F72208D817002EB98B /* SetupBasicsViewController.swift */; };
 		8A7192FB2208D85F002EB98B /* SetupSpecificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F92208D85F002EB98B /* SetupSpecificationViewController.swift */; };
 		8A7192FC2208D85F002EB98B /* SetupGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192FA2208D85F002EB98B /* SetupGeometryViewController.swift */; };
 		8A87914C22095B0C001F6750 /* BikeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87914B22095B0C001F6750 /* BikeCategory.swift */; };
 		8A87914F22095E24001F6750 /* FactoryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87914E22095E24001F6750 /* FactoryContent.swift */; };
+		8A93E79D221024B800B663DE /* GeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93E79B221024B800B663DE /* GeometryExtension.swift */; };
+		8A93E79E221024B800B663DE /* SpecificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93E79C221024B800B663DE /* SpecificationExtension.swift */; };
+		8AA019B32211DF9200DB0268 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA019B22211DF9200DB0268 /* UIColor.swift */; };
 		8AEC05972209F05700ECB25C /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC05962209F05700ECB25C /* CollectionExtension.swift */; };
 		8AEC0599220A120B00ECB25C /* CollectionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC0598220A120B00ECB25C /* CollectionAction.swift */; };
 		8AEC059B220C03A400ECB25C /* BikeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC059A220C03A400ECB25C /* BikeAction.swift */; };
@@ -92,6 +101,13 @@
 		8A1EA02922070B470055550A /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8A1EA02C2207162C0055550A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8A1EA02E22071AFD0055550A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		8A35C800220EF2360026EDF1 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
+		8A35C802220EF35A0026EDF1 /* MainViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
+		8A35C803220EF35B0026EDF1 /* MainViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewAction.swift; sourceTree = "<group>"; };
+		8A6E6B112215530200E3ECD4 /* BikeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
+		8A6E6B132215581900E3ECD4 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		8A6F53762208DB5900BA0229 /* DBConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConstants.swift; sourceTree = "<group>"; };
 		8A6F537A2208DF9100BA0229 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
 		8A7192DE22089864002EB98B /* LoggingMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
@@ -103,12 +119,14 @@
 		8A7192EF2208D02A002EB98B /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		8A7192F12208D19E002EB98B /* BikesState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BikesState.swift; path = Drahtesel/DataModel/BikesState.swift; sourceTree = SOURCE_ROOT; };
 		8A7192F22208D19E002EB98B /* CollectionsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionsState.swift; path = Drahtesel/DataModel/CollectionsState.swift; sourceTree = SOURCE_ROOT; };
-		8A7192F52208D3B3002EB98B /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		8A7192F72208D817002EB98B /* SetupBasicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBasicsViewController.swift; sourceTree = "<group>"; };
 		8A7192F92208D85F002EB98B /* SetupSpecificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSpecificationViewController.swift; sourceTree = "<group>"; };
 		8A7192FA2208D85F002EB98B /* SetupGeometryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupGeometryViewController.swift; sourceTree = "<group>"; };
 		8A87914B22095B0C001F6750 /* BikeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCategory.swift; sourceTree = "<group>"; };
 		8A87914E22095E24001F6750 /* FactoryContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryContent.swift; sourceTree = "<group>"; };
+		8A93E79B221024B800B663DE /* GeometryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtension.swift; sourceTree = "<group>"; };
+		8A93E79C221024B800B663DE /* SpecificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificationExtension.swift; sourceTree = "<group>"; };
+		8AA019B22211DF9200DB0268 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		8AEC05962209F05700ECB25C /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		8AEC0598220A120B00ECB25C /* CollectionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAction.swift; sourceTree = "<group>"; };
 		8AEC059A220C03A400ECB25C /* BikeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeAction.swift; sourceTree = "<group>"; };
@@ -211,7 +229,8 @@
 				8A7192EB2208BBF5002EB98B /* DataTypes */,
 				8A7192E222089945002EB98B /* Database */,
 				8A7192E622089C5C002EB98B /* AppState.swift */,
-				8A7192F52208D3B3002EB98B /* AppAction.swift */,
+				8A35C802220EF35A0026EDF1 /* MainViewState.swift */,
+				8A35C803220EF35B0026EDF1 /* MainViewAction.swift */,
 				8A7192F22208D19E002EB98B /* CollectionsState.swift */,
 				8AEC0598220A120B00ECB25C /* CollectionAction.swift */,
 				8A7192F12208D19E002EB98B /* BikesState.swift */,
@@ -227,7 +246,9 @@
 				8A1C2BAF220775F3004BB653 /* BikeSetup */,
 				8A1EA01F2206E8660055550A /* Comparison */,
 				8A1EA02B220716150055550A /* Settings */,
+				8A35C7FB220EC5700026EDF1 /* Alert */,
 				8A1EA02822070B340055550A /* Extensions */,
+				8A6E6B1022154B2100E3ECD4 /* Utils */,
 				8A1EA0172206D99B0055550A /* Main.storyboard */,
 				8A1E9FE32206D6B50055550A /* MainViewController.swift */,
 				8A7192EF2208D02A002EB98B /* Pages.swift */,
@@ -259,6 +280,7 @@
 		8A1EA02822070B340055550A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8AA019B22211DF9200DB0268 /* UIColor.swift */,
 				8A7192E022089873002EB98B /* UIViewControllerExtension.swift */,
 				8A1EA02922070B470055550A /* UIViewExtension.swift */,
 			);
@@ -272,6 +294,24 @@
 				8A1EA02E22071AFD0055550A /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		8A35C7FB220EC5700026EDF1 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */,
+				8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */,
+				8A35C800220EF2360026EDF1 /* AlertViewModel.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		8A6E6B1022154B2100E3ECD4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8A6E6B132215581900E3ECD4 /* TriangleView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		8A7192E222089945002EB98B /* Database */ = {
@@ -299,6 +339,8 @@
 				8A87914B22095B0C001F6750 /* BikeCategory.swift */,
 				8AEC05962209F05700ECB25C /* CollectionExtension.swift */,
 				8AEC059C220C52F300ECB25C /* BikeExtension.swift */,
+				8A93E79B221024B800B663DE /* GeometryExtension.swift */,
+				8A93E79C221024B800B663DE /* SpecificationExtension.swift */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -309,6 +351,7 @@
 				8A7192ED2208CE94002EB98B /* Browser.storyboard */,
 				8A1EA01A2206DEBB0055550A /* CollectionsViewController.swift */,
 				8A1EA0192206DEBB0055550A /* BikesViewController.swift */,
+				8A6E6B112215530200E3ECD4 /* BikeCell.swift */,
 			);
 			path = Browser;
 			sourceTree = "<group>";
@@ -425,6 +468,7 @@
 				8A1EA0212206E8940055550A /* Comparison.storyboard in Resources */,
 				8A1C2BB12207762C004BB653 /* BikeSetup.storyboard in Resources */,
 				8A1EA02D2207162C0055550A /* Settings.storyboard in Resources */,
+				8A35C7FD220EC7EF0026EDF1 /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,12 +515,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7192F62208D3B3002EB98B /* AppAction.swift in Sources */,
 				8AEC05972209F05700ECB25C /* CollectionExtension.swift in Sources */,
 				8A1E9FE42206D6B50055550A /* MainViewController.swift in Sources */,
 				8A1EA01B2206DEBB0055550A /* BikesViewController.swift in Sources */,
 				8A7192DF22089864002EB98B /* LoggingMiddleware.swift in Sources */,
 				8A7192F42208D19E002EB98B /* CollectionsState.swift in Sources */,
+				8A6E6B122215530300E3ECD4 /* BikeCell.swift in Sources */,
 				8A1E9FE22206D6B50055550A /* AppDelegate.swift in Sources */,
 				8A7192FC2208D85F002EB98B /* SetupGeometryViewController.swift in Sources */,
 				8A6F53772208DB5900BA0229 /* DBConstants.swift in Sources */,
@@ -486,21 +530,29 @@
 				8A7192F82208D817002EB98B /* SetupBasicsViewController.swift in Sources */,
 				8A7192FB2208D85F002EB98B /* SetupSpecificationViewController.swift in Sources */,
 				8A87914F22095E24001F6750 /* FactoryContent.swift in Sources */,
+				8A35C805220EF35B0026EDF1 /* MainViewAction.swift in Sources */,
 				8A7192F02208D02A002EB98B /* Pages.swift in Sources */,
 				8A1E9FEA2206D6B50055550A /* Drahtesel.xcdatamodeld in Sources */,
 				8A6F537B2208DF9100BA0229 /* CollectionType.swift in Sources */,
 				8A7192F32208D19E002EB98B /* BikesState.swift in Sources */,
+				8A93E79D221024B800B663DE /* GeometryExtension.swift in Sources */,
+				8A35C801220EF2360026EDF1 /* AlertViewModel.swift in Sources */,
 				8A1C2BB32207764E004BB653 /* SetupRootViewController.swift in Sources */,
 				8AEC059D220C52F300ECB25C /* BikeExtension.swift in Sources */,
+				8A93E79E221024B800B663DE /* SpecificationExtension.swift in Sources */,
 				8A1EA01C2206DEBB0055550A /* CollectionsViewController.swift in Sources */,
+				8A6E6B142215581A00E3ECD4 /* TriangleView.swift in Sources */,
 				8A1EA02A22070B470055550A /* UIViewExtension.swift in Sources */,
 				8A87914C22095B0C001F6750 /* BikeCategory.swift in Sources */,
+				8A35C804220EF35B0026EDF1 /* MainViewState.swift in Sources */,
 				8A1EA0252206F0040055550A /* CompareGeometryViewController.swift in Sources */,
 				8A7192E722089C5C002EB98B /* AppState.swift in Sources */,
 				8AEC059B220C03A400ECB25C /* BikeAction.swift in Sources */,
 				8A7192E422089955002EB98B /* DBAccess.swift in Sources */,
 				8A1EA0232206EC0B0055550A /* CompareRootViewController.swift in Sources */,
 				8A7192E122089873002EB98B /* UIViewControllerExtension.swift in Sources */,
+				8A35C7FF220EDDE70026EDF1 /* AlertViewController.swift in Sources */,
+				8AA019B32211DF9200DB0268 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

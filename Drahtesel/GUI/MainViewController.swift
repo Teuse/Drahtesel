@@ -3,8 +3,10 @@ import ReSwift
 
 class MainViewController: UIViewController
 {
-   var isButtonHidden = true
-   var isButtonLarge = false
+   private var isButtonShown = false
+   private var isButtonLarge = true
+   
+   private var alertViewController: AlertViewController? = nil
    
    @IBOutlet private weak var compareButton: UIButton!
    @IBOutlet private weak var buttonContainerLarge: UIView!
@@ -17,18 +19,18 @@ class MainViewController: UIViewController
    {
       super.viewWillAppear(animated)
       compareButton.translatesAutoresizingMaskIntoConstraints = true
-      subscribe(self)
+      subscribe(self) { subcription in
+         subcription.select { state in state.mainViewState }
+      }
    }
    
    override func viewDidLayoutSubviews()
    {
-      button(show: !isButtonHidden, animated: false)
+      button(show: isButtonShown, animated: false)
       button(large: isButtonLarge, animated: false)
    }
    
-   override func viewWillDisappear(_ animated: Bool)
-   {
-      super.viewWillDisappear(animated)
+   deinit {
       unsubscribe(self)
    }
    
@@ -50,6 +52,27 @@ class MainViewController: UIViewController
          self.compareButton.layer.cornerRadius = size / 2
       }
    }
+   
+   private func showAlert(model: AlertViewModel)
+   {
+      let sb = UIStoryboard(name: "Alert", bundle: nil)
+      alertViewController = sb.instantiateInitialViewController() as? AlertViewController
+      if let vc = alertViewController {
+         vc.model = model
+         vc.view.frame = view.frame
+         view.addSubview(vc.view)
+         addChild(vc)
+      } else {
+         alertViewController = nil
+         assertionFailure("MainViewController->showAlert: Failed to open alertView")
+      }
+   }
+   
+   private func removeAlert()
+   {
+      alertViewController?.view.removeFromSuperview()
+      alertViewController = nil
+   }
 }
 
 // --------------------------------------------------------------------------------
@@ -57,16 +80,22 @@ class MainViewController: UIViewController
 
 extension MainViewController: StoreSubscriber
 {
-   func newState(state: AppState)
+   func newState(state: MainViewState)
    {
-      if isButtonHidden != state.buttonHidden {
-         isButtonHidden = state.buttonHidden
-         button(show: !state.buttonHidden, animated: true)
+      if isButtonShown != state.buttonShown {
+         isButtonShown = state.buttonShown
+         button(show: isButtonShown, animated: true)
       }
       
       if isButtonLarge != state.buttonLarge {
          isButtonLarge = state.buttonLarge
-         button(large: state.buttonLarge, animated: true)
+         button(large: isButtonLarge, animated: true)
+      }
+      
+      if alertViewController == nil, let model = state.alertViewModel {
+         showAlert(model: model)
+      } else if alertViewController != nil, state.alertViewModel == nil {
+         removeAlert()
       }
    }
 }

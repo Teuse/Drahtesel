@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    {
       let content = FactoryContent()
       if content.version > factoryContentVersion {
+         factoryContentVersion = content.version
          print("Create Factory Content")
          content.create()
       }

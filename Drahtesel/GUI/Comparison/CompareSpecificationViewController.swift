@@ -8,7 +8,7 @@ class CompareSpecificationViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: AppAction.OpenedPage(page: .compareSpecification))
+      dispatch(action: MainViewAction.OpenedPage(page: .compareSpecification))
       subscribe(self)
    }
    

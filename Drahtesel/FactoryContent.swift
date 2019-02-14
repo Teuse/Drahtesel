@@ -9,6 +9,8 @@ class FactoryContent {
       trailBike2018()
       allMountainBike2018()
       xcBike2018()
+      
+      DBAccess.shared.save()
    }
    
    private func trailBike2018()

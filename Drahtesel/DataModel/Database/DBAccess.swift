@@ -19,8 +19,14 @@ class DBAccess
    private init() {}
    
    func save() {
-      if context.hasChanges  {
-         DBAccess.save(context: context)
+      guard context.hasChanges else { return }
+      
+      do {
+         try context.save()
+      } catch {
+         let nserror = error as NSError
+         print("DBAccess->save(): Unresolved error \(nserror), \(nserror.userInfo)")
+         assertionFailure()
       }
    }
 }
@@ -50,23 +56,20 @@ extension DBAccess
          fatalError("Failed to fetch Groups: \(error)")
       }
    }
+   
+   func delete(collection: Collection)
+   {
+      for bike in collection.bikes {
+         collection.delete(bike: bike)
+      }
+      context.delete(collection)
+   }
 }
 
-// Mark - Save/Load
+// Mark - Load
 // --------------------------------------------------------------------------------
 extension DBAccess
 {
-   private static func save(context: NSManagedObjectContext) {
-      do {
-         try context.save()
-      } catch {
-         // Replace this implementation with code to handle the error appropriately.
-         // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-         let nserror = error as NSError
-         fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-      }
-   }
-   
    private static func getPersistentContainer() -> NSPersistentContainer {
       let container = NSPersistentContainer(name: "Drahtesel")
       container.loadPersistentStores(completionHandler: { (storeDescription, error) in

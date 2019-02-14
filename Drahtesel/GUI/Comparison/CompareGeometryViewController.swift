@@ -8,7 +8,7 @@ class CompareGeometryViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: AppAction.OpenedPage(page: .compareGeometry))
+      dispatch(action: MainViewAction.OpenedPage(page: .compareGeometry))
       subscribe(self)
    }
    
