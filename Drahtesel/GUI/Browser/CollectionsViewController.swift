@@ -116,7 +116,15 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
       return type.description()
    }
    
-   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+   {
+      view.tintColor = UIColor(white: 0.2, alpha: 1)
+      let header = view as! UITableViewHeaderFooterView
+      header.textLabel?.textColor = UIColor.white
+   }
+   
+   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+   {
       let colls = state.collections(at: section)
       return colls.count
    }

@@ -1,5 +1,5 @@
 import CoreData
-import Foundation
+import UIKit
 
 class FactoryContent {
    let version = 1
@@ -20,7 +20,7 @@ class FactoryContent {
       
       let vxspro = collection.addBike(name: "VXs Pro M")
       vxspro.brand = "Votec"
-      vxspro.color = 0
+      vxspro.color = ColorPalette.black.uicolor
       vxspro.compareEnabled = true
       let gvxspro = vxspro.geometry!
       vxspro.geometry = gvxspro
@@ -37,7 +37,7 @@ class FactoryContent {
       
       let occam = collection.addBike(name: "Occam TR H10 M")
       occam.brand = "Orbea"
-      occam.color = 1
+      occam.color = ColorPalette.steel.uicolor
       occam.compareEnabled = true
       let goccam = occam.geometry!
       goccam.reach = 431.0
@@ -53,7 +53,7 @@ class FactoryContent {
       
       let spark950 = collection.addBike(name: "Spark 950")
       spark950.brand = "Scott"
-      spark950.color = 2
+      spark950.color = ColorPalette.nickel.uicolor
       spark950.compareEnabled = true
       let gspark950 = spark950.geometry!
       gspark950.reach = 432.7
@@ -69,7 +69,7 @@ class FactoryContent {
       
       let jeffsy = collection.addBike(name: "Jeffsy 29 M")
       jeffsy.brand = "YT"
-      jeffsy.color = 3
+      jeffsy.color = ColorPalette.mercury.uicolor
       jeffsy.compareEnabled = false
       let gjeffsy = jeffsy.geometry!
       gjeffsy.reach = 425.0
@@ -85,7 +85,7 @@ class FactoryContent {
       
       let skeen = collection.addBike(name: "Skeen Trail 18\"")
       skeen.brand = "Radon"
-      skeen.color = 4
+      skeen.color = ColorPalette.cayenne.uicolor
       skeen.compareEnabled = false
       let gskeen = skeen.geometry!
       gskeen.reach = 436.0
@@ -101,7 +101,7 @@ class FactoryContent {
       
       let stereo = collection.addBike(name: "Stereo 140 HPC 18\"")
       stereo.brand = "Cube"
-      stereo.color = 5
+      stereo.color = ColorPalette.red.uicolor
       stereo.compareEnabled = false
       let gstereo = stereo.geometry!
       gstereo.reach = 438.0
@@ -117,7 +117,7 @@ class FactoryContent {
       
       let neuron = collection.addBike(name: "Neuron M")
       neuron.brand = "Canyon"
-      neuron.color = 6
+      neuron.color = ColorPalette.orange.uicolor
       neuron.compareEnabled = false
       let gneuron = neuron.geometry!
       gneuron.reach = 426.0
@@ -133,7 +133,7 @@ class FactoryContent {
       
       let camber = collection.addBike(name: "Camber Comp 29 M")
       camber.brand = "Specialized"
-      camber.color = 7
+      camber.color = ColorPalette.yellow.uicolor
       camber.compareEnabled = false
       let gcamber = camber.geometry!
       gcamber.reach = 427.0
@@ -154,7 +154,7 @@ class FactoryContent {
       
       let vxpro = collection.addBike(name: "VX Pro M")
       vxpro.brand = "Votec"
-      vxpro.color = 8
+      vxpro.color = ColorPalette.yellow.uicolor
       vxpro.compareEnabled = false
       let gvxpro = vxpro.geometry!
       gvxpro.reach = 423.0
@@ -170,7 +170,7 @@ class FactoryContent {
       
       let slide = collection.addBike(name: "Slide 140 18\"")
       slide.brand = "Radon"
-      slide.color = 9
+      slide.color = ColorPalette.honey.uicolor
       slide.compareEnabled = false
       let gslide = slide.geometry!
       gslide.reach = 434.0
@@ -186,7 +186,7 @@ class FactoryContent {
       
       let stumpjumper = collection.addBike(name: "Stumpjumper M")
       stumpjumper.brand = "Specialized"
-      stumpjumper.color = 10
+      stumpjumper.color = ColorPalette.honey.uicolor
       stumpjumper.compareEnabled = false
       let gstumpjumper = stumpjumper.geometry!
       gstumpjumper.reach = 414.0
@@ -207,7 +207,7 @@ class FactoryContent {
       
       let lux = collection.addBike(name: "Lux CF M")
       lux.brand = "Canyon"
-      lux.color = 11
+      lux.color = ColorPalette.spring.uicolor
       lux.compareEnabled = false
       let glux = lux.geometry!
       glux.reach = 393.0
@@ -223,7 +223,7 @@ class FactoryContent {
       
       let epic = collection.addBike(name: "Epic M")
       epic.brand = "Specialized"
-      epic.color = 12
+      epic.color = ColorPalette.green.uicolor
       epic.compareEnabled = false
       let gepic = epic.geometry!
       gepic.reach = 433.0

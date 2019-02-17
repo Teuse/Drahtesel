@@ -21,7 +21,6 @@ class AlertViewController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
-//      alertView.translatesAutoresizingMaskIntoConstraints = true
       textField.autocorrectionType = .no
       alertView.center = view.center
       

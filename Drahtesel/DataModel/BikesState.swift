@@ -3,12 +3,15 @@ import ReSwift
 struct BikesState: StateType
 {
    var pageTitle = ""
-   var isEditing = false
+   var isEditing = false {
+      didSet { if !isEditing { selectedBikes.removeAll() }}
+   }
+   var isCopyButtonEnabled: Bool { return !selectedBikes.isEmpty }
+   var selectedBikes = [Bike]()
    
    var isDataUpdated = false
    var collection = Collection()
    var bikes: [Bike] { return collection.bikes }
-   
 }
 
 // --------------------------------------------------------------------------------
@@ -22,11 +25,17 @@ extension BikesState
      
       switch action
       {
-      case let action as MainViewAction.OpenedPage:
-         handleOpenedPage(&state, action.page)
       case let action as CollectionAction.Select:
          handleSelectCollection(&state, action.collection)
       
+      case let action as BikeAction.Select:
+         assert(state.isEditing, "Selection without edit mode is not implemented yet")
+         state.selectedBikes.append(action.bike)
+         
+      case let action as BikeAction.Deselect:
+         assert(state.isEditing)
+         state.selectedBikes.removeAll(where: { $0.id == action.bike.id })
+         
       case let action as BikeAction.SetEdit:
          state.isEditing = action.enabled
          
@@ -42,6 +51,19 @@ extension BikesState
       case let action as BikeAction.Delete:
          handleDelete(&state, action.bike)
          
+      case let action as BikeAction.CopySelectionTo:
+         handleCopySelectionTo(&state, action.collection)
+         
+      case let action as BikeAction.ChangeRating:
+         action.bike.rating = Int64(action.rating)
+         DBAccess.shared.save()
+         state.isDataUpdated = true
+         
+      case let action as BikeAction.ChangeCompareEnabled:
+         action.bike.compareEnabled = action.enabled
+         DBAccess.shared.save()
+         state.isDataUpdated = true
+         
       default: break
       }
       return state
@@ -52,11 +74,6 @@ extension BikesState
       state.pageTitle = collection.name ?? "Bikes"
       state.collection = collection
       state.isDataUpdated = true
-   }
-   
-   static func handleOpenedPage(_ state: inout BikesState, _ page: Pages)
-   {
-      state.isEditing = false
    }
    
    static func handleAdd(_ state: inout BikesState, _ name: String)
@@ -87,5 +104,12 @@ extension BikesState
       DBAccess.shared.save()
       state.isDataUpdated = true
    }
+   
+   static func handleCopySelectionTo(_ state: inout BikesState, _ collection: Collection)
+   {
+      for bike in state.selectedBikes {
+         let new = collection.addBike(name: bike.name!)
+         new.copy(from: bike)
+      }
+   }
 }
-

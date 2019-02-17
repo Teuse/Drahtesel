@@ -5,8 +5,10 @@ class MainViewController: UIViewController
 {
    private var isButtonShown = false
    private var isButtonLarge = true
-   
+ 
+   private var alertWindow = UIWindow(frame: UIScreen.main.bounds)
    private var alertViewController: AlertViewController? = nil
+   private var selectionViewController: SelectionViewController? = nil
    
    @IBOutlet private weak var compareButton: UIButton!
    @IBOutlet private weak var buttonContainerLarge: UIView!
@@ -19,6 +21,9 @@ class MainViewController: UIViewController
    {
       super.viewWillAppear(animated)
       compareButton.translatesAutoresizingMaskIntoConstraints = true
+      alertWindow.backgroundColor = UIColor.clear
+      alertWindow.windowLevel = .alert
+      
       subscribe(self) { subcription in
          subcription.select { state in state.mainViewState }
       }
@@ -58,10 +63,10 @@ class MainViewController: UIViewController
       let sb = UIStoryboard(name: "Alert", bundle: nil)
       alertViewController = sb.instantiateInitialViewController() as? AlertViewController
       if let vc = alertViewController {
+         vc.view.frame = alertWindow.frame
          vc.model = model
-         vc.view.frame = view.frame
-         view.addSubview(vc.view)
-         addChild(vc)
+         alertWindow.rootViewController = vc
+         alertWindow.makeKeyAndVisible()
       } else {
          alertViewController = nil
          assertionFailure("MainViewController->showAlert: Failed to open alertView")
@@ -70,6 +75,7 @@ class MainViewController: UIViewController
    
    private func removeAlert()
    {
+      alertWindow.isHidden = true
       alertViewController?.view.removeFromSuperview()
       alertViewController = nil
    }

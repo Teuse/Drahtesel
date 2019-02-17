@@ -12,7 +12,7 @@ struct CollectionAction
    
    struct Add: Action, AlertableAction {
       private(set) var name: String
-      
+
       mutating func setAlertText(_ text: String) {
          name = text
       }

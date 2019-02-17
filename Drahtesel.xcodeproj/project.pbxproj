@@ -26,6 +26,12 @@
 		8A1EA02A22070B470055550A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA02922070B470055550A /* UIViewExtension.swift */; };
 		8A1EA02D2207162C0055550A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1EA02C2207162C0055550A /* Settings.storyboard */; };
 		8A1EA02F22071AFD0055550A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA02E22071AFD0055550A /* SettingsViewController.swift */; };
+		8A340BF32215F51500F29898 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF22215F51500F29898 /* ColorPalette.swift */; };
+		8A340BF92216019A00F29898 /* BikeCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF72216019A00F29898 /* BikeCoordinates.swift */; };
+		8A340BFA2216019A00F29898 /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF82216019A00F29898 /* Numeric.swift */; };
+		8A340BFE2217221200F29898 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BFD2217221200F29898 /* SelectionViewController.swift */; };
+		8A340C032218350100F29898 /* SelectionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340C012218350000F29898 /* SelectionAction.swift */; };
+		8A340C042218350100F29898 /* SelectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340C022218350100F29898 /* SelectionState.swift */; };
 		8A35C7FD220EC7EF0026EDF1 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */; };
 		8A35C7FF220EDDE70026EDF1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */; };
 		8A35C801220EF2360026EDF1 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C800220EF2360026EDF1 /* AlertViewModel.swift */; };
@@ -101,6 +107,12 @@
 		8A1EA02922070B470055550A /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8A1EA02C2207162C0055550A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8A1EA02E22071AFD0055550A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8A340BF22215F51500F29898 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		8A340BF72216019A00F29898 /* BikeCoordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeCoordinates.swift; sourceTree = "<group>"; };
+		8A340BF82216019A00F29898 /* Numeric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
+		8A340BFD2217221200F29898 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		8A340C012218350000F29898 /* SelectionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionAction.swift; sourceTree = "<group>"; };
+		8A340C022218350100F29898 /* SelectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionState.swift; sourceTree = "<group>"; };
 		8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8A35C800220EF2360026EDF1 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
@@ -197,6 +209,7 @@
 			children = (
 				8A1EA0122206D8500055550A /* DataModel */,
 				8A1EA0132206D85D0055550A /* GUI */,
+				8A340BF42216011900F29898 /* Utils */,
 				8A1EA0142206D8BE0055550A /* Resources */,
 				8A1E9FE12206D6B50055550A /* AppDelegate.swift */,
 				8A7192DE22089864002EB98B /* LoggingMiddleware.swift */,
@@ -235,6 +248,8 @@
 				8AEC0598220A120B00ECB25C /* CollectionAction.swift */,
 				8A7192F12208D19E002EB98B /* BikesState.swift */,
 				8AEC059A220C03A400ECB25C /* BikeAction.swift */,
+				8A340C022218350100F29898 /* SelectionState.swift */,
+				8A340C012218350000F29898 /* SelectionAction.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -246,7 +261,7 @@
 				8A1C2BAF220775F3004BB653 /* BikeSetup */,
 				8A1EA01F2206E8660055550A /* Comparison */,
 				8A1EA02B220716150055550A /* Settings */,
-				8A35C7FB220EC5700026EDF1 /* Alert */,
+				8A35C7FB220EC5700026EDF1 /* Components */,
 				8A1EA02822070B340055550A /* Extensions */,
 				8A6E6B1022154B2100E3ECD4 /* Utils */,
 				8A1EA0172206D99B0055550A /* Main.storyboard */,
@@ -296,20 +311,30 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		8A35C7FB220EC5700026EDF1 /* Alert */ = {
+		8A340BF42216011900F29898 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8A340BF72216019A00F29898 /* BikeCoordinates.swift */,
+				8A340BF82216019A00F29898 /* Numeric.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8A35C7FB220EC5700026EDF1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */,
 				8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */,
 				8A35C800220EF2360026EDF1 /* AlertViewModel.swift */,
 			);
-			path = Alert;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8A6E6B1022154B2100E3ECD4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				8A6E6B132215581900E3ECD4 /* TriangleView.swift */,
+				8A340BF22215F51500F29898 /* ColorPalette.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -352,6 +377,7 @@
 				8A1EA01A2206DEBB0055550A /* CollectionsViewController.swift */,
 				8A1EA0192206DEBB0055550A /* BikesViewController.swift */,
 				8A6E6B112215530200E3ECD4 /* BikeCell.swift */,
+				8A340BFD2217221200F29898 /* SelectionViewController.swift */,
 			);
 			path = Browser;
 			sourceTree = "<group>";
@@ -528,13 +554,17 @@
 				8A1EA02F22071AFD0055550A /* SettingsViewController.swift in Sources */,
 				8A1EA0272206F00D0055550A /* CompareSpecificationViewController.swift in Sources */,
 				8A7192F82208D817002EB98B /* SetupBasicsViewController.swift in Sources */,
+				8A340BFE2217221200F29898 /* SelectionViewController.swift in Sources */,
 				8A7192FB2208D85F002EB98B /* SetupSpecificationViewController.swift in Sources */,
 				8A87914F22095E24001F6750 /* FactoryContent.swift in Sources */,
 				8A35C805220EF35B0026EDF1 /* MainViewAction.swift in Sources */,
 				8A7192F02208D02A002EB98B /* Pages.swift in Sources */,
+				8A340C042218350100F29898 /* SelectionState.swift in Sources */,
 				8A1E9FEA2206D6B50055550A /* Drahtesel.xcdatamodeld in Sources */,
 				8A6F537B2208DF9100BA0229 /* CollectionType.swift in Sources */,
 				8A7192F32208D19E002EB98B /* BikesState.swift in Sources */,
+				8A340BFA2216019A00F29898 /* Numeric.swift in Sources */,
+				8A340C032218350100F29898 /* SelectionAction.swift in Sources */,
 				8A93E79D221024B800B663DE /* GeometryExtension.swift in Sources */,
 				8A35C801220EF2360026EDF1 /* AlertViewModel.swift in Sources */,
 				8A1C2BB32207764E004BB653 /* SetupRootViewController.swift in Sources */,
@@ -545,11 +575,13 @@
 				8A1EA02A22070B470055550A /* UIViewExtension.swift in Sources */,
 				8A87914C22095B0C001F6750 /* BikeCategory.swift in Sources */,
 				8A35C804220EF35B0026EDF1 /* MainViewState.swift in Sources */,
+				8A340BF92216019A00F29898 /* BikeCoordinates.swift in Sources */,
 				8A1EA0252206F0040055550A /* CompareGeometryViewController.swift in Sources */,
 				8A7192E722089C5C002EB98B /* AppState.swift in Sources */,
 				8AEC059B220C03A400ECB25C /* BikeAction.swift in Sources */,
 				8A7192E422089955002EB98B /* DBAccess.swift in Sources */,
 				8A1EA0232206EC0B0055550A /* CompareRootViewController.swift in Sources */,
+				8A340BF32215F51500F29898 /* ColorPalette.swift in Sources */,
 				8A7192E122089873002EB98B /* UIViewControllerExtension.swift in Sources */,
 				8A35C7FF220EDDE70026EDF1 /* AlertViewController.swift in Sources */,
 				8AA019B32211DF9200DB0268 /* UIColor.swift in Sources */,

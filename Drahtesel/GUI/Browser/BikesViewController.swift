@@ -7,7 +7,7 @@ class BikesViewController: UIViewController
    
    @IBOutlet private weak var tableView: UITableView!
    @IBOutlet private weak var toolbar: UIToolbar!
-   
+   @IBOutlet private weak var copyToButton: UIBarButtonItem!
    
    //MARK: - Life Circle
    
@@ -15,6 +15,7 @@ class BikesViewController: UIViewController
    {
       super.viewWillAppear(animated)
       dispatch(action: MainViewAction.OpenedPage(page: .bikeBrowser))
+      dispatch(action: BikeAction.SetEdit(enabled: false))
       
       tableView.delegate = self
       tableView.dataSource = self
@@ -111,8 +112,24 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
 {
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
    {
-      let bike = state.bikes[indexPath.row]
-      dispatch(action: BikeAction.Select(bike: bike))
+      if state.isEditing {
+         let bike = state.bikes[indexPath.row]
+         dispatch(action: BikeAction.Select(bike: bike))
+      }
+      else {
+         let sb = UIStoryboard(name: "BikeSetup", bundle: nil)
+         if let vc = sb.instantiateInitialViewController() {
+            show(vc, sender: nil)
+         }
+      }
+   }
+   
+   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
+   {
+      if state.isEditing {
+         let bike = state.bikes[indexPath.row]
+         dispatch(action: BikeAction.Deselect(bike: bike))
+      }
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -122,9 +139,7 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
          assertionFailure("Unable to dequeue BikeCell")
          return cell
       }
-      let bike = state.bikes[indexPath.row]
-      bikeCell.name = bike.name ?? "(nil)"
-      bikeCell.brand = bike.brand ?? "(nil)"
+      bikeCell.bike = state.bikes[indexPath.row]
       return bikeCell
    }
    
@@ -136,12 +151,12 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
       return state.bikes.count
    }
    
-   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-      return state.collection.type != .factory
-   }
-   
    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
    {
+      guard state.collection.type != .factory else {
+         return []
+      }
+      
       let bike = state.bikes[indexPath.row]
       let delete = UITableViewRowAction(style: .destructive, title: "Delete") {_,_ in
          self.onDeleteClicked(bike)
@@ -178,5 +193,7 @@ extension BikesViewController: StoreSubscriber
          tableView.setEditing(state.isEditing, animated: true)
          toolbar(show: state.isEditing, animated: true)
       }
+      
+      copyToButton.isEnabled = state.isCopyButtonEnabled
    }
 }

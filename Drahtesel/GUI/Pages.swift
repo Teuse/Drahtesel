@@ -6,6 +6,7 @@ enum Pages
    
    case collectionBrowser
    case bikeBrowser
+   case selectionBrowser
    
    case setupBasics
    case setupGeometry

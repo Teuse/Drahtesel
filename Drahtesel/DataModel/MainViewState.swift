@@ -44,7 +44,6 @@ extension MainViewState
       default:
          break
       }
-      
       return state
    }
 }

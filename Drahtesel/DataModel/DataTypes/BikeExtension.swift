@@ -19,6 +19,7 @@ extension Bike
       compareEnabled = bike.compareEnabled
       year = bike.year
       isElectrified = bike.isElectrified
+      rating = bike.rating
       
       assert(bike.geometry != nil, "Bike->copy(): Error, bike.geometry may not be nil")
       geometry?.copy(from: bike.geometry!)

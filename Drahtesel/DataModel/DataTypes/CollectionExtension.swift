@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 extension Collection
 {
@@ -10,6 +11,7 @@ extension Collection
          addToBikeSet(bike)
          bike.id = UUID()
          bike.name = name
+         bike.color = UIColor.black // Make sure that bike has a default color
          bike.geometry = Geometry(context: context)
          bike.geometry?.id = UUID()
          bike.specification = Specification(context: context)

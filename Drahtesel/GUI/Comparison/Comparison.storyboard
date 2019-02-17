@@ -86,26 +86,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geometry Comparison View" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmM-ip-lUn">
-                                <rect key="frame" x="20" y="128" width="627" height="119.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="3" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="UzU-bK-W2O">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWB-VE-lwB">
+                                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="MWB-VE-lwB" secondAttribute="bottom" id="44n-BU-Anc"/>
+                                    <constraint firstAttribute="trailing" secondItem="MWB-VE-lwB" secondAttribute="trailing" id="W9n-fw-8MP"/>
+                                    <constraint firstItem="MWB-VE-lwB" firstAttribute="top" secondItem="UzU-bK-W2O" secondAttribute="top" id="bnf-1q-6QZ"/>
+                                    <constraint firstItem="MWB-VE-lwB" firstAttribute="leading" secondItem="UzU-bK-W2O" secondAttribute="leading" id="gBi-yQ-45E"/>
+                                    <constraint firstItem="MWB-VE-lwB" firstAttribute="centerY" secondItem="UzU-bK-W2O" secondAttribute="centerY" id="qhk-m9-Kro"/>
+                                    <constraint firstItem="MWB-VE-lwB" firstAttribute="centerX" secondItem="UzU-bK-W2O" secondAttribute="centerX" id="sq8-mH-M0V"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kmM-ip-lUn" firstAttribute="centerY" secondItem="4O5-jP-QMz" secondAttribute="centerY" id="4hR-lh-8jN"/>
-                            <constraint firstItem="kmM-ip-lUn" firstAttribute="centerX" secondItem="4O5-jP-QMz" secondAttribute="centerX" id="DaW-ie-Anh"/>
-                            <constraint firstItem="RUq-An-PpB" firstAttribute="trailing" secondItem="kmM-ip-lUn" secondAttribute="trailing" constant="20" id="FjT-aW-dbU"/>
-                            <constraint firstItem="kmM-ip-lUn" firstAttribute="leading" secondItem="RUq-An-PpB" secondAttribute="leading" constant="20" id="Xva-xs-N5U"/>
+                            <constraint firstItem="UzU-bK-W2O" firstAttribute="trailing" secondItem="4O5-jP-QMz" secondAttribute="trailingMargin" constant="20" id="T4m-C5-9FY"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="UzU-bK-W2O" secondAttribute="bottom" id="Ust-vh-eff"/>
+                            <constraint firstItem="UzU-bK-W2O" firstAttribute="leading" secondItem="4O5-jP-QMz" secondAttribute="leadingMargin" constant="-20" id="ldZ-ZJ-0CD"/>
+                            <constraint firstItem="UzU-bK-W2O" firstAttribute="top" secondItem="4O5-jP-QMz" secondAttribute="topMargin" id="pqV-jO-Voh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RUq-An-PpB"/>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="UzU-bK-W2O" id="m8C-e4-jtZ"/>
+                        <outlet property="zoomView" destination="MWB-VE-lwB" id="OON-D3-Bv2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjV-nS-cOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="777"/>
+            <point key="canvasLocation" x="643.62818590704649" y="776.79999999999995"/>
         </scene>
         <!--Compare Specification View Controller-->
         <scene sceneID="Iv9-bN-v7P">

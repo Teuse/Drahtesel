@@ -5,6 +5,7 @@ struct AppState: StateType
    var mainViewState = MainViewState()
    var collectionsState = CollectionsState()
    var bikesState = BikesState()
+   var selectionState = SelectionState()
 }
 
 // --------------------------------------------------------------------------------
@@ -17,6 +18,7 @@ extension AppState
       state.mainViewState = MainViewState.reducer(action: action, state: state.mainViewState)
       state.collectionsState = CollectionsState.reducer(action: action, state: state.collectionsState)
       state.bikesState = BikesState.reducer(action: action, state: state.bikesState)
+      state.selectionState = SelectionState.reducer(action: action, state: state.selectionState)
       
       return state
    }

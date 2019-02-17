@@ -6,6 +6,10 @@ struct BikeAction
       let bike: Bike
    }
    
+   struct Deselect: Action {
+      let bike: Bike
+   }
+   
    struct SetEdit: Action {
       let enabled: Bool
    }
@@ -35,10 +39,25 @@ struct BikeAction
          name = text
       }
    }
+
+   struct CopySelectionTo: Action {
+      let collection: Collection
+   }
    
    struct Delete: Action, AlertableAction {
       let bike: Bike
       
       func setAlertText(_ text: String) {}
    }
+   
+   struct ChangeRating: Action {
+      let bike: Bike
+      let rating: Int
+   }
+   
+   struct ChangeCompareEnabled: Action {
+      let bike: Bike
+      let enabled: Bool
+   }
+   
 }
