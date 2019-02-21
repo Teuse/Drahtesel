@@ -11,7 +11,14 @@ struct BikesState: StateType
    
    var isDataUpdated = false
    var collection = Collection()
-   var bikes: [Bike] { return collection.bikes }
+   
+   var bikes: [Bike]
+   {
+      var bikes = collection.bikes
+//      bikes.sort(by: {$0.name! < $1.name!})
+      bikes.sort(by: { $0.brand! != $1.brand! ? $0.brand! < $1.brand! : $0.name! < $1.name! })
+      return bikes
+   }
 }
 
 // --------------------------------------------------------------------------------
@@ -25,6 +32,9 @@ extension BikesState
      
       switch action
       {
+      case let action as MainViewAction.OpenedPage:
+         handleOpenedPage(&state, action.page)
+         
       case let action as CollectionAction.Select:
          handleSelectCollection(&state, action.collection)
       
@@ -63,10 +73,17 @@ extension BikesState
          action.bike.compareEnabled = action.enabled
          DBAccess.shared.save()
          state.isDataUpdated = true
-         
+
       default: break
       }
       return state
+   }
+   
+   static func handleOpenedPage(_ state: inout BikesState, _ page: Pages)
+   {
+      if page == .bikeBrowser {
+         state.isDataUpdated = true
+      }
    }
    
    static func handleSelectCollection(_ state: inout BikesState, _ collection: Collection)

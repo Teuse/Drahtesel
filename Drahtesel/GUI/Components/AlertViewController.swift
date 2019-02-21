@@ -21,23 +21,12 @@ class AlertViewController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
+      textField.delegate = self
       textField.autocorrectionType = .no
+      alertView.translatesAutoresizingMaskIntoConstraints = true
       alertView.center = view.center
       
       updateView()
-      
-      let nc = NotificationCenter.default
-      nc.addObserver(self, selector: #selector(keyboardWillShow),
-                     name: UIResponder.keyboardWillShowNotification, object: nil)
-      nc.addObserver(self, selector: #selector(self.keyboardWillHide),
-                     name: UIResponder.keyboardWillHideNotification, object: nil)
-   }
-   
-   override func viewWillDisappear(_ animated: Bool)
-   {
-      let nc = NotificationCenter.default
-      nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-      nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
    }
 
    private func updateView()
@@ -131,23 +120,23 @@ extension AlertViewController
 // --------------------------------------------------------------------------------
 //MARK: - Keyboard Stuff
 
-extension AlertViewController
+extension AlertViewController: UITextFieldDelegate
 {
    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
    {
       textField.resignFirstResponder()
    }
    
-   @objc func keyboardWillShow(notification: NSNotification)
+   func textFieldDidBeginEditing(_ textField: UITextField)
    {
-      UIView.animate(withDuration: 0.5) {
+      UIView.animate(withDuration: UI.animationDuration) {
          self.alertView.frame.origin.y = 5
       }
    }
    
-   @objc func keyboardWillHide(notification: NSNotification)
+   func textFieldDidEndEditing(_ textField: UITextField)
    {
-      UIView.animate(withDuration: 0.5) {
+      UIView.animate(withDuration: UI.animationDuration) {
          self.alertView.center = self.view.center
       }
    }

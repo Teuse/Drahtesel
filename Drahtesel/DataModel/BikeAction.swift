@@ -59,5 +59,4 @@ struct BikeAction
       let bike: Bike
       let enabled: Bool
    }
-   
 }

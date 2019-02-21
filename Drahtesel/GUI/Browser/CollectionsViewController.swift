@@ -13,14 +13,14 @@ class CollectionsViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: MainViewAction.OpenedPage(page: .collectionBrowser))
-      
       tableView.delegate = self
       tableView.dataSource = self
       
       subscribe(self) { subcription in
          subcription.select { state in state.collectionsState }
       }
+      
+      dispatch(action: MainViewAction.OpenedPage(page: .collectionBrowser))
    }
    
    override func viewWillDisappear(_ animated: Bool)
@@ -118,9 +118,10 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
    
    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
    {
-      view.tintColor = UIColor(white: 0.2, alpha: 1)
+      view.tintColor = UIColor.appGray
       let header = view as! UITableViewHeaderFooterView
-      header.textLabel?.textColor = UIColor.white
+//      header.textLabel?.textColor = UIColor.white
+      header.textLabel?.textColor = UIColor.appBlue
    }
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int

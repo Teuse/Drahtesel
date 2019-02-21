@@ -63,7 +63,7 @@ class CompareRootViewController: UIViewController
       viewType = .geoComapre
       nextButton.setTitle(">", for: .normal)
       
-      let dur = animate ? 0.5 : 0.0
+      let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.geoContainer.frame.origin.x = 0
          self.specContainer.frame.origin.x = self.view.frame.width
@@ -75,7 +75,7 @@ class CompareRootViewController: UIViewController
       viewType = .specComapre
       nextButton.setTitle("<", for: .normal)
       
-      let dur = animate ? 0.5 : 0.0
+      let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.geoContainer.frame.origin.x = -self.view.frame.width
          self.specContainer.frame.origin.x = 0.0

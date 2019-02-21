@@ -14,15 +14,15 @@ class BikesViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: MainViewAction.OpenedPage(page: .bikeBrowser))
-      dispatch(action: BikeAction.SetEdit(enabled: false))
-      
       tableView.delegate = self
       tableView.dataSource = self
       
       subscribe(self) { subcription in
          subcription.select { state in state.bikesState }
       }
+      
+      dispatch(action: MainViewAction.OpenedPage(page: .bikeBrowser))
+      dispatch(action: BikeAction.SetEdit(enabled: false))
    }
    
    override func viewWillDisappear(_ animated: Bool)
@@ -53,7 +53,7 @@ class BikesViewController: UIViewController
    
    private func toolbar(show: Bool, animated: Bool)
    {
-      let dur = animated ? 0.5 : 0.0
+      let dur = animated ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          let height = self.view.safeAreaLayoutGuide.layoutFrame.height
          let yPos = show
@@ -141,6 +141,12 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
       }
       bikeCell.bike = state.bikes[indexPath.row]
       return bikeCell
+   }
+   
+   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+   {
+      let cell = tableView.dequeueReusableCell(withIdentifier: "BikeCellHeader")
+      return cell
    }
    
    func numberOfSections(in tableView: UITableView) -> Int {

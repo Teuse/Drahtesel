@@ -69,7 +69,7 @@ class SetupRootViewController: UIViewController
    private func showBasicView(animate: Bool = true)
    {
       viewType = .basics
-      let dur = animate ? 0.5 : 0.0
+      let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = 0
          self.geoContainer.frame.origin.x = self.view.frame.width
@@ -80,7 +80,7 @@ class SetupRootViewController: UIViewController
    private func showGeometryView(animate: Bool = true)
    {
       viewType = .geometry
-      let dur = animate ? 0.5 : 0.0
+      let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = -self.view.frame.width
          self.geoContainer.frame.origin.x = 0
@@ -91,7 +91,7 @@ class SetupRootViewController: UIViewController
    private func showSpecificaionView(animate: Bool = true)
    {
       viewType = .specification
-      let dur = animate ? 0.5 : 0.0
+      let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = -2 * self.view.frame.width
          self.geoContainer.frame.origin.x = -self.view.frame.width

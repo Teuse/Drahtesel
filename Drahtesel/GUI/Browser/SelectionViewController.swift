@@ -7,21 +7,23 @@ class SelectionViewController: UIViewController
    
    @IBOutlet private weak var copyButton: UIBarButtonItem!
    @IBOutlet private weak var topBar: UINavigationBar!
+   @IBOutlet private weak var naviItem: UINavigationItem!
    @IBOutlet private weak var tableView: UITableView!
+   @IBOutlet private weak var noCollectionsLabel: UILabel!
    
    //MARK: - Life Circle
    
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: MainViewAction.OpenedPage(page: .selectionBrowser))
-      
       tableView.delegate = self
       tableView.dataSource = self
       
       subscribe(self) { subcription in
          subcription.select { state in state.selectionState }
       }
+      
+      dispatch(action: MainViewAction.OpenedPage(page: .selectionBrowser))
    }
    
    override func viewWillDisappear(_ animated: Bool)
@@ -43,6 +45,14 @@ class SelectionViewController: UIViewController
       
       dispatch(action: MainViewAction.PresentAlert(model: alertModel))
    }
+   
+   private func updateTitle()
+   {
+      let nrBikes = state.collections.count
+      navigationItem.title = nrBikes == 1
+      ? "Copy Bike"
+      : "Copy \(nrBikes) Bikes"
+   }
 
    @IBAction private func onCancelClicked()
    {
@@ -58,6 +68,9 @@ class SelectionViewController: UIViewController
    }
 }
 
+// --------------------------------------------------------------------------------
+//MARK: - TableView
+
 extension SelectionViewController: UITableViewDelegate, UITableViewDataSource
 {
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -68,14 +81,24 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource
          let col = state.collections[indexPath.row]
          dispatch(action: SelectionAction.Select(collection: col))
       }
+      tableView.reloadData()
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
    {
       let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath)
-      cell.textLabel?.text = (indexPath.section == 0)
+      cell.accessoryType = indexPath.section == 0 ? .none : .disclosureIndicator
+      cell.selectionStyle = indexPath.section == 0 ? .none : .default
+      cell.textLabel?.text = indexPath.section == 0
          ? "New Collection"
          : state.collections[indexPath.row].name
+      
+      if indexPath.section != 0, let col = state.selected {
+         let idx = state.collections.firstIndex(of: col)
+         let isSelected = idx == indexPath.row
+         cell.backgroundColor = isSelected ? UIColor.appGray : UIColor.white
+         cell.textLabel?.textColor = isSelected ? UIColor.appBlue : UIColor.black
+      }
       return cell
    }
    
@@ -100,10 +123,14 @@ extension SelectionViewController: StoreSubscriber
       copyButton.isEnabled = state.selected != nil
       tableView.reloadData()
       
+      noCollectionsLabel.isHidden = !state.collections.isEmpty
+      
       if let col = state.selected {
          let ip = indexPath(for: col)
          tableView.selectRow(at: ip, animated: false, scrollPosition: .none)
       }
+      
+      updateTitle()
    }
    
    private func indexPath(for collection: Collection) -> IndexPath

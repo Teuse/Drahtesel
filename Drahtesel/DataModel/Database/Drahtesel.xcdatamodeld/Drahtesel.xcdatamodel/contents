@@ -8,6 +8,7 @@
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isElectrified" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=" " syncable="YES"/>
+        <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rating" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="year" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="collection" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="bikeSet" inverseEntity="Collection" syncable="YES"/>
@@ -41,7 +42,7 @@
         <relationship name="bike" maxCount="1" deletionRule="Nullify" destinationEntity="Bike" inverseName="specification" inverseEntity="Bike" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Bike" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="Bike" positionX="-54" positionY="-9" width="128" height="240"/>
         <element name="Collection" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="Geometry" positionX="-36" positionY="9" width="128" height="225"/>
         <element name="Specification" positionX="-18" positionY="27" width="128" height="105"/>

@@ -7,17 +7,8 @@ struct MainViewState: StateType
    
    var isEditModeEnabled = false
    
-   
-   var buttonLarge: Bool {
-      return currentPage == .collectionBrowser
-         || currentPage == .bikeBrowser
-   }
-   var buttonShown: Bool {
-      return (currentPage == .bikeBrowser && !isEditModeEnabled)
-         || currentPage == .setupBasics
-         || currentPage == .setupGeometry
-         || currentPage == .setupSpecification
-   }
+   var buttonLarge = true
+   var buttonShown = false
 }
 
 // --------------------------------------------------------------------------------
@@ -31,6 +22,7 @@ extension MainViewState
       switch action {
       case let action as MainViewAction.OpenedPage:
          state.currentPage = action.page
+         updateButton(for: action.page, &state)
       
       case let action as MainViewAction.PresentAlert:
          state.alertViewModel = action.model
@@ -45,6 +37,22 @@ extension MainViewState
          break
       }
       return state
+   }
+   
+   static private func updateButton(for page: Pages, _ state: inout MainViewState)
+   {
+      switch page {
+      case .collectionBrowser:
+         state.buttonLarge = true
+         state.buttonShown = false
+      case .bikeBrowser:
+         state.buttonLarge = true
+         state.buttonShown = true
+      case .setupBasics, .setupGeometry, .setupSpecification:
+         state.buttonLarge = false
+         state.buttonShown = true
+      default: break
+      }
    }
 }
 

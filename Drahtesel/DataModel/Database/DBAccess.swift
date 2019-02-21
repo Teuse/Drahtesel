@@ -50,6 +50,9 @@ extension DBAccess
          request.predicate = predicate
       }
       
+      let sort = NSSortDescriptor(key: "name", ascending: false)
+      request.sortDescriptors = [sort]
+      
       do {
          return try context.fetch(request) as! [Collection]
       } catch {

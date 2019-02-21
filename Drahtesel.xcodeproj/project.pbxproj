@@ -26,6 +26,7 @@
 		8A1EA02A22070B470055550A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA02922070B470055550A /* UIViewExtension.swift */; };
 		8A1EA02D2207162C0055550A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1EA02C2207162C0055550A /* Settings.storyboard */; };
 		8A1EA02F22071AFD0055550A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA02E22071AFD0055550A /* SettingsViewController.swift */; };
+		8A20F84B221E7B1900777EAE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20F84A221E7B1900777EAE /* Constants.swift */; };
 		8A340BF32215F51500F29898 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF22215F51500F29898 /* ColorPalette.swift */; };
 		8A340BF92216019A00F29898 /* BikeCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF72216019A00F29898 /* BikeCoordinates.swift */; };
 		8A340BFA2216019A00F29898 /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF82216019A00F29898 /* Numeric.swift */; };
@@ -107,6 +108,7 @@
 		8A1EA02922070B470055550A /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8A1EA02C2207162C0055550A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8A1EA02E22071AFD0055550A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8A20F84A221E7B1900777EAE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A340BF22215F51500F29898 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		8A340BF72216019A00F29898 /* BikeCoordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeCoordinates.swift; sourceTree = "<group>"; };
 		8A340BF82216019A00F29898 /* Numeric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				8A1E9FE12206D6B50055550A /* AppDelegate.swift */,
 				8A7192DE22089864002EB98B /* LoggingMiddleware.swift */,
 				8A87914E22095E24001F6750 /* FactoryContent.swift */,
+				8A20F84A221E7B1900777EAE /* Constants.swift */,
 			);
 			path = Drahtesel;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				8A7192F02208D02A002EB98B /* Pages.swift in Sources */,
 				8A340C042218350100F29898 /* SelectionState.swift in Sources */,
 				8A1E9FEA2206D6B50055550A /* Drahtesel.xcdatamodeld in Sources */,
+				8A20F84B221E7B1900777EAE /* Constants.swift in Sources */,
 				8A6F537B2208DF9100BA0229 /* CollectionType.swift in Sources */,
 				8A7192F32208D19E002EB98B /* BikesState.swift in Sources */,
 				8A340BFA2216019A00F29898 /* Numeric.swift in Sources */,

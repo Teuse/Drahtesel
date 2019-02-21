@@ -41,7 +41,7 @@ class MainViewController: UIViewController
    
    private func button(show: Bool, animated: Bool)
    {
-      let dur = animated ? 0.5 : 0.0
+      let dur = animated ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.compareButton.alpha = show ? 1.0 : 0.0
       }
@@ -49,7 +49,7 @@ class MainViewController: UIViewController
    
    private func button(large: Bool, animated: Bool)
    {
-      let dur = animated ? 0.5 : 0.0
+      let dur = animated ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          let container = large ? self.buttonContainerLarge! : self.buttonContainerSmall!
          let size = container.frame.width
