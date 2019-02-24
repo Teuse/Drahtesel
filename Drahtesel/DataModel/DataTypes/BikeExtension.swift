@@ -1,7 +1,16 @@
 import Foundation
+import UIKit
 
 extension Bike
 {
+   var paletteColor: ColorPalette {
+      get {
+         let uicolor = color as! UIColor
+         return ColorPalette.convert(uicolor: uicolor) ?? .black
+      }
+      set { color = paletteColor.uicolor }
+   }
+   
    override public var description: String
    {
       let nameStr = name ?? "nil"

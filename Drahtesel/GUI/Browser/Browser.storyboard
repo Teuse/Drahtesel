@@ -141,99 +141,60 @@
                                             <rect key="frame" x="0.0" y="0.0" width="634" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JTk-nj-ypO" customClass="TriangleView" customModule="Drahtesel" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="11" width="33" height="46"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTk-nj-ypO" customClass="TriangleView" customModule="Drahtesel" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="11" width="33" height="47.5"/>
                                                     <color key="backgroundColor" red="0.91372549020000005" green="0.45098039220000002" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" text="DX Cross Pro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0s-Vl-den">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="DX Cross Pro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0s-Vl-den">
                                                     <rect key="frame" x="41" y="12" width="300" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="0FV-Ed-2nc"/>
+                                                        <constraint firstAttribute="height" constant="21" id="ps5-Tg-cqy"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-Z0-EwM">
-                                                    <rect key="frame" x="596" y="8" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="bXV-tF-XxW"/>
-                                                        <constraint firstAttribute="height" constant="30" id="sKA-Y8-SGh"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="RatingStarDisabled"/>
-                                                    <connections>
-                                                        <action selector="onRatingStarClicked:" destination="Uzw-ae-9ju" eventType="touchUpInside" id="nvV-Ti-lW8"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tV8-Fq-cFG">
-                                                    <rect key="frame" x="562" y="8" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="WfF-P4-GH6"/>
-                                                        <constraint firstAttribute="width" constant="30" id="qmJ-5f-DHW"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="RatingStarDisabled"/>
-                                                    <connections>
-                                                        <action selector="onRatingStarClicked:" destination="Uzw-ae-9ju" eventType="touchUpInside" id="r43-7c-kAv"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Aw-xO-yXR">
-                                                    <rect key="frame" x="528" y="8" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="6ZL-pz-0rO"/>
-                                                        <constraint firstAttribute="width" constant="30" id="Usl-Bd-yMJ"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="RatingStarDisabled"/>
-                                                    <connections>
-                                                        <action selector="onRatingStarClicked:" destination="Uzw-ae-9ju" eventType="touchUpInside" id="EYO-Sk-nGO"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G2-Rz-W91">
-                                                    <rect key="frame" x="494" y="8" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="X3w-Wq-OIG"/>
-                                                        <constraint firstAttribute="width" constant="30" id="emE-4x-l1r"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="RatingStarDisabled"/>
-                                                    <connections>
-                                                        <action selector="onRatingStarClicked:" destination="Uzw-ae-9ju" eventType="touchUpInside" id="Dbk-AJ-C7X"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzM-gc-kFC">
-                                                    <rect key="frame" x="460" y="8" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="cca-YT-M0O"/>
-                                                        <constraint firstAttribute="height" constant="30" id="wiL-RP-oXi"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="RatingStarDisabled"/>
-                                                    <connections>
-                                                        <action selector="onRatingStarClicked:" destination="Uzw-ae-9ju" eventType="touchUpInside" id="esg-Ro-9kP"/>
-                                                    </connections>
-                                                </button>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cxs-GK-Rte">
                                                     <rect key="frame" x="370" y="7" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onCompareSwitchChanged:" destination="Uzw-ae-9ju" eventType="valueChanged" id="kmF-pE-7o4"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" text="Rose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdh-m8-EAj">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Rose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdh-m8-EAj">
                                                     <rect key="frame" x="41" y="36" width="163" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="26e-wc-juZ"/>
+                                                        <constraint firstAttribute="width" constant="163" id="psJ-Pe-lbG"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSD-jw-Yvr">
+                                                    <rect key="frame" x="454" y="8" width="180" height="30"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="3SK-T6-476"/>
+                                                        <constraint firstAttribute="width" constant="180" id="Ty9-9s-wtH"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="tV8-Fq-cFG" firstAttribute="leading" secondItem="4Aw-xO-yXR" secondAttribute="trailing" constant="4" id="JAB-2F-nqQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="UPR-Z0-EwM" secondAttribute="trailing" constant="8" id="Ko6-JH-c4c"/>
-                                                <constraint firstItem="UPR-Z0-EwM" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="top" constant="8" id="KxW-M4-bcQ"/>
-                                                <constraint firstItem="8G2-Rz-W91" firstAttribute="leading" secondItem="DzM-gc-kFC" secondAttribute="trailing" constant="4" id="L7H-6j-SIe"/>
-                                                <constraint firstItem="UPR-Z0-EwM" firstAttribute="leading" secondItem="tV8-Fq-cFG" secondAttribute="trailing" constant="4" id="N6c-hy-Vka"/>
-                                                <constraint firstItem="4Aw-xO-yXR" firstAttribute="leading" secondItem="8G2-Rz-W91" secondAttribute="trailing" constant="4" id="O7Y-4h-HEj"/>
-                                                <constraint firstItem="tV8-Fq-cFG" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="top" constant="8" id="Sun-Lj-6c6"/>
-                                                <constraint firstItem="DzM-gc-kFC" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="top" constant="8" id="azA-vK-2et"/>
-                                                <constraint firstItem="4Aw-xO-yXR" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="top" constant="8" id="i7s-9q-6OF"/>
-                                                <constraint firstItem="8G2-Rz-W91" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="top" constant="8" id="rNL-y0-fby"/>
-                                                <constraint firstItem="DzM-gc-kFC" firstAttribute="leading" secondItem="cxs-GK-Rte" secondAttribute="trailing" constant="41" id="ru0-S6-z1j"/>
+                                                <constraint firstItem="Tdh-m8-EAj" firstAttribute="top" secondItem="V0s-Vl-den" secondAttribute="bottom" constant="3" id="82d-L5-IgJ"/>
+                                                <constraint firstItem="JTk-nj-ypO" firstAttribute="leading" secondItem="r3Q-1V-1r0" secondAttribute="leading" id="9PA-W7-ruG"/>
+                                                <constraint firstItem="V0s-Vl-den" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="topMargin" constant="1" id="DF3-Bz-Qeg"/>
+                                                <constraint firstItem="JTk-nj-ypO" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="topMargin" id="IGC-0g-Cn0"/>
+                                                <constraint firstItem="cxs-GK-Rte" firstAttribute="leading" secondItem="V0s-Vl-den" secondAttribute="trailing" constant="29" id="Imw-r1-YB3"/>
+                                                <constraint firstItem="V0s-Vl-den" firstAttribute="leading" secondItem="Tdh-m8-EAj" secondAttribute="leading" id="Mtg-6T-8A3"/>
+                                                <constraint firstItem="dSD-jw-Yvr" firstAttribute="leading" secondItem="cxs-GK-Rte" secondAttribute="trailing" constant="35" id="PIV-vF-ySu"/>
+                                                <constraint firstItem="V0s-Vl-den" firstAttribute="leading" secondItem="JTk-nj-ypO" secondAttribute="trailing" constant="8" symbolic="YES" id="Um1-iN-tft"/>
+                                                <constraint firstItem="V0s-Vl-den" firstAttribute="leading" secondItem="JTk-nj-ypO" secondAttribute="trailing" constant="8" id="VOa-03-QC8"/>
+                                                <constraint firstItem="JTk-nj-ypO" firstAttribute="centerY" secondItem="r3Q-1V-1r0" secondAttribute="centerY" id="bLZ-KT-mfK"/>
+                                                <constraint firstAttribute="trailing" secondItem="dSD-jw-Yvr" secondAttribute="trailing" id="lJI-fs-iAf"/>
+                                                <constraint firstItem="cxs-GK-Rte" firstAttribute="centerY" secondItem="V0s-Vl-den" secondAttribute="centerY" id="rqH-cH-sxD"/>
+                                                <constraint firstItem="V0s-Vl-den" firstAttribute="leading" secondItem="r3Q-1V-1r0" secondAttribute="leading" constant="41" id="scQ-pL-Va5"/>
                                                 <constraint firstItem="cxs-GK-Rte" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="top" constant="7" id="uKH-So-AnF"/>
+                                                <constraint firstItem="dSD-jw-Yvr" firstAttribute="top" secondItem="r3Q-1V-1r0" secondAttribute="top" constant="8" id="vD7-tj-j9f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -241,11 +202,7 @@
                                             <outlet property="colorFlagView" destination="JTk-nj-ypO" id="6dR-f9-QOu"/>
                                             <outlet property="compareSwitch" destination="cxs-GK-Rte" id="7bh-RM-Yj6"/>
                                             <outlet property="nameLabel" destination="V0s-Vl-den" id="c69-3j-vEt"/>
-                                            <outlet property="ratingButton1" destination="DzM-gc-kFC" id="KSH-aN-YiQ"/>
-                                            <outlet property="ratingButton2" destination="8G2-Rz-W91" id="8vN-HM-4nn"/>
-                                            <outlet property="ratingButton3" destination="4Aw-xO-yXR" id="ovD-F2-YWy"/>
-                                            <outlet property="ratingButton4" destination="tV8-Fq-cFG" id="vv8-CH-FyM"/>
-                                            <outlet property="ratingButton5" destination="UPR-Z0-EwM" id="ke3-Ak-EJR"/>
+                                            <outlet property="ratingContainer" destination="dSD-jw-Yvr" id="EAZ-BE-jgA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -406,9 +363,6 @@
             <point key="canvasLocation" x="1002.5487256371815" y="2941.5999999999999"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="RatingStarDisabled" width="100" height="100"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CGZ-NH-rZ0"/>
     </inferredMetricsTieBreakers>

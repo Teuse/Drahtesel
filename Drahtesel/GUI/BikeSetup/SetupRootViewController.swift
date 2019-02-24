@@ -4,6 +4,7 @@ import ReSwift
 enum BikeSetupViewTypes
 {
    case basics
+   case comparison
    case geometry
    case specification
 }
@@ -13,6 +14,7 @@ class SetupRootViewController: UIViewController
    var viewType: BikeSetupViewTypes = .basics
    
    @IBOutlet private weak var basicContainer: UIView!
+   @IBOutlet private weak var compContainer: UIView!
    @IBOutlet private weak var geoContainer: UIView!
    @IBOutlet private weak var specContainer: UIView!
    @IBOutlet private weak var prevButton: UIButton!
@@ -23,6 +25,15 @@ class SetupRootViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
+      
+      let radius = nextButton.frame.width / 2
+      prevButton.layer.cornerRadius = radius
+      nextButton.layer.cornerRadius = radius
+      view.bringSubviewToFront(prevButton)
+      view.bringSubviewToFront(nextButton)
+      
+      showBasicView(animate: false)
+      
       subscribe(self)
    }
    
@@ -32,27 +43,12 @@ class SetupRootViewController: UIViewController
       unsubscribe(self)
    }
    
-   override func viewDidLoad()
-   {
-      super.viewDidLoad()
-      
-      let radius = nextButton.frame.width / 2
-      prevButton.layer.cornerRadius = radius
-      nextButton.layer.cornerRadius = radius
-
-      basicContainer.frame = view.frame
-      geoContainer.frame = view.frame
-      specContainer.frame = view.frame
-
-      showBasicView(animate: false)
-   }
-   
-   
    @IBAction private func onPrevClicked(_ sender: UIButton)
    {
       switch viewType {
       case .basics:        break
-      case .geometry:      showBasicView()
+      case .comparison:    showBasicView()
+      case .geometry:      showComparissonView()
       case .specification: showGeometryView()
       }
    }
@@ -60,7 +56,8 @@ class SetupRootViewController: UIViewController
    @IBAction private func onNextClicked(_ sender: UIButton)
    {
       switch viewType {
-      case .basics:        showGeometryView()
+      case .basics:        showComparissonView()
+      case .comparison:    showGeometryView()
       case .geometry:      showSpecificaionView()
       case .specification: break
       }
@@ -72,6 +69,19 @@ class SetupRootViewController: UIViewController
       let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = 0
+         self.compContainer.frame.origin.x = self.view.frame.width
+         self.geoContainer.frame.origin.x = 2 * self.view.frame.width
+         self.specContainer.frame.origin.x = 3 * self.view.frame.width
+      }
+   }
+   
+   private func showComparissonView(animate: Bool = true)
+   {
+      viewType = .comparison
+      let dur = animate ? UI.animationDuration : 0.0
+      UIView.animate(withDuration: dur) {
+         self.basicContainer.frame.origin.x = -self.view.frame.width
+         self.compContainer.frame.origin.x = 0
          self.geoContainer.frame.origin.x = self.view.frame.width
          self.specContainer.frame.origin.x = 2 * self.view.frame.width
       }
@@ -82,7 +92,8 @@ class SetupRootViewController: UIViewController
       viewType = .geometry
       let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
-         self.basicContainer.frame.origin.x = -self.view.frame.width
+         self.basicContainer.frame.origin.x = -2 * self.view.frame.width
+         self.compContainer.frame.origin.x = -self.view.frame.width
          self.geoContainer.frame.origin.x = 0
          self.specContainer.frame.origin.x = self.view.frame.width
       }
@@ -93,7 +104,8 @@ class SetupRootViewController: UIViewController
       viewType = .specification
       let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
-         self.basicContainer.frame.origin.x = -2 * self.view.frame.width
+         self.basicContainer.frame.origin.x = -3 * self.view.frame.width
+         self.compContainer.frame.origin.x = -2 * self.view.frame.width
          self.geoContainer.frame.origin.x = -self.view.frame.width
          self.specContainer.frame.origin.x = 0
       }

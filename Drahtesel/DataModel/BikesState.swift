@@ -64,14 +64,8 @@ extension BikesState
       case let action as BikeAction.CopySelectionTo:
          handleCopySelectionTo(&state, action.collection)
          
-      case let action as BikeAction.ChangeRating:
-         action.bike.rating = Int64(action.rating)
-         DBAccess.shared.save()
-         state.isDataUpdated = true
-         
-      case let action as BikeAction.ChangeCompareEnabled:
-         action.bike.compareEnabled = action.enabled
-         DBAccess.shared.save()
+      case is BikeSetupAction.ChangeRating,
+           is BikeSetupAction.ChangeCompareEnabled:
          state.isDataUpdated = true
 
       default: break

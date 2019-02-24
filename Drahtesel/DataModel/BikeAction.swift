@@ -2,6 +2,10 @@ import ReSwift
 
 struct BikeAction
 {
+   struct OpenBike: Action {
+      let bike: Bike
+   }
+   
    struct Select: Action {
       let bike: Bike
    }
@@ -48,15 +52,5 @@ struct BikeAction
       let bike: Bike
       
       func setAlertText(_ text: String) {}
-   }
-   
-   struct ChangeRating: Action {
-      let bike: Bike
-      let rating: Int
-   }
-   
-   struct ChangeCompareEnabled: Action {
-      let bike: Bike
-      let enabled: Bool
    }
 }

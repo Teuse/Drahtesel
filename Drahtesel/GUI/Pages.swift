@@ -9,6 +9,7 @@ enum Pages
    case selectionBrowser
    
    case setupBasics
+   case setupComparison
    case setupGeometry
    case setupSpecification
    

@@ -60,8 +60,7 @@ class MainViewController: UIViewController
    
    private func showAlert(model: AlertViewModel)
    {
-      let sb = UIStoryboard(name: "Alert", bundle: nil)
-      alertViewController = sb.instantiateInitialViewController() as? AlertViewController
+      alertViewController = Storyboard.create(name: UI.Storyboard.alert)
       if let vc = alertViewController {
          vc.view.frame = alertWindow.frame
          vc.model = model

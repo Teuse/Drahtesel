@@ -4,8 +4,15 @@ import UIKit
 
 extension UIViewController
 {
-   //   typealias StoreSubscriberStateType = AppState
+   func embed(_ viewController: UIViewController, in container: UIView)
+   {
+      addChild(viewController)
+      container.embed(view: viewController.view)
+   }
+}
 
+extension UIViewController
+{
    var store: Store<AppState> {
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       return appDelegate.appStore

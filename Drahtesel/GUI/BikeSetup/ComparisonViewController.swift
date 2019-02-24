@@ -1,13 +1,12 @@
 import UIKit
 import ReSwift
 
-class SetupBasicsViewController: UIViewController
+class ComparisonViewController: UIViewController
 {
    private var state = BikeSetupState()
-   private let ratingViewController = RatingViewController()
+   private var colorPicker: ColorPicker = Storyboard.create(name: UI.Storyboard.colorPicker)
    
-   @IBOutlet private weak var ratingContainer: UIView!
-   
+   @IBOutlet private weak var colorPickerContainer: UIView!
    
    //MARK: - Life Circle
    
@@ -15,14 +14,13 @@ class SetupBasicsViewController: UIViewController
    {
       super.viewWillAppear(animated)
       
-      ratingViewController.delegate = self
-      embed(ratingViewController, in: ratingContainer)
-      ratingContainer.backgroundColor = UIColor.clear
+      colorPicker.delegate = self
+      embed(colorPicker, in: colorPickerContainer)
       
       subscribe(self) { subcription in
          subcription.select { state in state.bikeSetupState }
       }
-      dispatch(action: MainViewAction.OpenedPage(page: .setupBasics))
+      dispatch(action: MainViewAction.OpenedPage(page: .setupComparison))
    }
    
    override func viewWillDisappear(_ animated: Bool)
@@ -30,23 +28,17 @@ class SetupBasicsViewController: UIViewController
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }
-   
-   private func updateView(with bike: Bike)
-   {
-      ratingViewController.rating = Int(bike.rating)
-      
-   }
 }
 
 // --------------------------------------------------------------------------------
 //MARK: - Components Delegate
 
-extension SetupBasicsViewController: RatingDelegate
+extension ComparisonViewController: ColorPickerDelegate
 {
-   func ratingChanged(to value: Int)
+   func didSelect(color: ColorPalette)
    {
       if let bike = state.bike {
-         dispatch(action: BikeSetupAction.ChangeRating(bike: bike, rating: value))
+         dispatch(action: BikeSetupAction.ChangeColor(bike: bike, color: color))
       }
    }
 }
@@ -54,14 +46,14 @@ extension SetupBasicsViewController: RatingDelegate
 // --------------------------------------------------------------------------------
 //MARK: - ReSwift
 
-extension SetupBasicsViewController: StoreSubscriber
+extension ComparisonViewController: StoreSubscriber
 {
    func newState(state: BikeSetupState)
    {
       self.state = state
       
       if let bike = state.bike {
-         updateView(with: bike)
+         colorPicker.color = bike.paletteColor
       }
    }
 }

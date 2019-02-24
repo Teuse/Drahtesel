@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A1AC6D322210F2B006D9BF2 /* BikeSetupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6D122210F2B006D9BF2 /* BikeSetupAction.swift */; };
+		8A1AC6D422210F2B006D9BF2 /* BikeSetupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6D222210F2B006D9BF2 /* BikeSetupState.swift */; };
+		8A1AC6D622210F3A006D9BF2 /* SelectionAction .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6D522210F3A006D9BF2 /* SelectionAction .swift */; };
+		8A1AC6DA22216EEF006D9BF2 /* ColorPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1AC6D922216EEF006D9BF2 /* ColorPicker.storyboard */; };
+		8A1AC6DC22216F02006D9BF2 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6DB22216F02006D9BF2 /* ColorPicker.swift */; };
+		8A1AC6DE22216F11006D9BF2 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6DD22216F11006D9BF2 /* ColorPickerCell.swift */; };
+		8A1AC6E222227EDE006D9BF2 /* ComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6E122227EDE006D9BF2 /* ComparisonViewController.swift */; };
+		8A1AC6E4222290A1006D9BF2 /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6E3222290A1006D9BF2 /* StoryboardHelper.swift */; };
 		8A1C2BB12207762C004BB653 /* BikeSetup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1C2BB02207762C004BB653 /* BikeSetup.storyboard */; };
 		8A1C2BB32207764E004BB653 /* SetupRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C2BB22207764E004BB653 /* SetupRootViewController.swift */; };
 		8A1E9FE22206D6B50055550A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1E9FE12206D6B50055550A /* AppDelegate.swift */; };
@@ -31,13 +39,14 @@
 		8A340BF92216019A00F29898 /* BikeCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF72216019A00F29898 /* BikeCoordinates.swift */; };
 		8A340BFA2216019A00F29898 /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF82216019A00F29898 /* Numeric.swift */; };
 		8A340BFE2217221200F29898 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BFD2217221200F29898 /* SelectionViewController.swift */; };
-		8A340C032218350100F29898 /* SelectionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340C012218350000F29898 /* SelectionAction.swift */; };
 		8A340C042218350100F29898 /* SelectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340C022218350100F29898 /* SelectionState.swift */; };
 		8A35C7FD220EC7EF0026EDF1 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */; };
 		8A35C7FF220EDDE70026EDF1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */; };
 		8A35C801220EF2360026EDF1 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C800220EF2360026EDF1 /* AlertViewModel.swift */; };
 		8A35C804220EF35B0026EDF1 /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C802220EF35A0026EDF1 /* MainViewState.swift */; };
 		8A35C805220EF35B0026EDF1 /* MainViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C803220EF35B0026EDF1 /* MainViewAction.swift */; };
+		8A590AEC2221080400B625F9 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A590AEB2221080400B625F9 /* RatingViewController.xib */; };
+		8A590AEE2221081400B625F9 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A590AED2221081400B625F9 /* RatingViewController.swift */; };
 		8A6E6B122215530300E3ECD4 /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6E6B112215530200E3ECD4 /* BikeCell.swift */; };
 		8A6E6B142215581A00E3ECD4 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6E6B132215581900E3ECD4 /* TriangleView.swift */; };
 		8A6F53772208DB5900BA0229 /* DBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F53762208DB5900BA0229 /* DBConstants.swift */; };
@@ -83,6 +92,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A1AC6D122210F2B006D9BF2 /* BikeSetupAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeSetupAction.swift; sourceTree = "<group>"; };
+		8A1AC6D222210F2B006D9BF2 /* BikeSetupState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeSetupState.swift; sourceTree = "<group>"; };
+		8A1AC6D522210F3A006D9BF2 /* SelectionAction .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectionAction .swift"; sourceTree = "<group>"; };
+		8A1AC6D922216EEF006D9BF2 /* ColorPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorPicker.storyboard; sourceTree = "<group>"; };
+		8A1AC6DB22216F02006D9BF2 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		8A1AC6DD22216F11006D9BF2 /* ColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCell.swift; sourceTree = "<group>"; };
+		8A1AC6E122227EDE006D9BF2 /* ComparisonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonViewController.swift; sourceTree = "<group>"; };
+		8A1AC6E3222290A1006D9BF2 /* StoryboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardHelper.swift; sourceTree = "<group>"; };
 		8A1C2BB02207762C004BB653 /* BikeSetup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BikeSetup.storyboard; sourceTree = "<group>"; };
 		8A1C2BB22207764E004BB653 /* SetupRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupRootViewController.swift; sourceTree = "<group>"; };
 		8A1E9FDE2206D6B50055550A /* Drahtesel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drahtesel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,13 +130,14 @@
 		8A340BF72216019A00F29898 /* BikeCoordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeCoordinates.swift; sourceTree = "<group>"; };
 		8A340BF82216019A00F29898 /* Numeric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		8A340BFD2217221200F29898 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
-		8A340C012218350000F29898 /* SelectionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionAction.swift; sourceTree = "<group>"; };
 		8A340C022218350100F29898 /* SelectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionState.swift; sourceTree = "<group>"; };
 		8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8A35C800220EF2360026EDF1 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		8A35C802220EF35A0026EDF1 /* MainViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
 		8A35C803220EF35B0026EDF1 /* MainViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewAction.swift; sourceTree = "<group>"; };
+		8A590AEB2221080400B625F9 /* RatingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
+		8A590AED2221081400B625F9 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		8A6E6B112215530200E3ECD4 /* BikeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
 		8A6E6B132215581900E3ECD4 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		8A6F53762208DB5900BA0229 /* DBConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConstants.swift; sourceTree = "<group>"; };
@@ -179,6 +197,7 @@
 				8A1C2BB02207762C004BB653 /* BikeSetup.storyboard */,
 				8A1C2BB22207764E004BB653 /* SetupRootViewController.swift */,
 				8A7192F72208D817002EB98B /* SetupBasicsViewController.swift */,
+				8A1AC6E122227EDE006D9BF2 /* ComparisonViewController.swift */,
 				8A7192FA2208D85F002EB98B /* SetupGeometryViewController.swift */,
 				8A7192F92208D85F002EB98B /* SetupSpecificationViewController.swift */,
 			);
@@ -252,7 +271,9 @@
 				8A7192F12208D19E002EB98B /* BikesState.swift */,
 				8AEC059A220C03A400ECB25C /* BikeAction.swift */,
 				8A340C022218350100F29898 /* SelectionState.swift */,
-				8A340C012218350000F29898 /* SelectionAction.swift */,
+				8A1AC6D522210F3A006D9BF2 /* SelectionAction .swift */,
+				8A1AC6D222210F2B006D9BF2 /* BikeSetupState.swift */,
+				8A1AC6D122210F2B006D9BF2 /* BikeSetupAction.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -329,6 +350,11 @@
 				8A35C7FC220EC7EF0026EDF1 /* Alert.storyboard */,
 				8A35C7FE220EDDE70026EDF1 /* AlertViewController.swift */,
 				8A35C800220EF2360026EDF1 /* AlertViewModel.swift */,
+				8A590AEB2221080400B625F9 /* RatingViewController.xib */,
+				8A590AED2221081400B625F9 /* RatingViewController.swift */,
+				8A1AC6D922216EEF006D9BF2 /* ColorPicker.storyboard */,
+				8A1AC6DB22216F02006D9BF2 /* ColorPicker.swift */,
+				8A1AC6DD22216F11006D9BF2 /* ColorPickerCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -338,6 +364,7 @@
 			children = (
 				8A6E6B132215581900E3ECD4 /* TriangleView.swift */,
 				8A340BF22215F51500F29898 /* ColorPalette.swift */,
+				8A1AC6E3222290A1006D9BF2 /* StoryboardHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -491,12 +518,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A1EA0182206D99B0055550A /* Main.storyboard in Resources */,
+				8A590AEC2221080400B625F9 /* RatingViewController.xib in Resources */,
 				8A7192EE2208CE94002EB98B /* Browser.storyboard in Resources */,
 				8A1E9FEC2206D6B60055550A /* Assets.xcassets in Resources */,
 				8A1EA0162206D9920055550A /* LaunchScreen.storyboard in Resources */,
 				8A1EA0212206E8940055550A /* Comparison.storyboard in Resources */,
 				8A1C2BB12207762C004BB653 /* BikeSetup.storyboard in Resources */,
 				8A1EA02D2207162C0055550A /* Settings.storyboard in Resources */,
+				8A1AC6DA22216EEF006D9BF2 /* ColorPicker.storyboard in Resources */,
 				8A35C7FD220EC7EF0026EDF1 /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,28 +578,35 @@
 				8A1EA01B2206DEBB0055550A /* BikesViewController.swift in Sources */,
 				8A7192DF22089864002EB98B /* LoggingMiddleware.swift in Sources */,
 				8A7192F42208D19E002EB98B /* CollectionsState.swift in Sources */,
+				8A1AC6E222227EDE006D9BF2 /* ComparisonViewController.swift in Sources */,
+				8A1AC6E4222290A1006D9BF2 /* StoryboardHelper.swift in Sources */,
 				8A6E6B122215530300E3ECD4 /* BikeCell.swift in Sources */,
 				8A1E9FE22206D6B50055550A /* AppDelegate.swift in Sources */,
 				8A7192FC2208D85F002EB98B /* SetupGeometryViewController.swift in Sources */,
 				8A6F53772208DB5900BA0229 /* DBConstants.swift in Sources */,
+				8A590AEE2221081400B625F9 /* RatingViewController.swift in Sources */,
 				8AEC0599220A120B00ECB25C /* CollectionAction.swift in Sources */,
 				8A1EA02F22071AFD0055550A /* SettingsViewController.swift in Sources */,
 				8A1EA0272206F00D0055550A /* CompareSpecificationViewController.swift in Sources */,
 				8A7192F82208D817002EB98B /* SetupBasicsViewController.swift in Sources */,
 				8A340BFE2217221200F29898 /* SelectionViewController.swift in Sources */,
+				8A1AC6DE22216F11006D9BF2 /* ColorPickerCell.swift in Sources */,
 				8A7192FB2208D85F002EB98B /* SetupSpecificationViewController.swift in Sources */,
 				8A87914F22095E24001F6750 /* FactoryContent.swift in Sources */,
 				8A35C805220EF35B0026EDF1 /* MainViewAction.swift in Sources */,
 				8A7192F02208D02A002EB98B /* Pages.swift in Sources */,
 				8A340C042218350100F29898 /* SelectionState.swift in Sources */,
 				8A1E9FEA2206D6B50055550A /* Drahtesel.xcdatamodeld in Sources */,
+				8A1AC6D622210F3A006D9BF2 /* SelectionAction .swift in Sources */,
+				8A1AC6D322210F2B006D9BF2 /* BikeSetupAction.swift in Sources */,
 				8A20F84B221E7B1900777EAE /* Constants.swift in Sources */,
 				8A6F537B2208DF9100BA0229 /* CollectionType.swift in Sources */,
 				8A7192F32208D19E002EB98B /* BikesState.swift in Sources */,
 				8A340BFA2216019A00F29898 /* Numeric.swift in Sources */,
-				8A340C032218350100F29898 /* SelectionAction.swift in Sources */,
 				8A93E79D221024B800B663DE /* GeometryExtension.swift in Sources */,
+				8A1AC6D422210F2B006D9BF2 /* BikeSetupState.swift in Sources */,
 				8A35C801220EF2360026EDF1 /* AlertViewModel.swift in Sources */,
+				8A1AC6DC22216F02006D9BF2 /* ColorPicker.swift in Sources */,
 				8A1C2BB32207764E004BB653 /* SetupRootViewController.swift in Sources */,
 				8AEC059D220C52F300ECB25C /* BikeExtension.swift in Sources */,
 				8A93E79E221024B800B663DE /* SpecificationExtension.swift in Sources */,

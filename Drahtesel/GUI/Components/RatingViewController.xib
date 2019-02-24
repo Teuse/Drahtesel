@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RatingViewController" customModule="Drahtesel" customModuleProvider="target">
+            <connections>
+                <outlet property="ratingButton1" destination="zXr-1y-UmY" id="q5V-Mh-tIa"/>
+                <outlet property="ratingButton2" destination="BVc-Y6-jSP" id="0dH-31-2kl"/>
+                <outlet property="ratingButton3" destination="ZCC-bW-OIq" id="0MZ-AO-zye"/>
+                <outlet property="ratingButton4" destination="7z3-yY-tsp" id="Nsr-bq-Ab5"/>
+                <outlet property="ratingButton5" destination="Ziu-xg-T38" id="0vy-wH-1sh"/>
+                <outlet property="view" destination="iN0-l3-epB" id="OIC-08-0qq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="719" height="93"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Max-6L-aTk">
+                    <rect key="frame" x="0.0" y="0.0" width="719" height="93"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXr-1y-UmY">
+                            <rect key="frame" x="0.0" y="0.0" width="137.5" height="93"/>
+                            <state key="normal" image="RatingStarDisabled"/>
+                            <connections>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="fH2-cX-NKL"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVc-Y6-jSP">
+                            <rect key="frame" x="145.5" y="0.0" width="137.5" height="93"/>
+                            <state key="normal" image="RatingStarDisabled"/>
+                            <connections>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="bfn-xk-03S"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCC-bW-OIq">
+                            <rect key="frame" x="291" y="0.0" width="137" height="93"/>
+                            <state key="normal" image="RatingStarDisabled"/>
+                            <connections>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="gme-CZ-33b"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7z3-yY-tsp">
+                            <rect key="frame" x="436" y="0.0" width="137.5" height="93"/>
+                            <state key="normal" image="RatingStarDisabled"/>
+                            <connections>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="QnJ-za-dcH"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ziu-xg-T38">
+                            <rect key="frame" x="581.5" y="0.0" width="137.5" height="93"/>
+                            <state key="normal" image="RatingStarDisabled"/>
+                            <connections>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="B7m-I6-wts"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Max-6L-aTk" secondAttribute="bottom" id="8VT-K7-bqe"/>
+                <constraint firstItem="Max-6L-aTk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="LhY-TQ-cMt"/>
+                <constraint firstItem="Max-6L-aTk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nTj-3a-GUz"/>
+                <constraint firstAttribute="trailing" secondItem="Max-6L-aTk" secondAttribute="trailing" id="t2B-wk-se0"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="495.19999999999999" y="169.56521739130437"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="RatingStarDisabled" width="100" height="100"/>
+    </resources>
+</document>

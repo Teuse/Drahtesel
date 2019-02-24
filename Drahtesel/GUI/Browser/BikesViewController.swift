@@ -112,15 +112,15 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
 {
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
    {
+      let bike = state.bikes[indexPath.row]
+      
       if state.isEditing {
-         let bike = state.bikes[indexPath.row]
          dispatch(action: BikeAction.Select(bike: bike))
       }
       else {
-         let sb = UIStoryboard(name: "BikeSetup", bundle: nil)
-         if let vc = sb.instantiateInitialViewController() {
-            show(vc, sender: nil)
-         }
+         dispatch(action: BikeAction.OpenBike(bike: bike))
+         let vc: SetupRootViewController = Storyboard.create(name: UI.Storyboard.bikeSetup)
+         show(vc, sender: nil)
       }
    }
    
