@@ -3,6 +3,26 @@ import UIKit
 
 extension Bike
 {
+   var name: String {
+      get { return nameOpt ?? "" }
+      set { nameOpt = newValue }
+   }
+   
+   var brand: String {
+      get { return brandOpt ?? "" }
+      set { brandOpt = newValue }
+   }
+   
+   var rating: Int {
+      get { return Int(rating64) }
+      set { year64 = Int64(newValue) }
+   }
+   
+   var year: Int {
+      get { return Int(year64) }
+      set { rating64 = Int64(newValue) }
+   }
+   
    var paletteColor: ColorPalette {
       get {
          let uicolor = color as! UIColor
@@ -13,10 +33,8 @@ extension Bike
    
    override public var description: String
    {
-      let nameStr = name ?? "nil"
-      let brandStr = brand ?? "nil"
       let idStr = id?.uuidString ?? "nil"
-      return "Bike(name=\"\(nameStr)\" brand=\"\(brandStr)\" id=\(idStr)"
+      return "Bike(name=\"\(name)\" brand=\"\(brand)\" id=\(idStr)"
    }
    
    func copy(from bike: Bike)

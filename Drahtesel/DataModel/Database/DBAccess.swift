@@ -50,7 +50,7 @@ extension DBAccess
          request.predicate = predicate
       }
       
-      let sort = NSSortDescriptor(key: "name", ascending: false)
+      let sort = NSSortDescriptor(key: "nameOpt", ascending: false)
       request.sortDescriptors = [sort]
       
       do {

@@ -3,6 +3,11 @@ import UIKit
 
 extension Collection
 {
+   var name: String {
+      get { return nameOpt ?? "" }
+      set { nameOpt = newValue }
+   }
+   
    func addBike(name: String) -> Bike
    {
       assert(managedObjectContext != nil, "Collection->addBike: managedObjectContext may not be nil.")
@@ -29,9 +34,8 @@ extension Collection
    
    override public var description: String
    {
-      let nameStr = name ?? "nil"
       let idStr = id?.uuidString ?? "nil"
-      return "Collection(name=\"\(nameStr)\" id=\(idStr) bikes[\(bikes.count)]"
+      return "Collection(name=\"\(name)\" id=\(idStr) bikes[\(bikes.count)]"
    }
    
    func copy(from collection: Collection)
@@ -40,7 +44,7 @@ extension Collection
       typeRaw = collection.typeRaw
       
       for bike in collection.bikes {
-         let new = addBike(name: bike.name!)
+         let new = addBike(name: bike.name)
          new.copy(from: bike)
       }
    }

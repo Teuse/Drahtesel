@@ -10,35 +10,25 @@ struct CollectionAction
       let enabled: Bool
    }
    
-   struct Add: Action, AlertableAction {
-      private(set) var name: String
-
-      mutating func setAlertText(_ text: String) {
-         name = text
-      }
+   struct Add: Action, TextSetableAction {
+      var text: String? = nil
    }
    
-   struct Rename: Action, AlertableAction {
+   struct Rename: Action, TextSetableAction {
       let collection: Collection
-      private(set) var name: String
-      
-      mutating func setAlertText(_ text: String) {
-         name = text
-      }
+      var text: String? = nil
+      init(collection: Collection) { self.collection = collection }
    }
    
-   struct Duplicate: Action, AlertableAction {
+   struct Duplicate: Action, TextSetableAction {
       let collection: Collection
-      private(set) var name: String
-      
-      mutating func setAlertText(_ text: String) {
-         name = text
-      }
+      var text: String? = nil
+      init(collection: Collection) { self.collection = collection }
    }
    
-   struct Delete: Action, AlertableAction {
+   struct Delete: Action, TextSetableAction {
       let collection: Collection
-      
-      func setAlertText(_ text: String) {}
+      var text: String? = nil
+      init(collection: Collection) { self.collection = collection }
    }
 }

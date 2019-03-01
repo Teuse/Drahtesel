@@ -34,7 +34,7 @@ class CollectionsViewController: UIViewController
    
    @IBAction private func onPlusClicked(_ sender: UIBarButtonItem)
    {
-      let addAction = CollectionAction.Add(name: "")
+      let addAction = CollectionAction.Add()
       
       let text = "Please enter the new name for the Collection:"
       var alertModel = AlertViewModel(headline: "Add New Collction", text: text)
@@ -48,11 +48,11 @@ class CollectionsViewController: UIViewController
    
    private func onRenameClicked(_ collection: Collection)
    {
-      let renameAction = CollectionAction.Rename(collection: collection, name: "")
+      let renameAction = CollectionAction.Rename(collection: collection)
       
       let text = "Enter a new name for your Collection"
       var alertModel = AlertViewModel(headline: "Rename", text: text)
-      alertModel.textField = collection.name ?? ""
+      alertModel.textField = collection.name
       alertModel.showTextField = true
       alertModel.leftButton(type: .cancel)
       alertModel.rightButton(type: .ok, action: renameAction)
@@ -62,11 +62,11 @@ class CollectionsViewController: UIViewController
    
    private func onDuplicateClicked(_ collection: Collection)
    {
-      let duplicateAction = CollectionAction.Duplicate(collection: collection, name: "")
+      let duplicateAction = CollectionAction.Duplicate(collection: collection)
       
       let text = "Enter a name for the duplicated Collection"
       var alertModel = AlertViewModel(headline: "Duplicate", text: text)
-      alertModel.textField = collection.name ?? ""
+      alertModel.textField = collection.name
       alertModel.showTextField = true
       alertModel.leftButton(type: .cancel)
       alertModel.rightButton(type: .ok, action: duplicateAction)
@@ -78,7 +78,7 @@ class CollectionsViewController: UIViewController
    {
       let deleteAction = CollectionAction.Delete(collection: collection)
       
-      let text = "Do you really want to delete the Collection: \(collection.name ?? String())?"
+      let text = "Do you really want to delete the Collection: \(collection.name)?"
       var alertModel = AlertViewModel(headline: "Delete", text: text)
       alertModel.showTextField = false
       alertModel.leftButton(type: .cancel)
@@ -99,7 +99,8 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
       dispatch(action: CollectionAction.Select(collection: collection))
    }
    
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+   {
       let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath)
       
       let collection = state.collection(at: indexPath)
@@ -130,7 +131,8 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
       return colls.count
    }
    
-   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+   {
       let collection = state.collection(at: indexPath)
       let delete = UITableViewRowAction(style: .destructive, title: "Delete") {_,_ in
          self.onDeleteClicked(collection)

@@ -18,39 +18,29 @@ struct BikeAction
       let enabled: Bool
    }
    
-   struct Add: Action, AlertableAction {
-      private(set) var name: String
-      
-      mutating func setAlertText(_ text: String) {
-         name = text
-      }
+   struct Add: Action, TextSetableAction {
+      var text: String? = nil
    }
    
-   struct Rename: Action, AlertableAction {
+   struct Rename: Action, TextSetableAction {
       let bike: Bike
-      private(set) var name: String
-      
-      mutating func setAlertText(_ text: String) {
-         name = text
-      }
+      var text: String? = nil
+      init(bike: Bike) { self.bike = bike }
    }
    
-   struct Duplicate: Action, AlertableAction {
+   struct Duplicate: Action, TextSetableAction {
       let bike: Bike
-      private(set) var name: String
-      
-      mutating func setAlertText(_ text: String) {
-         name = text
-      }
+      var text: String? = nil
+      init(bike: Bike) { self.bike = bike }
    }
 
    struct CopySelectionTo: Action {
       let collection: Collection
    }
    
-   struct Delete: Action, AlertableAction {
+   struct Delete: Action, TextSetableAction {
       let bike: Bike
-      
-      func setAlertText(_ text: String) {}
+      var text: String? = nil
+      init(bike: Bike) { self.bike = bike }
    }
 }

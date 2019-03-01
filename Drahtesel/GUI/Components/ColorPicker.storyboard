@@ -22,26 +22,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="XDK-0P-X56">
-                                    <size key="itemSize" width="44" height="44"/>
+                                    <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorPickerCell" id="2ND-7h-ZZU" customClass="ColorPickerCell" customModule="BikeGeo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3QJ-0I-401">
-                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-UP-2Uf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="49"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,7 +55,7 @@
                                             <constraint firstItem="e1v-UP-2Uf" firstAttribute="top" secondItem="2ND-7h-ZZU" secondAttribute="top" id="KWj-ot-yPQ"/>
                                             <constraint firstAttribute="trailing" secondItem="e1v-UP-2Uf" secondAttribute="trailing" id="V7N-yC-6Qq"/>
                                         </constraints>
-                                        <size key="customSize" width="44" height="44"/>
+                                        <size key="customSize" width="50" height="50"/>
                                         <connections>
                                             <outlet property="selection" destination="e1v-UP-2Uf" id="FQi-LP-FPO"/>
                                             <outlet property="view" destination="3QJ-0I-401" id="iXv-R7-Wl6"/>

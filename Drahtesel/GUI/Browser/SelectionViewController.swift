@@ -34,7 +34,7 @@ class SelectionViewController: UIViewController
    
    private func onAddRowClicked()
    {
-      let addAction = CollectionAction.Add(name: "")
+      let addAction = CollectionAction.Add()
       
       let text = "Please enter the new name for the Collection:"
       var alertModel = AlertViewModel(headline: "Add New Collction", text: text)

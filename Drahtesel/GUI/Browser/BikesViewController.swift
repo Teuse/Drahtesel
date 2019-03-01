@@ -33,7 +33,7 @@ class BikesViewController: UIViewController
    
    @IBAction private func onPlusClicked(_ sender: UIBarButtonItem)
    {
-      let addAction = BikeAction.Add(name: "")
+      let addAction = BikeAction.Add()
       
       let text = "Please enter the name for the new Bike:"
       var alertModel = AlertViewModel(headline: "Add New Bike", text: text)
@@ -65,11 +65,11 @@ class BikesViewController: UIViewController
    
    private func onRenameClicked(_ bike: Bike)
    {
-      let renameAction = BikeAction.Rename(bike: bike, name: "")
+      let renameAction = BikeAction.Rename(bike: bike)
       
       let text = "Enter a new name for your Bike"
       var alertModel = AlertViewModel(headline: "Rename", text: text)
-      alertModel.textField = bike.name ?? ""
+      alertModel.textField = bike.name
       alertModel.showTextField = true
       alertModel.leftButton(type: .cancel)
       alertModel.rightButton(type: .ok, action: renameAction)
@@ -79,11 +79,11 @@ class BikesViewController: UIViewController
    
    private func onDuplicateClicked(_ bike: Bike)
    {
-      let duplicateAction = BikeAction.Duplicate(bike: bike, name: "")
+      let duplicateAction = BikeAction.Duplicate(bike: bike)
       
       let text = "Enter a name for the duplicated Bike"
       var alertModel = AlertViewModel(headline: "Duplicate", text: text)
-      alertModel.textField = bike.name ?? ""
+      alertModel.textField = bike.name
       alertModel.showTextField = true
       alertModel.leftButton(type: .cancel)
       alertModel.rightButton(type: .ok, action: duplicateAction)
@@ -95,7 +95,7 @@ class BikesViewController: UIViewController
    {
       let deleteAction = BikeAction.Delete(bike: bike)
       
-      let text = "Do you really want to delete the Bike: \(bike.name ?? String())?"
+      let text = "Do you really want to delete the Bike: \(bike.name)?"
       var alertModel = AlertViewModel(headline: "Delete", text: text)
       alertModel.showTextField = false
       alertModel.leftButton(type: .cancel)

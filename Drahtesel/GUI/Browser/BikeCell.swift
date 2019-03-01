@@ -24,9 +24,10 @@ class BikeCell: UITableViewCell
          ratingContainer.embed(view: ratingViewController!.view)
          ratingContainer.backgroundColor = UIColor.white
       }
+      ratingViewController?.rating = Int(bike.rating)
       
       nameLabel?.text = bike.name
-      brandLabel?.text = bike.brand ?? ""
+      brandLabel?.text = bike.brand
       compareSwitch.isOn = bike.compareEnabled
       
       let color = bike.color as! UIColor

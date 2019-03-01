@@ -1,7 +1,6 @@
 import UIKit
 import ReSwift
 
-
 class AlertViewController: UIViewController
 {
    var model = AlertViewModel(headline: "", text: "") {
@@ -99,11 +98,11 @@ extension AlertViewController
       processButtonClick(alertAction: &alertAction)
    }
    
-   private func processButtonClick(alertAction: inout AlertableAction)
+   private func processButtonClick(alertAction: inout TextSetableAction)
    {
       if model.showTextField, let text = textField.text {
          if isValid(text) {
-            alertAction.setAlertText(text)
+            alertAction.text = text
          } else {
             showEmptyTextWarning()
             return

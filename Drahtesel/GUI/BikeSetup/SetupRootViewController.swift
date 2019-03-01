@@ -11,7 +11,7 @@ enum BikeSetupViewTypes
 
 class SetupRootViewController: UIViewController
 {
-   var viewType: BikeSetupViewTypes = .basics
+   private var viewType: BikeSetupViewTypes = .basics
    
    @IBOutlet private weak var basicContainer: UIView!
    @IBOutlet private weak var compContainer: UIView!
@@ -32,8 +32,6 @@ class SetupRootViewController: UIViewController
       view.bringSubviewToFront(prevButton)
       view.bringSubviewToFront(nextButton)
       
-      showBasicView(animate: false)
-      
       subscribe(self)
    }
    
@@ -41,6 +39,11 @@ class SetupRootViewController: UIViewController
    {
       super.viewWillDisappear(animated)
       unsubscribe(self)
+   }
+   
+   override func viewDidLayoutSubviews()
+   {
+      showBasicView(animate: false)
    }
    
    @IBAction private func onPrevClicked(_ sender: UIButton)

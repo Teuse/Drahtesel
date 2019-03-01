@@ -22,7 +22,9 @@ extension SelectionState
          state.selected = action.collection
          
       case let action as CollectionAction.Add:
-         handleAddedCollection(&state, action.name)
+         if let name = action.text {
+            handleAddedCollection(&state, name)
+         }
          
       default: break
       }

@@ -4,20 +4,28 @@ import ReSwift
 class SetupBasicsViewController: UIViewController
 {
    private var state = BikeSetupState()
+   private let categories = BikeCategory.allCases
+   
    private let ratingViewController = RatingViewController()
+   private let propertiesViewController: PropertiesViewController = Storyboard.create(name: UI.Storyboard.properties)
    
    @IBOutlet private weak var ratingContainer: UIView!
-   
+   @IBOutlet private weak var propertiesContainer: UIView!
+   @IBOutlet weak var categoryPicker: UIPickerView!
    
    //MARK: - Life Circle
    
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
+      self.categoryPicker.delegate = self
+      self.categoryPicker.dataSource = self
       
       ratingViewController.delegate = self
       embed(ratingViewController, in: ratingContainer)
       ratingContainer.backgroundColor = UIColor.clear
+      
+      embed(propertiesViewController, in: propertiesContainer)
       
       subscribe(self) { subcription in
          subcription.select { state in state.bikeSetupState }
@@ -34,7 +42,17 @@ class SetupBasicsViewController: UIViewController
    private func updateView(with bike: Bike)
    {
       ratingViewController.rating = Int(bike.rating)
+      categoryPicker.selectRow(Int(bike.category.rawValue), inComponent: 0, animated: false)
       
+      propertiesViewController.properties = state.basicsModel
+   }
+   
+   @IBAction private func onElectrifiedSwitchChanged(_ sender: UISwitch)
+   {
+      guard let bike = state.bike else { return }
+      
+      let action = BikeSetupAction.ChangeIsElectrified(bike: bike, isElectro: sender.isOn)
+      dispatch(action: action)
    }
 }
 
@@ -48,6 +66,35 @@ extension SetupBasicsViewController: RatingDelegate
       if let bike = state.bike {
          dispatch(action: BikeSetupAction.ChangeRating(bike: bike, rating: value))
       }
+   }
+}
+
+//----------------------------------------------------------------------------------------
+//MARK: - Category Picker
+
+extension SetupBasicsViewController: UIPickerViewDelegate, UIPickerViewDataSource
+{
+   func numberOfComponents(in pickerView: UIPickerView) -> Int {
+      return 1
+   }
+   
+   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+      return categories.count
+   }
+   
+   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+   {
+      let text = categories[row].description()
+      return text
+   }
+   
+   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+   {
+      guard let bike = state.bike else { return }
+      
+      let category = BikeCategory(rawValue: Int64(row)) ?? .hardtail
+      let action = BikeSetupAction.ChangeCategory(bike: bike, category: category)
+      dispatch(action: action)
    }
 }
 

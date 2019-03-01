@@ -1,10 +1,6 @@
 import Foundation
 import ReSwift
 
-protocol AlertableAction {
-   mutating func setAlertText(_ text: String)
-}
-
 enum AlertButtonType {
    case delete, ok, cancel
 }
@@ -17,10 +13,10 @@ struct AlertViewModel
    var textField: String = ""
    
    var leftButtonType: AlertButtonType? = nil
-   var leftButtonAction: AlertableAction? = nil
+   var leftButtonAction: TextSetableAction? = nil
    
    var rightButtonType: AlertButtonType? = nil
-   var rightButtonAction: AlertableAction? = nil
+   var rightButtonAction: TextSetableAction? = nil
    
    //MARK: - Life Circle
    
@@ -29,13 +25,13 @@ struct AlertViewModel
       self.text = text
    }
    
-   mutating func leftButton(type: AlertButtonType, action: AlertableAction? = nil)
+   mutating func leftButton(type: AlertButtonType, action: TextSetableAction? = nil)
    {
       leftButtonType = type
       leftButtonAction = action
    }
    
-   mutating func rightButton(type: AlertButtonType, action: AlertableAction? = nil)
+   mutating func rightButton(type: AlertButtonType, action: TextSetableAction? = nil)
    {
       rightButtonType = type
       rightButtonAction = action

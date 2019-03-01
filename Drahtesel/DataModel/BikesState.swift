@@ -16,7 +16,7 @@ struct BikesState: StateType
    {
       var bikes = collection.bikes
 //      bikes.sort(by: {$0.name! < $1.name!})
-      bikes.sort(by: { $0.brand! != $1.brand! ? $0.brand! < $1.brand! : $0.name! < $1.name! })
+      bikes.sort(by: { $0.brand != $1.brand ? $0.brand < $1.brand : $0.name < $1.name })
       return bikes
    }
 }
@@ -50,13 +50,19 @@ extension BikesState
          state.isEditing = action.enabled
          
       case let action as BikeAction.Add:
-         handleAdd(&state, action.name)
+         if let name = action.text {
+            handleAdd(&state, name)
+         }
       
       case let action as BikeAction.Rename:
-         handleRename(&state, action.bike, action.name)
+         if let name = action.text {
+            handleRename(&state, action.bike, name)
+         }
          
       case let action as BikeAction.Duplicate:
-         handleDuplicate(&state, action.bike, action.name)
+         if let name = action.text {
+            handleDuplicate(&state, action.bike, name)
+         }
          
       case let action as BikeAction.Delete:
          handleDelete(&state, action.bike)
@@ -82,7 +88,7 @@ extension BikesState
    
    static func handleSelectCollection(_ state: inout BikesState, _ collection: Collection)
    {
-      state.pageTitle = collection.name ?? "Bikes"
+      state.pageTitle = collection.name
       state.collection = collection
       state.isDataUpdated = true
    }
@@ -119,7 +125,7 @@ extension BikesState
    static func handleCopySelectionTo(_ state: inout BikesState, _ collection: Collection)
    {
       for bike in state.selectedBikes {
-         let new = collection.addBike(name: bike.name!)
+         let new = collection.addBike(name: bike.name)
          new.copy(from: bike)
       }
    }

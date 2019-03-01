@@ -36,13 +36,19 @@ extension CollectionsState
          state.isEditing = action.enabled
       
       case let action as CollectionAction.Add:
-         handleAdd(&state, action.name)
+         if let name = action.text {
+            handleAdd(&state, name)
+         }
          
       case let action as CollectionAction.Rename:
-         handleRename(&state, action.collection, action.name)
+         if let name = action.text {
+            handleRename(&state, action.collection, name)
+         }
          
       case let action as CollectionAction.Duplicate:
-         handleDuplicate(&state, action.collection, action.name)
+         if let name = action.text {
+            handleDuplicate(&state, action.collection, name)
+         }
          
       case let action as CollectionAction.Delete:
          handleDelete(&state, action.collection)
