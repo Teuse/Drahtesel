@@ -1,6 +1,6 @@
 import ReSwift
 
-struct BikeSetupAction
+struct SetupBasicsAction
 {
    struct ChangeName: Action, TextSetableAction {
       var text: String? = nil
@@ -37,13 +37,5 @@ struct BikeSetupAction
    
    struct ChangeRating: Action {
       let rating: Int
-   }
-   
-   struct ChangeCompareEnabled: Action {
-      let enabled: Bool
-   }
-   
-   struct ChangeColor: Action {
-      let color: ColorPalette
    }
 }

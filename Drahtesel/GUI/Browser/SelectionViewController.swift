@@ -3,7 +3,7 @@ import ReSwift
 
 class SelectionViewController: UIViewController
 {
-   private var state = SelectionState()
+   private var state = SelectionBrowserState()
    
    @IBOutlet private weak var copyButton: UIBarButtonItem!
    @IBOutlet private weak var topBar: UINavigationBar!
@@ -20,7 +20,7 @@ class SelectionViewController: UIViewController
       tableView.dataSource = self
       
       subscribe(self) { subcription in
-         subcription.select { state in state.selectionState }
+         subcription.select { state in state.selectionBrowserState }
       }
       
       dispatch(action: MainViewAction.OpenedPage(page: .selectionBrowser))
@@ -34,7 +34,7 @@ class SelectionViewController: UIViewController
    
    private func onAddRowClicked()
    {
-      let addAction = CollectionAction.Add()
+      let addAction = CollectioBrowserAction.Add()
       
       let text = "Please enter the new name for the Collection:"
       var alertModel = AlertViewModel(headline: "Add New Collction", text: text)
@@ -62,7 +62,7 @@ class SelectionViewController: UIViewController
    @IBAction private func onCopyClicked()
    {
       if let col = state.selected {
-         dispatch(action: BikeAction.CopySelectionTo(collection: col))
+         dispatch(action: BikeBrowserAction.CopySelectionTo(collection: col))
       }
       dismiss(animated: false, completion: nil)
    }
@@ -79,7 +79,7 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource
          onAddRowClicked()
       } else {
          let col = state.collections[indexPath.row]
-         dispatch(action: SelectionAction.Select(collection: col))
+         dispatch(action: SelectionBrowserAction.Select(collection: col))
       }
       tableView.reloadData()
    }
@@ -127,7 +127,7 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource
 
 extension SelectionViewController: StoreSubscriber
 {
-   func newState(state: SelectionState)
+   func newState(state: SelectionBrowserState)
    {
       self.state = state
       

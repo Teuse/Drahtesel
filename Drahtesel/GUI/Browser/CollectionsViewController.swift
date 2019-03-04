@@ -3,7 +3,7 @@ import ReSwift
 
 class CollectionsViewController: UIViewController
 {
-   private var state = CollectionsState()
+   private var state = CollectionBrowserState()
    
    @IBOutlet private weak var tableView: UITableView!
    
@@ -17,7 +17,7 @@ class CollectionsViewController: UIViewController
       tableView.dataSource = self
       
       subscribe(self) { subcription in
-         subcription.select { state in state.collectionsState }
+         subcription.select { state in state.collectionBrowserState }
       }
       
       dispatch(action: MainViewAction.OpenedPage(page: .collectionBrowser))
@@ -34,7 +34,7 @@ class CollectionsViewController: UIViewController
    
    @IBAction private func onPlusClicked(_ sender: UIBarButtonItem)
    {
-      let addAction = CollectionAction.Add()
+      let addAction = CollectioBrowserAction.Add()
       
       let text = "Please enter the new name for the Collection:"
       var alertModel = AlertViewModel(headline: "Add New Collction", text: text)
@@ -48,7 +48,7 @@ class CollectionsViewController: UIViewController
    
    private func onRenameClicked(_ collection: Collection)
    {
-      let renameAction = CollectionAction.Rename(collection: collection)
+      let renameAction = CollectioBrowserAction.Rename(collection: collection)
       
       let text = "Enter a new name for your Collection"
       var alertModel = AlertViewModel(headline: "Rename", text: text)
@@ -62,7 +62,7 @@ class CollectionsViewController: UIViewController
    
    private func onDuplicateClicked(_ collection: Collection)
    {
-      let duplicateAction = CollectionAction.Duplicate(collection: collection)
+      let duplicateAction = CollectioBrowserAction.Duplicate(collection: collection)
       
       let text = "Enter a name for the duplicated Collection"
       var alertModel = AlertViewModel(headline: "Duplicate", text: text)
@@ -76,7 +76,7 @@ class CollectionsViewController: UIViewController
    
    private func onDeleteClicked(_ collection: Collection)
    {
-      let deleteAction = CollectionAction.Delete(collection: collection)
+      let deleteAction = CollectioBrowserAction.Delete(collection: collection)
       
       let text = "Do you really want to delete the Collection: \(collection.name)?"
       var alertModel = AlertViewModel(headline: "Delete", text: text)
@@ -96,7 +96,7 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
    {
       let collection = state.collection(at: indexPath)
-      dispatch(action: CollectionAction.Select(collection: collection))
+      dispatch(action: CollectioBrowserAction.Select(collection: collection))
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -157,7 +157,7 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
 
 extension CollectionsViewController: StoreSubscriber
 {
-   func newState(state: CollectionsState)
+   func newState(state: CollectionBrowserState)
    {
       self.state = state
       

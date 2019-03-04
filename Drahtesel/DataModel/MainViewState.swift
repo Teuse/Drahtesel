@@ -30,7 +30,7 @@ extension MainViewState
       case is MainViewAction.CloseAlert:
          state.alertViewModel = nil
          
-      case let action as BikeAction.SetEdit:
+      case let action as BikeBrowserAction.SetEdit:
          state.isEditModeEnabled = action.enabled
          
       default:

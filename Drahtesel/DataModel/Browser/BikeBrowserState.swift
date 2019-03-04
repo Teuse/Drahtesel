@@ -1,6 +1,6 @@
 import ReSwift
 
-struct BikesState: StateType
+struct BikeBrowserState: StateType
 {
    var pageTitle = ""
    var isEditing = false {
@@ -23,10 +23,10 @@ struct BikesState: StateType
 // --------------------------------------------------------------------------------
 //MARK: - Reducer
 
-extension BikesState
+extension BikeBrowserState
 {
-   static func reducer(action: Action, state: BikesState?) -> BikesState {
-      var state = state ?? BikesState()
+   static func reducer(action: Action, state: BikeBrowserState?) -> BikeBrowserState {
+      var state = state ?? BikeBrowserState()
       state.isDataUpdated = false
      
       switch action
@@ -34,47 +34,47 @@ extension BikesState
       case let action as MainViewAction.OpenedPage:
          handleOpenedPage(&state, action.page)
          
-      case let action as CollectionAction.Select:
+      case let action as CollectioBrowserAction.Select:
          handleSelectCollection(&state, action.collection)
       
-      case let action as BikeAction.Select:
+      case let action as BikeBrowserAction.Select:
          assert(state.isEditing, "Selection without edit mode is not implemented yet")
          state.selectedBikes.append(action.bike)
          
-      case let action as BikeAction.Deselect:
+      case let action as BikeBrowserAction.Deselect:
          assert(state.isEditing)
          state.selectedBikes.removeAll(where: { $0.id == action.bike.id })
          
-      case let action as BikeAction.SetEdit:
+      case let action as BikeBrowserAction.SetEdit:
          state.isEditing = action.enabled
          
-      case let action as BikeAction.Add:
+      case let action as BikeBrowserAction.Add:
          if let name = action.text {
             handleAdd(&state, name)
          }
       
-      case let action as BikeAction.Rename:
+      case let action as BikeBrowserAction.Rename:
          if let name = action.text {
             handleRename(&state, action.bike, name)
          }
          
-      case let action as BikeAction.Duplicate:
+      case let action as BikeBrowserAction.Duplicate:
          if let name = action.text {
             handleDuplicate(&state, action.bike, name)
          }
          
-      case let action as BikeAction.Delete:
+      case let action as BikeBrowserAction.Delete:
          handleDelete(&state, action.bike)
          
-      case let action as BikeAction.CopySelectionTo:
+      case let action as BikeBrowserAction.CopySelectionTo:
          handleCopySelectionTo(&state, action.collection)
          
-      case let action as BikeAction.ChangeRating:
+      case let action as BikeBrowserAction.ChangeRating:
          action.bike.rating = action.rating
          DBAccess.shared.save()
          state.isDataUpdated = true
          
-      case let action as BikeAction.ChangeCompareEnabled:
+      case let action as BikeBrowserAction.ChangeCompareEnabled:
          action.bike.compareEnabled = action.enabled
          DBAccess.shared.save()
          state.isDataUpdated = true
@@ -84,35 +84,35 @@ extension BikesState
       return state
    }
    
-   static func handleOpenedPage(_ state: inout BikesState, _ page: Page)
+   static func handleOpenedPage(_ state: inout BikeBrowserState, _ page: Page)
    {
       if page == .bikeBrowser {
          state.isDataUpdated = true
       }
    }
    
-   static func handleSelectCollection(_ state: inout BikesState, _ collection: Collection)
+   static func handleSelectCollection(_ state: inout BikeBrowserState, _ collection: Collection)
    {
       state.pageTitle = collection.name
       state.collection = collection
       state.isDataUpdated = true
    }
    
-   static func handleAdd(_ state: inout BikesState, _ name: String)
+   static func handleAdd(_ state: inout BikeBrowserState, _ name: String)
    {
       _ = state.collection.addBike(name: name)
       DBAccess.shared.save()
       state.isDataUpdated = true
    }
    
-   static func handleRename(_ state: inout BikesState, _ bike: Bike, _ name: String)
+   static func handleRename(_ state: inout BikeBrowserState, _ bike: Bike, _ name: String)
    {
       bike.name = name
       DBAccess.shared.save()
       state.isDataUpdated = true
    }
    
-   static func handleDuplicate(_ state: inout BikesState, _ bike: Bike, _ name: String)
+   static func handleDuplicate(_ state: inout BikeBrowserState, _ bike: Bike, _ name: String)
    {
       let newBike = state.collection.addBike(name: name)
       newBike.copy(from: bike)
@@ -120,14 +120,14 @@ extension BikesState
       state.isDataUpdated = true
    }
    
-   static func handleDelete(_ state: inout BikesState, _ bike: Bike)
+   static func handleDelete(_ state: inout BikeBrowserState, _ bike: Bike)
    {
       state.collection.delete(bike: bike)
       DBAccess.shared.save()
       state.isDataUpdated = true
    }
    
-   static func handleCopySelectionTo(_ state: inout BikesState, _ collection: Collection)
+   static func handleCopySelectionTo(_ state: inout BikeBrowserState, _ collection: Collection)
    {
       for bike in state.selectedBikes {
          let new = collection.addBike(name: bike.name)

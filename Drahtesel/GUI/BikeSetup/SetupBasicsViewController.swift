@@ -27,7 +27,7 @@ class SetupBasicsViewController: UIViewController
       embed(propertiesViewController, in: propertiesContainer)
       
       subscribe(self) { subcription in
-         subcription.select { state in state.bikeSetupState }
+         subcription.select { state in state.setupBasicsState }
       }
       dispatch(action: MainViewAction.OpenedPage(page: .setupBasics))
    }
@@ -46,7 +46,7 @@ class SetupBasicsViewController: UIViewController
    
    @IBAction private func onElectrifiedSwitchChanged(_ sender: UISwitch)
    {
-      let action = BikeSetupAction.ChangeIsElectrified(isElectro: sender.isOn)
+      let action = SetupBasicsAction.ChangeIsElectrified(isElectro: sender.isOn)
       dispatch(action: action)
    }
 }
@@ -58,7 +58,7 @@ extension SetupBasicsViewController: RatingDelegate
 {
    func ratingChanged(to value: Int)
    {
-      dispatch(action: BikeSetupAction.ChangeRating(rating: value))
+      dispatch(action: SetupBasicsAction.ChangeRating(rating: value))
    }
 }
 
@@ -84,7 +84,7 @@ extension SetupBasicsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
    {
       let category = BikeCategory(rawValue: Int64(row)) ?? .hardtail
-      let action = BikeSetupAction.ChangeCategory(category: category)
+      let action = SetupBasicsAction.ChangeCategory(category: category)
       dispatch(action: action)
    }
 }
@@ -94,7 +94,7 @@ extension SetupBasicsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
 
 extension SetupBasicsViewController: StoreSubscriber
 {
-   func newState(state: BikeSetupState)
+   func newState(state: SetupBasicsState)
    {
       propertiesViewController.properties = state.basicsModel
       

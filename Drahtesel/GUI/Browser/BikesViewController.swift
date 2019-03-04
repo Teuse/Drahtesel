@@ -3,7 +3,7 @@ import ReSwift
 
 class BikesViewController: UIViewController
 {
-   private var state = BikesState()
+   private var state = BikeBrowserState()
    
    @IBOutlet private weak var tableView: UITableView!
    @IBOutlet private weak var toolbar: UIToolbar!
@@ -18,11 +18,11 @@ class BikesViewController: UIViewController
       tableView.dataSource = self
       
       subscribe(self) { subcription in
-         subcription.select { state in state.bikesState }
+         subcription.select { state in state.bikeBrowserState }
       }
       
       dispatch(action: MainViewAction.OpenedPage(page: .bikeBrowser))
-      dispatch(action: BikeAction.SetEdit(enabled: false))
+      dispatch(action: BikeBrowserAction.SetEdit(enabled: false))
    }
    
    override func viewWillDisappear(_ animated: Bool)
@@ -33,7 +33,7 @@ class BikesViewController: UIViewController
    
    @IBAction private func onPlusClicked(_ sender: UIBarButtonItem)
    {
-      let addAction = BikeAction.Add()
+      let addAction = BikeBrowserAction.Add()
       
       let text = "Please enter the name for the new Bike:"
       var alertModel = AlertViewModel(headline: "Add New Bike", text: text)
@@ -48,7 +48,7 @@ class BikesViewController: UIViewController
    @IBAction private func onEditButton(_ sender: UIBarButtonItem)
    {
       let edit = !state.isEditing
-      dispatch(action: BikeAction.SetEdit(enabled: edit))
+      dispatch(action: BikeBrowserAction.SetEdit(enabled: edit))
    }
    
    private func toolbar(show: Bool, animated: Bool)
@@ -65,7 +65,7 @@ class BikesViewController: UIViewController
    
    private func onRenameClicked(_ bike: Bike)
    {
-      let renameAction = BikeAction.Rename(bike: bike)
+      let renameAction = BikeBrowserAction.Rename(bike: bike)
       
       let text = "Enter a new name for your Bike"
       var alertModel = AlertViewModel(headline: "Rename", text: text)
@@ -79,7 +79,7 @@ class BikesViewController: UIViewController
    
    private func onDuplicateClicked(_ bike: Bike)
    {
-      let duplicateAction = BikeAction.Duplicate(bike: bike)
+      let duplicateAction = BikeBrowserAction.Duplicate(bike: bike)
       
       let text = "Enter a name for the duplicated Bike"
       var alertModel = AlertViewModel(headline: "Duplicate", text: text)
@@ -93,7 +93,7 @@ class BikesViewController: UIViewController
    
    private func onDeleteClicked(_ bike: Bike)
    {
-      let deleteAction = BikeAction.Delete(bike: bike)
+      let deleteAction = BikeBrowserAction.Delete(bike: bike)
       
       let text = "Do you really want to delete the Bike: \(bike.name)?"
       var alertModel = AlertViewModel(headline: "Delete", text: text)
@@ -115,10 +115,10 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
       let bike = state.bikes[indexPath.row]
       
       if state.isEditing {
-         dispatch(action: BikeAction.Select(bike: bike))
+         dispatch(action: BikeBrowserAction.Select(bike: bike))
       }
       else {
-         dispatch(action: BikeAction.OpenBike(bike: bike))
+         dispatch(action: BikeBrowserAction.OpenBike(bike: bike))
          let vc: SetupRootViewController = Storyboard.create(name: UI.Storyboard.bikeSetup)
          show(vc, sender: nil)
       }
@@ -128,7 +128,7 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
    {
       if state.isEditing {
          let bike = state.bikes[indexPath.row]
-         dispatch(action: BikeAction.Deselect(bike: bike))
+         dispatch(action: BikeBrowserAction.Deselect(bike: bike))
       }
    }
    
@@ -183,7 +183,7 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
 
 extension BikesViewController: StoreSubscriber
 {
-   func newState(state: BikesState)
+   func newState(state: BikeBrowserState)
    {
       self.state = state
       

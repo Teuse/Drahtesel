@@ -22,7 +22,7 @@ extension SetupGeometryState
             updatePropertiesModel(&state)
          }
          
-      case let action as BikeAction.OpenBike:
+      case let action as BikeBrowserAction.OpenBike:
          state.bike = action.bike
          
       case let action as SetupGeometryAction.ChangeReach:

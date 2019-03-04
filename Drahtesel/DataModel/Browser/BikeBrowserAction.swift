@@ -1,6 +1,6 @@
 import ReSwift
 
-struct BikeAction
+struct BikeBrowserAction
 {
    struct OpenBike: Action {
       let bike: Bike

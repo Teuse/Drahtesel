@@ -1,6 +1,6 @@
 import ReSwift
 
-struct CollectionsState: StateType
+struct CollectionBrowserState: StateType
 {
    var isEditing = false
    
@@ -21,10 +21,10 @@ struct CollectionsState: StateType
 // --------------------------------------------------------------------------------
 //MARK: - Reducer
 
-extension CollectionsState
+extension CollectionBrowserState
 {
-   static func reducer(action: Action, state: CollectionsState?) -> CollectionsState {
-      var state = state ?? CollectionsState()
+   static func reducer(action: Action, state: CollectionBrowserState?) -> CollectionBrowserState {
+      var state = state ?? CollectionBrowserState()
       state.isDataUpdated = false
       
       switch action
@@ -32,25 +32,25 @@ extension CollectionsState
       case let action as MainViewAction.OpenedPage:
          handleOpenedPage(&state, action.page)
 
-      case let action as CollectionAction.SetEdit:
+      case let action as CollectioBrowserAction.SetEdit:
          state.isEditing = action.enabled
       
-      case let action as CollectionAction.Add:
+      case let action as CollectioBrowserAction.Add:
          if let name = action.text {
             handleAdd(&state, name)
          }
          
-      case let action as CollectionAction.Rename:
+      case let action as CollectioBrowserAction.Rename:
          if let name = action.text {
             handleRename(&state, action.collection, name)
          }
          
-      case let action as CollectionAction.Duplicate:
+      case let action as CollectioBrowserAction.Duplicate:
          if let name = action.text {
             handleDuplicate(&state, action.collection, name)
          }
          
-      case let action as CollectionAction.Delete:
+      case let action as CollectioBrowserAction.Delete:
          handleDelete(&state, action.collection)
          
       default: break
@@ -58,7 +58,7 @@ extension CollectionsState
       return state
    }
    
-   static func updateCollectionData(_ state: inout CollectionsState)
+   static func updateCollectionData(_ state: inout CollectionBrowserState)
    {
       state.collectionTypes.removeAll()
       state.collections.removeAll()
@@ -71,7 +71,7 @@ extension CollectionsState
       state.isDataUpdated = true
    }
    
-   static func handleOpenedPage(_ state: inout CollectionsState, _ page: Page)
+   static func handleOpenedPage(_ state: inout CollectionBrowserState, _ page: Page)
    {
       state.isEditing = false
       if page == .collectionBrowser {
@@ -79,21 +79,21 @@ extension CollectionsState
       }
    }
    
-   static func handleAdd(_ state: inout CollectionsState, _ name: String)
+   static func handleAdd(_ state: inout CollectionBrowserState, _ name: String)
    {
       _ = DBAccess.shared.addCollection(name: name)
       DBAccess.shared.save()
       updateCollectionData(&state)
    }
    
-   static func handleRename(_ state: inout CollectionsState, _ collection: Collection, _ name: String)
+   static func handleRename(_ state: inout CollectionBrowserState, _ collection: Collection, _ name: String)
    {
       collection.name = name
       DBAccess.shared.save()
       updateCollectionData(&state)
    }
    
-   static func handleDuplicate(_ state: inout CollectionsState, _ collection: Collection, _ name: String)
+   static func handleDuplicate(_ state: inout CollectionBrowserState, _ collection: Collection, _ name: String)
    {
       let newCollection = DBAccess.shared.addCollection(name: name)
       newCollection.copy(from: collection)
@@ -103,7 +103,7 @@ extension CollectionsState
       updateCollectionData(&state)
    }
    
-   static func handleDelete(_ state: inout CollectionsState, _ collection: Collection)
+   static func handleDelete(_ state: inout CollectionBrowserState, _ collection: Collection)
    {
       DBAccess.shared.delete(collection: collection)
       DBAccess.shared.save()

@@ -1,6 +1,6 @@
 import ReSwift
 
-struct SelectionState: StateType
+struct SelectionBrowserState: StateType
 {
    var collections: [Collection] {
       return DBAccess.shared.collections(withType: .user)
@@ -11,17 +11,17 @@ struct SelectionState: StateType
 // --------------------------------------------------------------------------------
 //MARK: - Reducer
 
-extension SelectionState
+extension SelectionBrowserState
 {
-   static func reducer(action: Action, state: SelectionState?) -> SelectionState {
-      var state = state ?? SelectionState()
+   static func reducer(action: Action, state: SelectionBrowserState?) -> SelectionBrowserState {
+      var state = state ?? SelectionBrowserState()
       
       switch action
       {
-      case let action as SelectionAction.Select:
+      case let action as SelectionBrowserAction.Select:
          state.selected = action.collection
          
-      case let action as CollectionAction.Add:
+      case let action as CollectioBrowserAction.Add:
          if let name = action.text {
             handleAddedCollection(&state, name)
          }
@@ -32,7 +32,7 @@ extension SelectionState
       return state
    }
    
-   static func handleAddedCollection(_ state: inout SelectionState, _ name: String)
+   static func handleAddedCollection(_ state: inout SelectionBrowserState, _ name: String)
    {
       if let col = state.collections.first(where: { $0.name == name }) {
          state.selected = col

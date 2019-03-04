@@ -1,6 +1,6 @@
 import ReSwift
 
-struct SelectionAction
+struct SelectionBrowserAction
 {
    struct Select: Action {
       let collection: Collection

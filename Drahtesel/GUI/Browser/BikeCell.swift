@@ -40,7 +40,7 @@ class BikeCell: UITableViewCell
    @IBAction private func onCompareSwitchChanged(_ sender: UISwitch)
    {
       if let bike = bike {
-         let action = BikeAction.ChangeCompareEnabled(bike: bike, enabled: sender.isOn)
+         let action = BikeBrowserAction.ChangeCompareEnabled(bike: bike, enabled: sender.isOn)
          let appDelegate = UIApplication.shared.delegate as! AppDelegate
          appDelegate.appStore.dispatch(action)
       }
@@ -55,7 +55,7 @@ extension BikeCell: RatingDelegate
    func ratingChanged(to value: Int)
    {
       if let bike = bike {
-         let action = BikeAction.ChangeRating(bike: bike, rating: value)
+         let action = BikeBrowserAction.ChangeRating(bike: bike, rating: value)
          let appDelegate = UIApplication.shared.delegate as! AppDelegate
          appDelegate.appStore.dispatch(action)
       }

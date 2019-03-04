@@ -3,7 +3,6 @@ import ReSwift
 
 class ComparisonViewController: UIViewController
 {
-   private var state = BikeSetupState()
    private var colorPicker: ColorPicker = Storyboard.create(name: UI.Storyboard.colorPicker)
    
    @IBOutlet private weak var colorPickerContainer: UIView!
@@ -18,7 +17,7 @@ class ComparisonViewController: UIViewController
       embed(colorPicker, in: colorPickerContainer)
       
       subscribe(self) { subcription in
-         subcription.select { state in state.bikeSetupState }
+         subcription.select { state in state.setupComparisonState }
       }
       dispatch(action: MainViewAction.OpenedPage(page: .setupComparison))
    }
@@ -37,7 +36,7 @@ extension ComparisonViewController: ColorPickerDelegate
 {
    func didSelect(color: ColorPalette)
    {
-      dispatch(action: BikeSetupAction.ChangeColor(color: color))
+      dispatch(action: SetupComparisonAction.ChangeColor(color: color))
    }
 }
 
@@ -46,10 +45,8 @@ extension ComparisonViewController: ColorPickerDelegate
 
 extension ComparisonViewController: StoreSubscriber
 {
-   func newState(state: BikeSetupState)
+   func newState(state: SetupComparisonState)
    {
-      self.state = state
-      
       if let bike = state.bike {
          colorPicker.color = bike.paletteColor
       }
