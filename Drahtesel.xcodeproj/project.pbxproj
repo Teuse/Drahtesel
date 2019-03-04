@@ -60,7 +60,7 @@
 		8A7192E722089C5C002EB98B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192E622089C5C002EB98B /* AppState.swift */; };
 		8A7192EA22089F06002EB98B /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7192E922089F06002EB98B /* ReSwift.framework */; };
 		8A7192EE2208CE94002EB98B /* Browser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7192ED2208CE94002EB98B /* Browser.storyboard */; };
-		8A7192F02208D02A002EB98B /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192EF2208D02A002EB98B /* Pages.swift */; };
+		8A7192F02208D02A002EB98B /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192EF2208D02A002EB98B /* Page.swift */; };
 		8A7192F32208D19E002EB98B /* BikesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F12208D19E002EB98B /* BikesState.swift */; };
 		8A7192F42208D19E002EB98B /* CollectionsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F22208D19E002EB98B /* CollectionsState.swift */; };
 		8A7192F82208D817002EB98B /* SetupBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7192F72208D817002EB98B /* SetupBasicsViewController.swift */; };
@@ -71,6 +71,8 @@
 		8A93E79D221024B800B663DE /* GeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93E79B221024B800B663DE /* GeometryExtension.swift */; };
 		8A93E79E221024B800B663DE /* SpecificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93E79C221024B800B663DE /* SpecificationExtension.swift */; };
 		8AA019B32211DF9200DB0268 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA019B22211DF9200DB0268 /* UIColor.swift */; };
+		8AB12A532229508A0028644B /* SetupGeometryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB12A522229508A0028644B /* SetupGeometryAction.swift */; };
+		8AB12A552229515F0028644B /* SetupGeometryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB12A542229515F0028644B /* SetupGeometryState.swift */; };
 		8ACFA44B22291F99004D630F /* ActionProtocolls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFA44A22291F99004D630F /* ActionProtocolls.swift */; };
 		8AEC05972209F05700ECB25C /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC05962209F05700ECB25C /* CollectionExtension.swift */; };
 		8AEC0599220A120B00ECB25C /* CollectionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC0598220A120B00ECB25C /* CollectionAction.swift */; };
@@ -155,7 +157,7 @@
 		8A7192E622089C5C002EB98B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		8A7192E922089F06002EB98B /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		8A7192ED2208CE94002EB98B /* Browser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browser.storyboard; sourceTree = "<group>"; };
-		8A7192EF2208D02A002EB98B /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
+		8A7192EF2208D02A002EB98B /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		8A7192F12208D19E002EB98B /* BikesState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BikesState.swift; path = Drahtesel/DataModel/BikesState.swift; sourceTree = SOURCE_ROOT; };
 		8A7192F22208D19E002EB98B /* CollectionsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionsState.swift; path = Drahtesel/DataModel/CollectionsState.swift; sourceTree = SOURCE_ROOT; };
 		8A7192F72208D817002EB98B /* SetupBasicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBasicsViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,8 @@
 		8A93E79B221024B800B663DE /* GeometryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtension.swift; sourceTree = "<group>"; };
 		8A93E79C221024B800B663DE /* SpecificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificationExtension.swift; sourceTree = "<group>"; };
 		8AA019B22211DF9200DB0268 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		8AB12A522229508A0028644B /* SetupGeometryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupGeometryAction.swift; sourceTree = "<group>"; };
+		8AB12A542229515F0028644B /* SetupGeometryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupGeometryState.swift; sourceTree = "<group>"; };
 		8ACFA44A22291F99004D630F /* ActionProtocolls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionProtocolls.swift; sourceTree = "<group>"; };
 		8AEC05962209F05700ECB25C /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		8AEC0598220A120B00ECB25C /* CollectionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAction.swift; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 				8A1AC6D522210F3A006D9BF2 /* SelectionAction .swift */,
 				8A1AC6D222210F2B006D9BF2 /* BikeSetupState.swift */,
 				8A1AC6D122210F2B006D9BF2 /* BikeSetupAction.swift */,
+				8AB12A542229515F0028644B /* SetupGeometryState.swift */,
+				8AB12A522229508A0028644B /* SetupGeometryAction.swift */,
 				8ACFA44A22291F99004D630F /* ActionProtocolls.swift */,
 			);
 			path = DataModel;
@@ -299,7 +305,7 @@
 				8A6E6B1022154B2100E3ECD4 /* Utils */,
 				8A1EA0172206D99B0055550A /* Main.storyboard */,
 				8A1E9FE32206D6B50055550A /* MainViewController.swift */,
-				8A7192EF2208D02A002EB98B /* Pages.swift */,
+				8A7192EF2208D02A002EB98B /* Page.swift */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -595,6 +601,7 @@
 				8A1AC6E222227EDE006D9BF2 /* ComparisonViewController.swift in Sources */,
 				8A1AC6E4222290A1006D9BF2 /* StoryboardHelper.swift in Sources */,
 				8A6E6B122215530300E3ECD4 /* BikeCell.swift in Sources */,
+				8AB12A532229508A0028644B /* SetupGeometryAction.swift in Sources */,
 				8A1E9FE22206D6B50055550A /* AppDelegate.swift in Sources */,
 				8A7192FC2208D85F002EB98B /* SetupGeometryViewController.swift in Sources */,
 				8A6F53772208DB5900BA0229 /* DBConstants.swift in Sources */,
@@ -609,7 +616,7 @@
 				8ACFA44B22291F99004D630F /* ActionProtocolls.swift in Sources */,
 				8A87914F22095E24001F6750 /* FactoryContent.swift in Sources */,
 				8A35C805220EF35B0026EDF1 /* MainViewAction.swift in Sources */,
-				8A7192F02208D02A002EB98B /* Pages.swift in Sources */,
+				8A7192F02208D02A002EB98B /* Page.swift in Sources */,
 				8A340C042218350100F29898 /* SelectionState.swift in Sources */,
 				8A1E9FEA2206D6B50055550A /* Drahtesel.xcdatamodeld in Sources */,
 				8A1AC6D622210F3A006D9BF2 /* SelectionAction .swift in Sources */,
@@ -633,6 +640,7 @@
 				8A35C804220EF35B0026EDF1 /* MainViewState.swift in Sources */,
 				8A340BF92216019A00F29898 /* BikeCoordinates.swift in Sources */,
 				8A1EA0252206F0040055550A /* CompareGeometryViewController.swift in Sources */,
+				8AB12A552229515F0028644B /* SetupGeometryState.swift in Sources */,
 				8A7192E722089C5C002EB98B /* AppState.swift in Sources */,
 				8AEC059B220C03A400ECB25C /* BikeAction.swift in Sources */,
 				8A7192E422089955002EB98B /* DBAccess.swift in Sources */,

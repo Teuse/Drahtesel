@@ -1,6 +1,6 @@
 import Foundation
 
-enum Pages
+enum Page
 {
    case none
    

@@ -3,7 +3,7 @@ import ReSwift
 struct MainViewAction
 {
    struct OpenedPage: Action {
-      let page: Pages
+      let page: Page
    }
    
    struct PresentAlert: Action {

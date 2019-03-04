@@ -24,7 +24,7 @@ class BikeCell: UITableViewCell
          ratingContainer.embed(view: ratingViewController!.view)
          ratingContainer.backgroundColor = UIColor.white
       }
-      ratingViewController?.rating = Int(bike.rating)
+      ratingViewController?.rating = bike.rating
       
       nameLabel?.text = bike.name
       brandLabel?.text = bike.brand
@@ -39,11 +39,11 @@ class BikeCell: UITableViewCell
    
    @IBAction private func onCompareSwitchChanged(_ sender: UISwitch)
    {
-      guard let bike = bike else { assertionFailure(); return }
-      
-      let action = BikeSetupAction.ChangeCompareEnabled(bike: bike, enabled: sender.isOn)
-      let appDelegate = UIApplication.shared.delegate as! AppDelegate
-      appDelegate.appStore.dispatch(action)
+      if let bike = bike {
+         let action = BikeAction.ChangeCompareEnabled(bike: bike, enabled: sender.isOn)
+         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         appDelegate.appStore.dispatch(action)
+      }
    }
 }
 
@@ -54,12 +54,10 @@ extension BikeCell: RatingDelegate
 {
    func ratingChanged(to value: Int)
    {
-      guard let bike = bike else { assertionFailure(); return }
-      
-      let action = BikeSetupAction.ChangeRating(bike: bike, rating: value)
-      let appDelegate = UIApplication.shared.delegate as! AppDelegate
-      appDelegate.appStore.dispatch(action)
-      
-      updateView()
+      if let bike = bike {
+         let action = BikeAction.ChangeRating(bike: bike, rating: value)
+         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         appDelegate.appStore.dispatch(action)
+      }
    }
 }

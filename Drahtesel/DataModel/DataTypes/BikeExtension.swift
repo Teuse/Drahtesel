@@ -13,14 +13,19 @@ extension Bike
       set { brandOpt = newValue }
    }
    
+   var size: String {
+      get { return sizeOpt ?? "" }
+      set { sizeOpt = newValue }
+   }
+   
    var rating: Int {
       get { return Int(rating64) }
-      set { year64 = Int64(newValue) }
+      set { rating64 = Int64(newValue) }
    }
    
    var year: Int {
       get { return Int(year64) }
-      set { rating64 = Int64(newValue) }
+      set { year64 = Int64(newValue) }
    }
    
    var paletteColor: ColorPalette {

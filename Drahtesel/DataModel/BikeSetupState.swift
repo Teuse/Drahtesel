@@ -2,10 +2,10 @@ import ReSwift
 
 struct BikeSetupState: StateType
 {
+   var lastSetupPage: Page = .setupBasics
    var bike: Bike?
    
    var basicsModel = [PropertyModel]()
-   var geometryModel = [PropertyModel]()
 }
 
 // --------------------------------------------------------------------------------
@@ -20,9 +20,10 @@ extension BikeSetupState
       {
       case let action as MainViewAction.OpenedPage:
          if action.page == .setupBasics {
-            updateBasicPropertiesModel(&state)
-         } else if action.page == .setupGeometry {
-            updateGeometryPropertiesModel(&state)
+            updatePropertiesModel(&state)
+         }
+         if isSetupPage(action.page) {
+            state.lastSetupPage = action.page
          }
          
       case let action as BikeAction.OpenBike:
@@ -30,50 +31,57 @@ extension BikeSetupState
          
       case let action as BikeSetupAction.ChangeName:
          if let name = action.text {
-            action.bike.name = name
+            state.bike?.name = name
             DBAccess.shared.save()
-            updateBasicPropertiesModel(&state)
+            updatePropertiesModel(&state)
          }
       
       case let action as BikeSetupAction.ChangeBrand:
          if let name = action.text {
-            action.bike.brand = name
+            state.bike?.brand = name
             DBAccess.shared.save()
-            updateBasicPropertiesModel(&state)
+            updatePropertiesModel(&state)
+         }
+         
+      case let action as BikeSetupAction.ChangeSize:
+         if let name = action.text {
+            state.bike?.size = name
+            DBAccess.shared.save()
+            updatePropertiesModel(&state)
          }
          
       case let action as BikeSetupAction.ChangeModelYear:
          if let yearStr = action.text, let year = Int(yearStr) {
-            action.bike.year = year
+            state.bike?.year = year
             DBAccess.shared.save()
-            updateBasicPropertiesModel(&state)
+            updatePropertiesModel(&state)
          }
          
       case let action as BikeSetupAction.ChangePrice:
          if let priceStr = action.text, let price = Double(priceStr) {
-            action.bike.price = price
+            state.bike?.price = price
             DBAccess.shared.save()
-            updateBasicPropertiesModel(&state)
+            updatePropertiesModel(&state)
          }
       
       case let action as BikeSetupAction.ChangeCategory:
-         action.bike.category = action.category
+         state.bike?.category = action.category
          DBAccess.shared.save()
          
       case let action as BikeSetupAction.ChangeIsElectrified:
-         action.bike.isElectrified = action.isElectro
+         state.bike?.isElectrified = action.isElectro
          DBAccess.shared.save()
          
       case let action as BikeSetupAction.ChangeRating:
-         action.bike.rating = action.rating
+         state.bike?.rating = action.rating
          DBAccess.shared.save()
          
       case let action as BikeSetupAction.ChangeCompareEnabled:
-         action.bike.compareEnabled = action.enabled
+         state.bike?.compareEnabled = action.enabled
          DBAccess.shared.save()
          
       case let action as BikeSetupAction.ChangeColor:
-         action.bike.color = action.color.uicolor
+         state.bike?.color = action.color.uicolor
          DBAccess.shared.save()
          
       default: break
@@ -82,44 +90,25 @@ extension BikeSetupState
       return state
    }
    
-   static func updateBasicPropertiesModel(_ state: inout BikeSetupState)
+   static func isSetupPage(_ page: Page) -> Bool
+   {
+      return page == .setupBasics || page == .setupGeometry
+          || page == .setupComparison || page == .setupSpecification
+   }
+   
+   static func updatePropertiesModel(_ state: inout BikeSetupState)
    {
       guard let bike = state.bike else {
          assertionFailure("BikeSetupState->updateBasicPropertiesModel: Can't create model because bike is nil")
          return
       }
       
-      let year = "\(bike.year)"
-      let price = "\(bike.price)"
-      
       state.basicsModel = [
-         PropertyModel(name: "NAME", label: bike.name, action: BikeSetupAction.ChangeName(bike: bike)),
-         PropertyModel(name: "BRAND", label: bike.brand, action: BikeSetupAction.ChangeBrand(bike: bike)),
-         PropertyModel(name: "MODEL YEAR", label: year, action: BikeSetupAction.ChangeModelYear(bike: bike)),
-         PropertyModel(name: "PRICE", label: price, action: BikeSetupAction.ChangePrice(bike: bike)),
-      ]
-   }
-   
-   static func updateGeometryPropertiesModel(_ state: inout BikeSetupState)
-   {
-      guard let bike = state.bike, let geo = bike.geometry else {
-         assertionFailure("BikeSetupState->updateGeometryPropertiesModel: Can't create model because bike/geometry is nil")
-         return
-      }
-      
-      state.geometryModel = [
-         PropertyModel(name: "REACH", label: "\(Int(geo.reach))", action: BikeSetupAction.ChangeReach(bike: bike)),
-         PropertyModel(name: "STACK", label: "\(Int(geo.stack))", action: BikeSetupAction.ChangeStack(bike: bike)),
-         PropertyModel(name: "CHAINSTAY", label: "\(Int(geo.chainstay))", action: BikeSetupAction.ChangeChainstay(bike: bike)),
-         PropertyModel(name: "WHEEL BASE", label: "\(Int(geo.wheelbase))", action: BikeSetupAction.ChangeWheelbase(bike: bike)),
-//         PropertyModel(name: "HEAD TUBE", label: bike.brand, action: BikeSetupAction.ChangeHeadTubeAngle(bike: bike)),
-         PropertyModel(name: "HEAD TUBE ANGLE", label: "\(geo.headTubeAngle)", action: BikeSetupAction.ChangeHeadTubeAngle(bike: bike)),
-         PropertyModel(name: "SEAT TUBE", label: "\(Int(geo.seatTube))", action: BikeSetupAction.ChangeSeatTube(bike: bike)),
-         PropertyModel(name: "SEAT ANGLE", label: "\(geo.seatTubeAngle)", action: BikeSetupAction.ChangeSeatTubeAngle(bike: bike)),
-         PropertyModel(name: "BB Drop", label: "\(Int(geo.bbDrop))", action: BikeSetupAction.ChangeBBDrop(bike: bike)),
-         //         PropertyModel(name: "BB OFFSET", label: price, action: BikeSetupAction.ChangeBBOffset(bike: bike)),
-         PropertyModel(name: "TOP TUBE", label: "\(Int(geo.topTube))", action: BikeSetupAction.ChangeTopTube(bike: bike)),
-         //         PropertyModel(name: "STANDOVER HEIGHT", label: price, action: BikeSetupAction.ChangeStandoverHeight(bike: bike)),
+         PropertyModel(name: "NAME", label: bike.name, action: BikeSetupAction.ChangeName()),
+         PropertyModel(name: "BRAND", label: bike.brand, action: BikeSetupAction.ChangeBrand()),
+         PropertyModel(name: "MODEL YEAR", label: "\(bike.year)", action: BikeSetupAction.ChangeModelYear()),
+         PropertyModel(name: "SIZE", label: bike.size, action: BikeSetupAction.ChangeSize()),
+         PropertyModel(name: "PRICE", label: "\(bike.price)", action: BikeSetupAction.ChangePrice()),
       ]
    }
 }

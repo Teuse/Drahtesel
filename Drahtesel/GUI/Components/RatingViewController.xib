@@ -33,35 +33,35 @@
                             <rect key="frame" x="0.0" y="0.0" width="137.5" height="93"/>
                             <state key="normal" image="RatingStarDisabled"/>
                             <connections>
-                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="fH2-cX-NKL"/>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchDown" id="ax8-hp-oPh"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVc-Y6-jSP">
                             <rect key="frame" x="145.5" y="0.0" width="137.5" height="93"/>
                             <state key="normal" image="RatingStarDisabled"/>
                             <connections>
-                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="bfn-xk-03S"/>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchDown" id="Gf8-jC-EPo"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCC-bW-OIq">
                             <rect key="frame" x="291" y="0.0" width="137" height="93"/>
                             <state key="normal" image="RatingStarDisabled"/>
                             <connections>
-                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="gme-CZ-33b"/>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchDown" id="ySO-dA-Nxe"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7z3-yY-tsp">
                             <rect key="frame" x="436" y="0.0" width="137.5" height="93"/>
                             <state key="normal" image="RatingStarDisabled"/>
                             <connections>
-                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="QnJ-za-dcH"/>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchDown" id="kbE-jO-QCK"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="5" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ziu-xg-T38">
                             <rect key="frame" x="581.5" y="0.0" width="137.5" height="93"/>
                             <state key="normal" image="RatingStarDisabled"/>
                             <connections>
-                                <action selector="onRatingClicked:" destination="-1" eventType="touchUpInside" id="B7m-I6-wts"/>
+                                <action selector="onRatingClicked:" destination="-1" eventType="touchDown" id="bal-SP-ncy"/>
                             </connections>
                         </button>
                     </subviews>

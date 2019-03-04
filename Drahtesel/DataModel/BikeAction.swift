@@ -43,4 +43,14 @@ struct BikeAction
       var text: String? = nil
       init(bike: Bike) { self.bike = bike }
    }
+   
+   struct ChangeRating: Action {
+      let bike: Bike
+      let rating: Int
+   }
+   
+   struct ChangeCompareEnabled: Action {
+      let bike: Bike
+      let enabled: Bool
+   }
 }

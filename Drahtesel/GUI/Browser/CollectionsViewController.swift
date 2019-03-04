@@ -121,7 +121,6 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource
    {
       view.tintColor = UIColor.appGray
       let header = view as! UITableViewHeaderFooterView
-//      header.textLabel?.textColor = UIColor.white
       header.textLabel?.textColor = UIColor.appBlue
    }
    

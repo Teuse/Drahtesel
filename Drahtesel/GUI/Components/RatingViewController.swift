@@ -6,7 +6,7 @@ protocol RatingDelegate: class {
 
 class RatingViewController: UIViewController
 {
-   var rating = 0 {
+   var rating: Int = 0 {
       didSet { updateView() }
    }
    
@@ -26,11 +26,20 @@ class RatingViewController: UIViewController
    
    private func updateView()
    {
-      ratingButton1.setImage(image(for: 1, rating: Int(rating)), for: .normal)
-      ratingButton2.setImage(image(for: 2, rating: Int(rating)), for: .normal)
-      ratingButton3.setImage(image(for: 3, rating: Int(rating)), for: .normal)
-      ratingButton4.setImage(image(for: 4, rating: Int(rating)), for: .normal)
-      ratingButton5.setImage(image(for: 5, rating: Int(rating)), for: .normal)
+      ratingButton1.setImage(image(for: 1, rating: rating), for: .normal)
+      ratingButton1.setImage(image(for: 1, rating: rating), for: .highlighted)
+      
+      ratingButton2.setImage(image(for: 2, rating: rating), for: .normal)
+      ratingButton2.setImage(image(for: 2, rating: rating), for: .highlighted)
+      
+      ratingButton3.setImage(image(for: 3, rating: rating), for: .normal)
+      ratingButton3.setImage(image(for: 3, rating: rating), for: .highlighted)
+      
+      ratingButton4.setImage(image(for: 4, rating: rating), for: .normal)
+      ratingButton4.setImage(image(for: 4, rating: rating), for: .highlighted)
+      
+      ratingButton5.setImage(image(for: 5, rating: rating), for: .normal)
+      ratingButton5.setImage(image(for: 5, rating: rating), for: .highlighted)
    }
    
    private func image(for buttonNr: Int, rating: Int) -> UIImage

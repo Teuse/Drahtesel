@@ -37,9 +37,7 @@ extension ComparisonViewController: ColorPickerDelegate
 {
    func didSelect(color: ColorPalette)
    {
-      if let bike = state.bike {
-         dispatch(action: BikeSetupAction.ChangeColor(bike: bike, color: color))
-      }
+      dispatch(action: BikeSetupAction.ChangeColor(color: color))
    }
 }
 

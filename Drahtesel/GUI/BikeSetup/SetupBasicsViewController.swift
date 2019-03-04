@@ -3,7 +3,6 @@ import ReSwift
 
 class SetupBasicsViewController: UIViewController
 {
-   private var state = BikeSetupState()
    private let categories = BikeCategory.allCases
    
    private let ratingViewController = RatingViewController()
@@ -43,15 +42,11 @@ class SetupBasicsViewController: UIViewController
    {
       ratingViewController.rating = Int(bike.rating)
       categoryPicker.selectRow(Int(bike.category.rawValue), inComponent: 0, animated: false)
-      
-      propertiesViewController.properties = state.basicsModel
    }
    
    @IBAction private func onElectrifiedSwitchChanged(_ sender: UISwitch)
    {
-      guard let bike = state.bike else { return }
-      
-      let action = BikeSetupAction.ChangeIsElectrified(bike: bike, isElectro: sender.isOn)
+      let action = BikeSetupAction.ChangeIsElectrified(isElectro: sender.isOn)
       dispatch(action: action)
    }
 }
@@ -63,9 +58,7 @@ extension SetupBasicsViewController: RatingDelegate
 {
    func ratingChanged(to value: Int)
    {
-      if let bike = state.bike {
-         dispatch(action: BikeSetupAction.ChangeRating(bike: bike, rating: value))
-      }
+      dispatch(action: BikeSetupAction.ChangeRating(rating: value))
    }
 }
 
@@ -90,10 +83,8 @@ extension SetupBasicsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
    
    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
    {
-      guard let bike = state.bike else { return }
-      
       let category = BikeCategory(rawValue: Int64(row)) ?? .hardtail
-      let action = BikeSetupAction.ChangeCategory(bike: bike, category: category)
+      let action = BikeSetupAction.ChangeCategory(category: category)
       dispatch(action: action)
    }
 }
@@ -105,7 +96,7 @@ extension SetupBasicsViewController: StoreSubscriber
 {
    func newState(state: BikeSetupState)
    {
-      self.state = state
+      propertiesViewController.properties = state.basicsModel
       
       if let bike = state.bike {
          updateView(with: bike)

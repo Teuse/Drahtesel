@@ -71,7 +71,7 @@ extension CollectionsState
       state.isDataUpdated = true
    }
    
-   static func handleOpenedPage(_ state: inout CollectionsState, _ page: Pages)
+   static func handleOpenedPage(_ state: inout CollectionsState, _ page: Page)
    {
       state.isEditing = false
       if page == .collectionBrowser {

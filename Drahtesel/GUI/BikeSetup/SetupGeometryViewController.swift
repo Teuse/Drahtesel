@@ -3,7 +3,6 @@ import ReSwift
 
 class SetupGeometryViewController: UIViewController
 {
-   private var state = BikeSetupState()
    private let propertiesViewController: PropertiesViewController = Storyboard.create(name: UI.Storyboard.properties)
    
    @IBOutlet private weak var propertiesContainer: UIView!
@@ -19,7 +18,7 @@ class SetupGeometryViewController: UIViewController
       embed(propertiesViewController, in: propertiesContainer)
       
       subscribe(self) { subcription in
-         subcription.select { state in state.bikeSetupState }
+         subcription.select { state in state.setupGeometryState }
       }
       dispatch(action: MainViewAction.OpenedPage(page: .setupGeometry))
    }
@@ -29,11 +28,6 @@ class SetupGeometryViewController: UIViewController
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }
-   
-   private func updateView(with bike: Bike)
-   {
-      propertiesViewController.properties = state.geometryModel
-   }
 }
 
 // --------------------------------------------------------------------------------
@@ -41,12 +35,8 @@ class SetupGeometryViewController: UIViewController
 
 extension SetupGeometryViewController: StoreSubscriber
 {
-   func newState(state: BikeSetupState)
+   func newState(state: SetupGeometryState)
    {
-      self.state = state
-      
-      if let bike = state.bike {
-         updateView(with: bike)
-      }
+      propertiesViewController.properties = state.geometryModel
    }
 }

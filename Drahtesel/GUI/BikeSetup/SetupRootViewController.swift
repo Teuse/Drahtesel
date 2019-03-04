@@ -1,17 +1,10 @@
 import UIKit
 import ReSwift
 
-enum BikeSetupViewTypes
-{
-   case basics
-   case comparison
-   case geometry
-   case specification
-}
-
 class SetupRootViewController: UIViewController
 {
-   private var viewType: BikeSetupViewTypes = .basics
+   private var state = BikeSetupState()
+   private var page: Page = .setupBasics
    
    @IBOutlet private weak var basicContainer: UIView!
    @IBOutlet private weak var compContainer: UIView!
@@ -32,7 +25,9 @@ class SetupRootViewController: UIViewController
       view.bringSubviewToFront(prevButton)
       view.bringSubviewToFront(nextButton)
       
-      subscribe(self)
+      subscribe(self){ subcription in
+         subcription.select { state in state.bikeSetupState }
+      }
    }
    
    override func viewWillDisappear(_ animated: Bool)
@@ -43,32 +38,40 @@ class SetupRootViewController: UIViewController
    
    override func viewDidLayoutSubviews()
    {
-      showBasicView(animate: false)
+      switch state.lastSetupPage {
+      case .setupBasics: showBasicView(animate: false)
+      case .setupGeometry: showGeometryView(animate: false)
+      case .setupComparison: showComparissonView(animate: false)
+      case .setupSpecification: showComparissonView(animate: false)
+      default: assertionFailure("SetupRootViewControllerLast->viewDidLayoutSubviews: Last selected setupPage is not a setupPage?!?")
+      }
    }
    
    @IBAction private func onPrevClicked(_ sender: UIButton)
    {
-      switch viewType {
-      case .basics:        break
-      case .comparison:    showBasicView()
-      case .geometry:      showComparissonView()
-      case .specification: showGeometryView()
+      switch page {
+      case .setupBasics:        break
+      case .setupComparison:    showBasicView()
+      case .setupGeometry:      showComparissonView()
+      case .setupSpecification: showGeometryView()
+      default: assertionFailure()
       }
    }
    
    @IBAction private func onNextClicked(_ sender: UIButton)
    {
-      switch viewType {
-      case .basics:        showComparissonView()
-      case .comparison:    showGeometryView()
-      case .geometry:      showSpecificaionView()
-      case .specification: break
+      switch page {
+      case .setupBasics:        showComparissonView()
+      case .setupComparison:    showGeometryView()
+      case .setupGeometry:      showSpecificaionView()
+      case .setupSpecification: break
+      default: assertionFailure()
       }
    }
    
    private func showBasicView(animate: Bool = true)
    {
-      viewType = .basics
+      page = .setupBasics
       let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = 0
@@ -80,7 +83,7 @@ class SetupRootViewController: UIViewController
    
    private func showComparissonView(animate: Bool = true)
    {
-      viewType = .comparison
+      page = .setupComparison
       let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = -self.view.frame.width
@@ -92,7 +95,7 @@ class SetupRootViewController: UIViewController
    
    private func showGeometryView(animate: Bool = true)
    {
-      viewType = .geometry
+      page = .setupGeometry
       let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = -2 * self.view.frame.width
@@ -104,7 +107,7 @@ class SetupRootViewController: UIViewController
    
    private func showSpecificaionView(animate: Bool = true)
    {
-      viewType = .specification
+      page = .setupSpecification
       let dur = animate ? UI.animationDuration : 0.0
       UIView.animate(withDuration: dur) {
          self.basicContainer.frame.origin.x = -3 * self.view.frame.width
@@ -120,7 +123,8 @@ class SetupRootViewController: UIViewController
 
 extension SetupRootViewController: StoreSubscriber
 {
-   func newState(state: AppState)
+   func newState(state: BikeSetupState)
    {
+      self.state = state
    }
 }

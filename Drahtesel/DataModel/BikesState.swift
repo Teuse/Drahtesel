@@ -15,7 +15,6 @@ struct BikesState: StateType
    var bikes: [Bike]
    {
       var bikes = collection.bikes
-//      bikes.sort(by: {$0.name! < $1.name!})
       bikes.sort(by: { $0.brand != $1.brand ? $0.brand < $1.brand : $0.name < $1.name })
       return bikes
    }
@@ -70,16 +69,22 @@ extension BikesState
       case let action as BikeAction.CopySelectionTo:
          handleCopySelectionTo(&state, action.collection)
          
-      case is BikeSetupAction.ChangeRating,
-           is BikeSetupAction.ChangeCompareEnabled:
+      case let action as BikeAction.ChangeRating:
+         action.bike.rating = action.rating
+         DBAccess.shared.save()
          state.isDataUpdated = true
-
+         
+      case let action as BikeAction.ChangeCompareEnabled:
+         action.bike.compareEnabled = action.enabled
+         DBAccess.shared.save()
+         state.isDataUpdated = true
+         
       default: break
       }
       return state
    }
    
-   static func handleOpenedPage(_ state: inout BikesState, _ page: Pages)
+   static func handleOpenedPage(_ state: inout BikesState, _ page: Page)
    {
       if page == .bikeBrowser {
          state.isDataUpdated = true

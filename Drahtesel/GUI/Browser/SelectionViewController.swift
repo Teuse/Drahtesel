@@ -109,6 +109,17 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return section == 0 ? 1 : state.collections.count
    }
+   
+   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+      return section == 0 ? nil : CollectionType.user.description()
+   }
+   
+   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+   {
+      view.tintColor = UIColor.appGray
+      let header = view as! UITableViewHeaderFooterView
+      header.textLabel?.textColor = UIColor.appBlue
+   }
 }
 
 // --------------------------------------------------------------------------------
@@ -124,12 +135,7 @@ extension SelectionViewController: StoreSubscriber
       tableView.reloadData()
       
       noCollectionsLabel.isHidden = !state.collections.isEmpty
-      
-      if let col = state.selected {
-         let ip = indexPath(for: col)
-         tableView.selectRow(at: ip, animated: false, scrollPosition: .none)
-      }
-      
+
       updateTitle()
    }
    

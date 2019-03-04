@@ -18,8 +18,9 @@ class FactoryContent {
       let collection = DBAccess.shared.addCollection(name: "Trail Bikes 2018")
       collection.type = .factory
       
-      let vxspro = collection.addBike(name: "VXs Pro M")
+      let vxspro = collection.addBike(name: "VXs Pro")
       vxspro.brand = "Votec"
+      vxspro.size = "M"
       vxspro.color = ColorPalette.black.uicolor
       vxspro.compareEnabled = true
       let gvxspro = vxspro.geometry!
@@ -35,8 +36,9 @@ class FactoryContent {
       gvxspro.seatTubeAngle = 76.0
       vxspro.geometry = gvxspro
       
-      let occam = collection.addBike(name: "Occam TR H10 M")
+      let occam = collection.addBike(name: "Occam TR H10")
       occam.brand = "Orbea"
+      occam.size = "M"
       occam.color = ColorPalette.steel.uicolor
       occam.compareEnabled = true
       let goccam = occam.geometry!
@@ -53,6 +55,7 @@ class FactoryContent {
       
       let spark950 = collection.addBike(name: "Spark 950")
       spark950.brand = "Scott"
+      spark950.size = "M"
       spark950.color = ColorPalette.nickel.uicolor
       spark950.compareEnabled = true
       let gspark950 = spark950.geometry!
@@ -67,8 +70,9 @@ class FactoryContent {
       gspark950.seatTubeAngle = 73.8
       spark950.geometry = gspark950
       
-      let jeffsy = collection.addBike(name: "Jeffsy 29 M")
+      let jeffsy = collection.addBike(name: "Jeffsy 29")
       jeffsy.brand = "YT"
+      jeffsy.size = "M"
       jeffsy.color = ColorPalette.mercury.uicolor
       jeffsy.compareEnabled = false
       let gjeffsy = jeffsy.geometry!
@@ -83,8 +87,9 @@ class FactoryContent {
       gjeffsy.seatTubeAngle = 75.0
       jeffsy.geometry = gjeffsy
       
-      let skeen = collection.addBike(name: "Skeen Trail 18\"")
+      let skeen = collection.addBike(name: "Skeen Trail")
       skeen.brand = "Radon"
+      skeen.size = "18\""
       skeen.color = ColorPalette.cayenne.uicolor
       skeen.compareEnabled = false
       let gskeen = skeen.geometry!
@@ -99,8 +104,9 @@ class FactoryContent {
       gskeen.seatTubeAngle = 75.0
       skeen.geometry = gskeen
       
-      let stereo = collection.addBike(name: "Stereo 140 HPC 18\"")
+      let stereo = collection.addBike(name: "Stereo 140 HPC")
       stereo.brand = "Cube"
+      stereo.size = "18\""
       stereo.color = ColorPalette.red.uicolor
       stereo.compareEnabled = false
       let gstereo = stereo.geometry!
@@ -117,6 +123,7 @@ class FactoryContent {
       
       let neuron = collection.addBike(name: "Neuron M")
       neuron.brand = "Canyon"
+      neuron.size = "M"
       neuron.color = ColorPalette.orange.uicolor
       neuron.compareEnabled = false
       let gneuron = neuron.geometry!
@@ -131,8 +138,9 @@ class FactoryContent {
       gneuron.seatTubeAngle = 73.8
       neuron.geometry = gneuron
       
-      let camber = collection.addBike(name: "Camber Comp 29 M")
+      let camber = collection.addBike(name: "Camber Comp 29")
       camber.brand = "Specialized"
+      camber.size = "M"
       camber.color = ColorPalette.yellow.uicolor
       camber.compareEnabled = false
       let gcamber = camber.geometry!
@@ -152,8 +160,9 @@ class FactoryContent {
       let collection = DBAccess.shared.addCollection(name: "All Mountain Bikes 2018")
       collection.type = .factory
       
-      let vxpro = collection.addBike(name: "VX Pro M")
+      let vxpro = collection.addBike(name: "VX Pro")
       vxpro.brand = "Votec"
+      vxpro.size = "M"
       vxpro.color = ColorPalette.yellow.uicolor
       vxpro.compareEnabled = false
       let gvxpro = vxpro.geometry!
@@ -168,8 +177,9 @@ class FactoryContent {
       gvxpro.seatTubeAngle = 75.1
       vxpro.geometry = gvxpro
       
-      let slide = collection.addBike(name: "Slide 140 18\"")
+      let slide = collection.addBike(name: "Slide 140")
       slide.brand = "Radon"
+      slide.size = "18\""
       slide.color = ColorPalette.honey.uicolor
       slide.compareEnabled = false
       let gslide = slide.geometry!
@@ -184,8 +194,9 @@ class FactoryContent {
       gslide.seatTubeAngle = 74.2
       slide.geometry = gslide
       
-      let stumpjumper = collection.addBike(name: "Stumpjumper M")
+      let stumpjumper = collection.addBike(name: "Stumpjumper")
       stumpjumper.brand = "Specialized"
+      stumpjumper.size = "M"
       stumpjumper.color = ColorPalette.honey.uicolor
       stumpjumper.compareEnabled = false
       let gstumpjumper = stumpjumper.geometry!
@@ -205,8 +216,9 @@ class FactoryContent {
       let collection = DBAccess.shared.addCollection(name: "XC Bikes 2018")
       collection.type = .factory
       
-      let lux = collection.addBike(name: "Lux CF M")
+      let lux = collection.addBike(name: "Lux CF")
       lux.brand = "Canyon"
+      lux.size = "M"
       lux.color = ColorPalette.spring.uicolor
       lux.compareEnabled = false
       let glux = lux.geometry!
@@ -221,8 +233,9 @@ class FactoryContent {
       glux.seatTubeAngle = 74.0
       lux.geometry = glux
       
-      let epic = collection.addBike(name: "Epic M")
+      let epic = collection.addBike(name: "Epic")
       epic.brand = "Specialized"
+      epic.size = "M"
       epic.color = ColorPalette.green.uicolor
       epic.compareEnabled = false
       let gepic = epic.geometry!
@@ -235,7 +248,6 @@ class FactoryContent {
       gepic.bbDrop = 38.9
       gepic.headTubeAngle = 69.5
       gepic.seatTubeAngle = 74.75
-      epic.geometry = gepic
-      
+      epic.geometry = gepic  
    }
 }

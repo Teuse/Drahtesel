@@ -2,7 +2,7 @@ import ReSwift
 
 struct MainViewState: StateType
 {
-   var currentPage: Pages = .none
+   var currentPage: Page = .none
    var alertViewModel: AlertViewModel?
    
    var isEditModeEnabled = false
@@ -39,7 +39,7 @@ extension MainViewState
       return state
    }
    
-   static private func updateButton(for page: Pages, _ state: inout MainViewState)
+   static private func updateButton(for page: Page, _ state: inout MainViewState)
    {
       switch page {
       case .collectionBrowser:
