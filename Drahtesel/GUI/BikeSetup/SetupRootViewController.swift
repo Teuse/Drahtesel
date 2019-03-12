@@ -1,10 +1,32 @@
 import UIKit
 import ReSwift
 
+protocol SetupController {
+   func setupViewWillShow(_ animated: Bool)
+   func setupViewWillHide(_ animated: Bool)
+}
+
 class SetupRootViewController: UIViewController
 {
+   private struct SetupPage {
+      let page: Page
+      let container: UIView
+      let controller: SetupController
+   }
+   
+   private var isFirstViewShown = false
    private var state = BikeSetupState()
-   private var page: Page = .setupBasics
+   private var currentPage: SetupPage? = nil
+   
+   private var basicPage: SetupPage! = nil
+   private var compPage: SetupPage! = nil
+   private var geoPage: SetupPage! = nil
+   private var specPage: SetupPage! = nil
+   
+   private var basicController: SetupBasicsViewController = Storyboard.create(name: UI.Storyboard.setupBasics)
+   private var compController: SetupComparisonViewController = Storyboard.create(name: UI.Storyboard.setupComparison)
+   private var geoController: SetupGeometryViewController = Storyboard.create(name: UI.Storyboard.setupGeometry)
+   private var specController: SetupSpecificationViewController = Storyboard.create(name: UI.Storyboard.setupSpecification)
    
    @IBOutlet private weak var basicContainer: UIView!
    @IBOutlet private weak var compContainer: UIView!
@@ -25,6 +47,21 @@ class SetupRootViewController: UIViewController
       view.bringSubviewToFront(prevButton)
       view.bringSubviewToFront(nextButton)
       
+      basicContainer.isHidden = true
+      compContainer.isHidden = true
+      geoContainer.isHidden = true
+      specContainer.isHidden = true
+      
+      embed(basicController, in: basicContainer)
+      embed(compController, in: compContainer)
+      embed(geoController, in: geoContainer)
+      embed(specController, in: specContainer)
+      
+      basicPage = SetupPage(page: .setupBasics, container: basicContainer, controller: basicController)
+      compPage = SetupPage(page: .setupComparison, container: compContainer, controller: compController)
+      geoPage = SetupPage(page: .setupGeometry, container: geoContainer, controller: geoController)
+      specPage = SetupPage(page: .setupSpecification, container: specContainer, controller: specController)
+      
       subscribe(self){ subcription in
          subcription.select { state in state.bikeSetupState }
       }
@@ -34,87 +71,82 @@ class SetupRootViewController: UIViewController
    {
       super.viewWillDisappear(animated)
       unsubscribe(self)
+      isFirstViewShown = false
    }
    
    override func viewDidLayoutSubviews()
    {
+      super.viewDidLayoutSubviews()
+      guard !isFirstViewShown else { return }
+      
+      isFirstViewShown = true
       switch state.lastSetupPage {
-      case .setupBasics: showBasicView(animate: false)
-      case .setupGeometry: showGeometryView(animate: false)
-      case .setupComparison: showComparissonView(animate: false)
-      case .setupSpecification: showComparissonView(animate: false)
+      case .setupBasics:         show(setupPage: basicPage, swipeLeft: false, animated: false)
+      case .setupComparison:     show(setupPage: compPage, swipeLeft: false, animated: false)
+      case .setupGeometry:       show(setupPage: geoPage, swipeLeft: false, animated: false)
+      case .setupSpecification:  show(setupPage: specPage, swipeLeft: false, animated: false)
       default: assertionFailure("SetupRootViewControllerLast->viewDidLayoutSubviews: Last selected setupPage is not a setupPage?!?")
       }
    }
    
    @IBAction private func onPrevClicked(_ sender: UIButton)
    {
+      guard let page = currentPage?.page else { return }
+      
       switch page {
       case .setupBasics:        break
-      case .setupComparison:    showBasicView()
-      case .setupGeometry:      showComparissonView()
-      case .setupSpecification: showGeometryView()
+      case .setupComparison:    show(setupPage: basicPage, swipeLeft: false, animated: true)
+      case .setupGeometry:      show(setupPage: compPage, swipeLeft: false, animated: true)
+      case .setupSpecification: show(setupPage: geoPage, swipeLeft: false, animated: true)
       default: assertionFailure()
       }
    }
    
    @IBAction private func onNextClicked(_ sender: UIButton)
    {
+      guard let page = currentPage?.page else { return }
+      
       switch page {
-      case .setupBasics:        showComparissonView()
-      case .setupComparison:    showGeometryView()
-      case .setupGeometry:      showSpecificaionView()
+      case .setupBasics:        show(setupPage: compPage, swipeLeft: true, animated: true)
+      case .setupComparison:    show(setupPage: geoPage, swipeLeft: true, animated: true)
+      case .setupGeometry:      show(setupPage: specPage, swipeLeft: true, animated: true)
       case .setupSpecification: break
       default: assertionFailure()
       }
    }
+}
+
+// --------------------------------------------------------------------------------
+//MARK: - Show/Hide logic
+
+extension SetupRootViewController
+{
    
-   private func showBasicView(animate: Bool = true)
+   private func show(setupPage: SetupPage, swipeLeft: Bool, animated: Bool)
    {
-      page = .setupBasics
-      let dur = animate ? UI.animationDuration : 0.0
-      UIView.animate(withDuration: dur) {
-         self.basicContainer.frame.origin.x = 0
-         self.compContainer.frame.origin.x = self.view.frame.width
-         self.geoContainer.frame.origin.x = 2 * self.view.frame.width
-         self.specContainer.frame.origin.x = 3 * self.view.frame.width
+      let prevPage = currentPage
+      currentPage = setupPage
+      
+      setupPage.controller.setupViewWillShow(animated)
+      setupPage.container.frame.origin.x = swipeLeft ? view.frame.width : -view.frame.width
+      setupPage.container.isHidden = false
+      
+      let doShow = {
+         prevPage?.container.frame.origin.x = swipeLeft ? -self.view.frame.width : self.view.frame.width
+         setupPage.container.frame.origin.x = 0
+      }
+      
+      let dur = animated ? UI.animationDuration : 0
+      UIView.animate(withDuration: dur, animations: doShow) { _ in
+         self.hide(setupPage: prevPage)
       }
    }
    
-   private func showComparissonView(animate: Bool = true)
+   private func hide(setupPage: SetupPage?)
    {
-      page = .setupComparison
-      let dur = animate ? UI.animationDuration : 0.0
-      UIView.animate(withDuration: dur) {
-         self.basicContainer.frame.origin.x = -self.view.frame.width
-         self.compContainer.frame.origin.x = 0
-         self.geoContainer.frame.origin.x = self.view.frame.width
-         self.specContainer.frame.origin.x = 2 * self.view.frame.width
-      }
-   }
-   
-   private func showGeometryView(animate: Bool = true)
-   {
-      page = .setupGeometry
-      let dur = animate ? UI.animationDuration : 0.0
-      UIView.animate(withDuration: dur) {
-         self.basicContainer.frame.origin.x = -2 * self.view.frame.width
-         self.compContainer.frame.origin.x = -self.view.frame.width
-         self.geoContainer.frame.origin.x = 0
-         self.specContainer.frame.origin.x = self.view.frame.width
-      }
-   }
-   
-   private func showSpecificaionView(animate: Bool = true)
-   {
-      page = .setupSpecification
-      let dur = animate ? UI.animationDuration : 0.0
-      UIView.animate(withDuration: dur) {
-         self.basicContainer.frame.origin.x = -3 * self.view.frame.width
-         self.compContainer.frame.origin.x = -2 * self.view.frame.width
-         self.geoContainer.frame.origin.x = -self.view.frame.width
-         self.specContainer.frame.origin.x = 0
-      }
+      guard let setupPage = setupPage else { return }
+      setupPage.controller.setupViewWillHide(false)
+      setupPage.container.isHidden = true
    }
 }
 

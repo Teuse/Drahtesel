@@ -9,6 +9,10 @@ struct UI
    {
       static let browser = "Browser"
       static let bikeSetup = "BikeSetup"
+      static let setupBasics = "SetupBasics"
+      static let setupComparison = "SetupComparison"
+      static let setupGeometry = "SetupGeometry"
+      static let setupSpecification = "SetupSpecification"
       static let comparisson = "Comparrison"
       static let settings = "Settings"
       
@@ -16,5 +20,4 @@ struct UI
       static let colorPicker = "ColorPicker"
       static let properties = "Properties"
    }
-   
 }

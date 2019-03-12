@@ -10,6 +10,7 @@ struct AppState: StateType
    var setupBasicsState = SetupBasicsState()
    var setupComparisonState = SetupComparisonState()
    var setupGeometryState = SetupGeometryState()
+   var setupSpecificationState = SetupSpecificationState()
 }
 
 // --------------------------------------------------------------------------------
@@ -27,6 +28,7 @@ extension AppState
       state.setupBasicsState = SetupBasicsState.reducer(action: action, state: state.setupBasicsState)
       state.setupComparisonState = SetupComparisonState.reducer(action: action, state: state.setupComparisonState)
       state.setupGeometryState = SetupGeometryState.reducer(action: action, state: state.setupGeometryState)
+      state.setupSpecificationState = SetupSpecificationState.reducer(action: action, state: state.setupSpecificationState)
       
       return state
    }

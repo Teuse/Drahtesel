@@ -23,7 +23,7 @@ class PropertiesViewController: UIViewController
       didSet { setupTableView() }
    }
    
-   var isScrollEnabled = false {
+   var isScrollEnabled = true {
       didSet { setupTableView() }
    }
    

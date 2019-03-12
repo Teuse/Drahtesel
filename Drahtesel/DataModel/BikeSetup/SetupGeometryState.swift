@@ -4,7 +4,7 @@ struct SetupGeometryState: StateType
 {
    var bike: Bike?
    
-   var geometryModel = [PropertyModel]()
+   var model = [PropertyModel]()
 }
 
 // --------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ extension SetupGeometryState
          return
       }
       
-      state.geometryModel = [
+      state.model = [
          PropertyModel(name: "REACH", label: "\(Int(geo.reach))", action: SetupGeometryAction.ChangeReach()),
          PropertyModel(name: "STACK", label: "\(Int(geo.stack))", action: SetupGeometryAction.ChangeStack()),
          PropertyModel(name: "CHAINSTAY", label: "\(Int(geo.chainstay))", action: SetupGeometryAction.ChangeChainstay()),

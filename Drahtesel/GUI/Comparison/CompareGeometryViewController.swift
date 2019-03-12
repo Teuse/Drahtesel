@@ -154,9 +154,10 @@ extension CompareGeometryViewController: StoreSubscriber
 {
    func newState(state: AppState)
    {
-      let bikes = state.bikeBrowserState.collection.bikes
+      guard let collection = state.bikeBrowserState.collection else { return }
+      
       removeBikeImages()
-      createBikeImages(forBikes: bikes)
+      createBikeImages(forBikes: collection.bikes)
    }
 }
 

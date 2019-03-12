@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class ComparisonViewController: UIViewController
+class SetupComparisonViewController: UIViewController, SetupController
 {
    private var colorPicker: ColorPicker = Storyboard.create(name: UI.Storyboard.colorPicker)
    
@@ -15,15 +15,17 @@ class ComparisonViewController: UIViewController
       
       colorPicker.delegate = self
       embed(colorPicker, in: colorPickerContainer)
-      
+   }
+   
+   func setupViewWillShow(_ animated: Bool)
+   {
       subscribe(self) { subcription in
          subcription.select { state in state.setupComparisonState }
       }
       dispatch(action: MainViewAction.OpenedPage(page: .setupComparison))
    }
    
-   override func viewWillDisappear(_ animated: Bool)
-   {
+   func setupViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }
@@ -32,7 +34,7 @@ class ComparisonViewController: UIViewController
 // --------------------------------------------------------------------------------
 //MARK: - Components Delegate
 
-extension ComparisonViewController: ColorPickerDelegate
+extension SetupComparisonViewController: ColorPickerDelegate
 {
    func didSelect(color: ColorPalette)
    {
@@ -43,7 +45,7 @@ extension ComparisonViewController: ColorPickerDelegate
 // --------------------------------------------------------------------------------
 //MARK: - ReSwift
 
-extension ComparisonViewController: StoreSubscriber
+extension SetupComparisonViewController: StoreSubscriber
 {
    func newState(state: SetupComparisonState)
    {

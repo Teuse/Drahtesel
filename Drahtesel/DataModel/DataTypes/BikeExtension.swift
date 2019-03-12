@@ -3,6 +3,35 @@ import UIKit
 
 extension Bike
 {
+   override public var description: String
+   {
+      let idStr = id?.uuidString ?? "nil"
+      return "Bike(name=\"\(name)\" brand=\"\(brand)\" id=\(idStr)"
+   }
+   
+   func copy(from bike: Bike)
+   {
+      name = bike.name
+      brand = bike.brand
+      categoryRaw = bike.categoryRaw
+      color = bike.color
+      compareEnabled = bike.compareEnabled
+      year = bike.year
+      isElectrified = bike.isElectrified
+      rating = bike.rating
+      price = bike.price
+      size = bike.size
+      weight = bike.weight
+      
+      assert(bike.geometry != nil, "Bike->copy(): Error, bike.geometry may not be nil")
+      geometry?.copy(from: bike.geometry!)
+      
+      assert(bike.specification != nil, "Bike->copy(): Error, bike.specification may not be nil")
+      specification?.copy(from: bike.specification!)
+   }
+   
+   //MARK: - String Wrapper
+   
    var name: String {
       get { return nameOpt ?? "" }
       set { nameOpt = newValue }
@@ -34,29 +63,5 @@ extension Bike
          return ColorPalette.convert(uicolor: uicolor) ?? .black
       }
       set { color = paletteColor.uicolor }
-   }
-   
-   override public var description: String
-   {
-      let idStr = id?.uuidString ?? "nil"
-      return "Bike(name=\"\(name)\" brand=\"\(brand)\" id=\(idStr)"
-   }
-   
-   func copy(from bike: Bike)
-   {
-      name = bike.name
-      brand = bike.brand
-      categoryRaw = bike.categoryRaw
-      color = bike.color
-      compareEnabled = bike.compareEnabled
-      year = bike.year
-      isElectrified = bike.isElectrified
-      rating = bike.rating
-      
-      assert(bike.geometry != nil, "Bike->copy(): Error, bike.geometry may not be nil")
-      geometry?.copy(from: bike.geometry!)
-      
-      assert(bike.specification != nil, "Bike->copy(): Error, bike.specification may not be nil")
-      specification?.copy(from: bike.specification!)
    }
 }

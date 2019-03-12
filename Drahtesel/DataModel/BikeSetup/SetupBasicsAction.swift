@@ -22,6 +22,11 @@ struct SetupBasicsAction
       init() {}
    }
    
+   struct ChangeWeight: Action, TextSetableAction {
+      var text: String? = nil
+      init() {}
+   }
+   
    struct ChangePrice: Action, TextSetableAction {
       var text: String? = nil
       init() {}

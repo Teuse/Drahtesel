@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class SetupGeometryViewController: UIViewController
+class SetupGeometryViewController: UIViewController, SetupController
 {
    private let propertiesViewController: PropertiesViewController = Storyboard.create(name: UI.Storyboard.properties)
    
@@ -16,15 +16,17 @@ class SetupGeometryViewController: UIViewController
       propertiesViewController.isScrollEnabled = true
       propertiesViewController.showLetters = true
       embed(propertiesViewController, in: propertiesContainer)
-      
+   }
+   
+   func setupViewWillShow(_ animated: Bool)
+   {
       subscribe(self) { subcription in
          subcription.select { state in state.setupGeometryState }
       }
       dispatch(action: MainViewAction.OpenedPage(page: .setupGeometry))
    }
    
-   override func viewWillDisappear(_ animated: Bool)
-   {
+   func setupViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }
@@ -37,6 +39,6 @@ extension SetupGeometryViewController: StoreSubscriber
 {
    func newState(state: SetupGeometryState)
    {
-      propertiesViewController.properties = state.geometryModel
+      propertiesViewController.properties = state.model
    }
 }

@@ -10,11 +10,12 @@ struct BikeBrowserState: StateType
    var selectedBikes = [Bike]()
    
    var isDataUpdated = false
-   var collection = Collection()
+   var collection: Collection? = nil
    
    var bikes: [Bike]
    {
-      var bikes = collection.bikes
+      assert(collection != nil)
+      var bikes = collection?.bikes ?? [Bike]()
       bikes.sort(by: { $0.brand != $1.brand ? $0.brand < $1.brand : $0.name < $1.name })
       return bikes
    }
@@ -100,7 +101,9 @@ extension BikeBrowserState
    
    static func handleAdd(_ state: inout BikeBrowserState, _ name: String)
    {
-      _ = state.collection.addBike(name: name)
+      guard let collection = state.collection else { assertionFailure(); return }
+      
+      _ = collection.addBike(name: name)
       DBAccess.shared.save()
       state.isDataUpdated = true
    }
@@ -114,7 +117,9 @@ extension BikeBrowserState
    
    static func handleDuplicate(_ state: inout BikeBrowserState, _ bike: Bike, _ name: String)
    {
-      let newBike = state.collection.addBike(name: name)
+      guard let collection = state.collection else { assertionFailure(); return }
+      
+      let newBike = collection.addBike(name: name)
       newBike.copy(from: bike)
       DBAccess.shared.save()
       state.isDataUpdated = true
@@ -122,7 +127,9 @@ extension BikeBrowserState
    
    static func handleDelete(_ state: inout BikeBrowserState, _ bike: Bike)
    {
-      state.collection.delete(bike: bike)
+      guard let collection = state.collection else { assertionFailure(); return }
+      
+      collection.delete(bike: bike)
       DBAccess.shared.save()
       state.isDataUpdated = true
    }

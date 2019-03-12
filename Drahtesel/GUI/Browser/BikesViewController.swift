@@ -159,7 +159,7 @@ extension BikesViewController: UITableViewDelegate, UITableViewDataSource
    
    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
    {
-      guard state.collection.type != .factory else {
+      guard let col = state.collection, col.type != .factory else {
          return []
       }
       

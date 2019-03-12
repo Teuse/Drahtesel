@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class SetupBasicsViewController: UIViewController
+class SetupBasicsViewController: UIViewController, SetupController
 {
    private let categories = BikeCategory.allCases
    
@@ -25,19 +25,21 @@ class SetupBasicsViewController: UIViewController
       ratingContainer.backgroundColor = UIColor.clear
       
       embed(propertiesViewController, in: propertiesContainer)
-      
+   }
+   
+   func setupViewWillShow(_ animated: Bool)
+   {
       subscribe(self) { subcription in
          subcription.select { state in state.setupBasicsState }
       }
       dispatch(action: MainViewAction.OpenedPage(page: .setupBasics))
    }
    
-   override func viewWillDisappear(_ animated: Bool)
-   {
+   func setupViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }
-   
+
    private func updateView(with bike: Bike)
    {
       ratingViewController.rating = Int(bike.rating)

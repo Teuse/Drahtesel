@@ -17,7 +17,7 @@
 		8A1AC6DA22216EEF006D9BF2 /* ColorPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1AC6D922216EEF006D9BF2 /* ColorPicker.storyboard */; };
 		8A1AC6DC22216F02006D9BF2 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6DB22216F02006D9BF2 /* ColorPicker.swift */; };
 		8A1AC6DE22216F11006D9BF2 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6DD22216F11006D9BF2 /* ColorPickerCell.swift */; };
-		8A1AC6E222227EDE006D9BF2 /* ComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6E122227EDE006D9BF2 /* ComparisonViewController.swift */; };
+		8A1AC6E222227EDE006D9BF2 /* SetupComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6E122227EDE006D9BF2 /* SetupComparisonViewController.swift */; };
 		8A1AC6E4222290A1006D9BF2 /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6E3222290A1006D9BF2 /* StoryboardHelper.swift */; };
 		8A1AC6E6222298E1006D9BF2 /* Properties.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1AC6E5222298E1006D9BF2 /* Properties.storyboard */; };
 		8A1AC6E822229926006D9BF2 /* PropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1AC6E722229926006D9BF2 /* PropertiesViewController.swift */; };
@@ -42,6 +42,7 @@
 		8A1EA02D2207162C0055550A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1EA02C2207162C0055550A /* Settings.storyboard */; };
 		8A1EA02F22071AFD0055550A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA02E22071AFD0055550A /* SettingsViewController.swift */; };
 		8A20F84B221E7B1900777EAE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20F84A221E7B1900777EAE /* Constants.swift */; };
+		8A22FEE52232D83400B00541 /* SetupSpecification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A22FEE42232D83300B00541 /* SetupSpecification.storyboard */; };
 		8A340BF32215F51500F29898 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF22215F51500F29898 /* ColorPalette.swift */; };
 		8A340BF92216019A00F29898 /* BikeCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF72216019A00F29898 /* BikeCoordinates.swift */; };
 		8A340BFA2216019A00F29898 /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A340BF82216019A00F29898 /* Numeric.swift */; };
@@ -52,6 +53,9 @@
 		8A35C801220EF2360026EDF1 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C800220EF2360026EDF1 /* AlertViewModel.swift */; };
 		8A35C804220EF35B0026EDF1 /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C802220EF35A0026EDF1 /* MainViewState.swift */; };
 		8A35C805220EF35B0026EDF1 /* MainViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35C803220EF35B0026EDF1 /* MainViewAction.swift */; };
+		8A38DBD622355AE4003143E1 /* SetupComparison.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A38DBD522355AE4003143E1 /* SetupComparison.storyboard */; };
+		8A38DBD822355B2B003143E1 /* SetupBasics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A38DBD722355B2B003143E1 /* SetupBasics.storyboard */; };
+		8A38DBDA22355D88003143E1 /* SetupGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A38DBD922355D88003143E1 /* SetupGeometry.storyboard */; };
 		8A590AEC2221080400B625F9 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A590AEB2221080400B625F9 /* RatingViewController.xib */; };
 		8A590AEE2221081400B625F9 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A590AED2221081400B625F9 /* RatingViewController.swift */; };
 		8A6E6B122215530300E3ECD4 /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6E6B112215530200E3ECD4 /* BikeCell.swift */; };
@@ -75,6 +79,8 @@
 		8A93E79D221024B800B663DE /* GeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93E79B221024B800B663DE /* GeometryExtension.swift */; };
 		8A93E79E221024B800B663DE /* SpecificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93E79C221024B800B663DE /* SpecificationExtension.swift */; };
 		8AA019B32211DF9200DB0268 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA019B22211DF9200DB0268 /* UIColor.swift */; };
+		8AAF493722317BFD00CB347A /* SetupSpecificationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF493522317BFD00CB347A /* SetupSpecificationAction.swift */; };
+		8AAF493822317BFD00CB347A /* SetupSpecificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF493622317BFD00CB347A /* SetupSpecificationState.swift */; };
 		8AB12A532229508A0028644B /* SetupGeometryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB12A522229508A0028644B /* SetupGeometryAction.swift */; };
 		8AB12A552229515F0028644B /* SetupGeometryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB12A542229515F0028644B /* SetupGeometryState.swift */; };
 		8ACFA44B22291F99004D630F /* ActionProtocolls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFA44A22291F99004D630F /* ActionProtocolls.swift */; };
@@ -112,7 +118,7 @@
 		8A1AC6D922216EEF006D9BF2 /* ColorPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorPicker.storyboard; sourceTree = "<group>"; };
 		8A1AC6DB22216F02006D9BF2 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		8A1AC6DD22216F11006D9BF2 /* ColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCell.swift; sourceTree = "<group>"; };
-		8A1AC6E122227EDE006D9BF2 /* ComparisonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonViewController.swift; sourceTree = "<group>"; };
+		8A1AC6E122227EDE006D9BF2 /* SetupComparisonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupComparisonViewController.swift; sourceTree = "<group>"; };
 		8A1AC6E3222290A1006D9BF2 /* StoryboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardHelper.swift; sourceTree = "<group>"; };
 		8A1AC6E5222298E1006D9BF2 /* Properties.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Properties.storyboard; sourceTree = "<group>"; };
 		8A1AC6E722229926006D9BF2 /* PropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 		8A1EA02C2207162C0055550A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8A1EA02E22071AFD0055550A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8A20F84A221E7B1900777EAE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8A22FEE42232D83300B00541 /* SetupSpecification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SetupSpecification.storyboard; sourceTree = "<group>"; };
 		8A340BF22215F51500F29898 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		8A340BF72216019A00F29898 /* BikeCoordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeCoordinates.swift; sourceTree = "<group>"; };
 		8A340BF82216019A00F29898 /* Numeric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
@@ -153,6 +160,9 @@
 		8A35C800220EF2360026EDF1 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		8A35C802220EF35A0026EDF1 /* MainViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
 		8A35C803220EF35B0026EDF1 /* MainViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewAction.swift; sourceTree = "<group>"; };
+		8A38DBD522355AE4003143E1 /* SetupComparison.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupComparison.storyboard; sourceTree = "<group>"; };
+		8A38DBD722355B2B003143E1 /* SetupBasics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupBasics.storyboard; sourceTree = "<group>"; };
+		8A38DBD922355D88003143E1 /* SetupGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupGeometry.storyboard; sourceTree = "<group>"; };
 		8A590AEB2221080400B625F9 /* RatingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
 		8A590AED2221081400B625F9 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		8A6E6B112215530200E3ECD4 /* BikeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
@@ -176,6 +186,8 @@
 		8A93E79B221024B800B663DE /* GeometryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtension.swift; sourceTree = "<group>"; };
 		8A93E79C221024B800B663DE /* SpecificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificationExtension.swift; sourceTree = "<group>"; };
 		8AA019B22211DF9200DB0268 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		8AAF493522317BFD00CB347A /* SetupSpecificationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSpecificationAction.swift; sourceTree = "<group>"; };
+		8AAF493622317BFD00CB347A /* SetupSpecificationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSpecificationState.swift; sourceTree = "<group>"; };
 		8AB12A522229508A0028644B /* SetupGeometryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupGeometryAction.swift; sourceTree = "<group>"; };
 		8AB12A542229515F0028644B /* SetupGeometryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupGeometryState.swift; sourceTree = "<group>"; };
 		8ACFA44A22291F99004D630F /* ActionProtocolls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionProtocolls.swift; sourceTree = "<group>"; };
@@ -222,6 +234,8 @@
 				8A0AB953222CFBD100738618 /* SetupComparisonAction.swift */,
 				8AB12A542229515F0028644B /* SetupGeometryState.swift */,
 				8AB12A522229508A0028644B /* SetupGeometryAction.swift */,
+				8AAF493622317BFD00CB347A /* SetupSpecificationState.swift */,
+				8AAF493522317BFD00CB347A /* SetupSpecificationAction.swift */,
 			);
 			path = BikeSetup;
 			sourceTree = "<group>";
@@ -244,9 +258,13 @@
 			children = (
 				8A1C2BB02207762C004BB653 /* BikeSetup.storyboard */,
 				8A1C2BB22207764E004BB653 /* SetupRootViewController.swift */,
+				8A38DBD722355B2B003143E1 /* SetupBasics.storyboard */,
 				8A7192F72208D817002EB98B /* SetupBasicsViewController.swift */,
-				8A1AC6E122227EDE006D9BF2 /* ComparisonViewController.swift */,
+				8A38DBD522355AE4003143E1 /* SetupComparison.storyboard */,
+				8A1AC6E122227EDE006D9BF2 /* SetupComparisonViewController.swift */,
+				8A38DBD922355D88003143E1 /* SetupGeometry.storyboard */,
 				8A7192FA2208D85F002EB98B /* SetupGeometryViewController.swift */,
+				8A22FEE42232D83300B00541 /* SetupSpecification.storyboard */,
 				8A7192F92208D85F002EB98B /* SetupSpecificationViewController.swift */,
 			);
 			path = BikeSetup;
@@ -568,11 +586,15 @@
 				8A7192EE2208CE94002EB98B /* Browser.storyboard in Resources */,
 				8A1E9FEC2206D6B60055550A /* Assets.xcassets in Resources */,
 				8A1EA0162206D9920055550A /* LaunchScreen.storyboard in Resources */,
+				8A38DBD822355B2B003143E1 /* SetupBasics.storyboard in Resources */,
 				8A1EA0212206E8940055550A /* Comparison.storyboard in Resources */,
 				8A1C2BB12207762C004BB653 /* BikeSetup.storyboard in Resources */,
 				8A1EA02D2207162C0055550A /* Settings.storyboard in Resources */,
+				8A38DBDA22355D88003143E1 /* SetupGeometry.storyboard in Resources */,
 				8A1AC6DA22216EEF006D9BF2 /* ColorPicker.storyboard in Resources */,
 				8A35C7FD220EC7EF0026EDF1 /* Alert.storyboard in Resources */,
+				8A38DBD622355AE4003143E1 /* SetupComparison.storyboard in Resources */,
+				8A22FEE52232D83400B00541 /* SetupSpecification.storyboard in Resources */,
 				8A1AC6E6222298E1006D9BF2 /* Properties.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,8 +647,9 @@
 				8A1EA01B2206DEBB0055550A /* BikesViewController.swift in Sources */,
 				8A7192DF22089864002EB98B /* LoggingMiddleware.swift in Sources */,
 				8A1AC6EA22229B6D006D9BF2 /* PropertiesCell.swift in Sources */,
+				8AAF493722317BFD00CB347A /* SetupSpecificationAction.swift in Sources */,
 				8A7192F42208D19E002EB98B /* CollectionBrowserState.swift in Sources */,
-				8A1AC6E222227EDE006D9BF2 /* ComparisonViewController.swift in Sources */,
+				8A1AC6E222227EDE006D9BF2 /* SetupComparisonViewController.swift in Sources */,
 				8A1AC6E4222290A1006D9BF2 /* StoryboardHelper.swift in Sources */,
 				8A6E6B122215530300E3ECD4 /* BikeCell.swift in Sources */,
 				8AB12A532229508A0028644B /* SetupGeometryAction.swift in Sources */,
@@ -681,6 +704,7 @@
 				8A7192E122089873002EB98B /* UIViewControllerExtension.swift in Sources */,
 				8A35C7FF220EDDE70026EDF1 /* AlertViewController.swift in Sources */,
 				8AA019B32211DF9200DB0268 /* UIColor.swift in Sources */,
+				8AAF493822317BFD00CB347A /* SetupSpecificationState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,6 +52,13 @@ extension SetupBasicsState
             updatePropertiesModel(&state)
          }
          
+      case let action as SetupBasicsAction.ChangeWeight:
+         if let weightStr = action.text, let weight = Double(weightStr) {
+            state.bike?.weight = weight
+            DBAccess.shared.save()
+            updatePropertiesModel(&state)
+         }
+         
       case let action as SetupBasicsAction.ChangePrice:
          if let priceStr = action.text, let price = Double(priceStr) {
             state.bike?.price = price
@@ -89,6 +96,7 @@ extension SetupBasicsState
          PropertyModel(name: "BRAND", label: bike.brand, action: SetupBasicsAction.ChangeBrand()),
          PropertyModel(name: "MODEL YEAR", label: "\(bike.year)", action: SetupBasicsAction.ChangeModelYear()),
          PropertyModel(name: "SIZE", label: bike.size, action: SetupBasicsAction.ChangeSize()),
+         PropertyModel(name: "WEIGHT", label: "\(bike.weight)", action: SetupBasicsAction.ChangeWeight()),
          PropertyModel(name: "PRICE", label: "\(bike.price)", action: SetupBasicsAction.ChangePrice()),
       ]
    }
