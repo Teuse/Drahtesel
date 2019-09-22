@@ -8,8 +8,8 @@ jobs:
   # ### BUILD
   # ##############################
   build:
-    macos:
-      xcode: "8.3.3"
+    docker:
+      xcode: "11.0"
 
     steps:
       - checkout
