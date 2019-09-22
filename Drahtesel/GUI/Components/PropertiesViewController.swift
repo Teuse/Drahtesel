@@ -43,6 +43,16 @@ class PropertiesViewController: UIViewController
       setupTableView()
    }
    
+//   func endEditing()
+//   {
+//      ende
+//      for cell in tableView.visibleCells {
+//         guard let propCell = cell as? PropertiesCell else { break }
+//
+//         propCell.endEditing(true)
+//      }
+//   }
+   
    private func setupTableView()
    {
       tableView?.rowHeight = useSmallCells ? 44 : 55

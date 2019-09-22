@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class SetupSpecificationViewController: UIViewController, SetupController
+class SetupSpecificationViewController: UIViewController, EmbeddedController
 {
    private let propertiesViewController1: PropertiesViewController = Storyboard.create(name: UI.Storyboard.properties)
    private let propertiesViewController2: PropertiesViewController = Storyboard.create(name: UI.Storyboard.properties)
@@ -20,7 +20,7 @@ class SetupSpecificationViewController: UIViewController, SetupController
       stackView.addArrangedSubview(propertiesViewController3.view)
    }
    
-   func setupViewWillShow(_ animated: Bool)
+   func embeddedViewWillShow(_ animated: Bool)
    {
       subscribe(self) { subcription in
          subcription.select { state in state.setupSpecificationState }
@@ -28,7 +28,7 @@ class SetupSpecificationViewController: UIViewController, SetupController
       dispatch(action: MainViewAction.OpenedPage(page: .setupSpecification))
    }
    
-   func setupViewWillHide(_ animated: Bool) {
+   func embeddedViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }

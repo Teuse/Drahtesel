@@ -10,7 +10,7 @@ enum ColorPalette: Int, CaseIterable
    static func convert(uicolor: UIColor) -> ColorPalette?
    {
       let colors = ColorPalette.allCases
-      let idx = colors.index{ return $0.uicolor == uicolor }
+      let idx = colors.firstIndex{ return $0.uicolor == uicolor }
       return idx == nil ? nil : colors[idx!]
    }
    

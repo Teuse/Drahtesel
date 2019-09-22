@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class SetupBasicsViewController: UIViewController, SetupController
+class SetupBasicsViewController: UIViewController, EmbeddedController
 {
    private let categories = BikeCategory.allCases
    
@@ -27,7 +27,7 @@ class SetupBasicsViewController: UIViewController, SetupController
       embed(propertiesViewController, in: propertiesContainer)
    }
    
-   func setupViewWillShow(_ animated: Bool)
+   func embeddedViewWillShow(_ animated: Bool)
    {
       subscribe(self) { subcription in
          subcription.select { state in state.setupBasicsState }
@@ -35,7 +35,7 @@ class SetupBasicsViewController: UIViewController, SetupController
       dispatch(action: MainViewAction.OpenedPage(page: .setupBasics))
    }
    
-   func setupViewWillHide(_ animated: Bool) {
+   func embeddedViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }

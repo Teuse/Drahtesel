@@ -1,17 +1,12 @@
 import UIKit
 import ReSwift
 
-protocol SetupController {
-   func setupViewWillShow(_ animated: Bool)
-   func setupViewWillHide(_ animated: Bool)
-}
-
 class SetupRootViewController: UIViewController
 {
    private struct SetupPage {
       let page: Page
       let container: UIView
-      let controller: SetupController
+      let controller: EmbeddedController
    }
    
    private var isFirstViewShown = false
@@ -46,7 +41,7 @@ class SetupRootViewController: UIViewController
       nextButton.layer.cornerRadius = radius
       view.bringSubviewToFront(prevButton)
       view.bringSubviewToFront(nextButton)
-      
+   
       basicContainer.isHidden = true
       compContainer.isHidden = true
       geoContainer.isHidden = true
@@ -121,13 +116,12 @@ class SetupRootViewController: UIViewController
 
 extension SetupRootViewController
 {
-   
    private func show(setupPage: SetupPage, swipeLeft: Bool, animated: Bool)
    {
       let prevPage = currentPage
       currentPage = setupPage
       
-      setupPage.controller.setupViewWillShow(animated)
+      setupPage.controller.embeddedViewWillShow(animated)
       setupPage.container.frame.origin.x = swipeLeft ? view.frame.width : -view.frame.width
       setupPage.container.isHidden = false
       
@@ -145,7 +139,7 @@ extension SetupRootViewController
    private func hide(setupPage: SetupPage?)
    {
       guard let setupPage = setupPage else { return }
-      setupPage.controller.setupViewWillHide(false)
+      setupPage.controller.embeddedViewWillHide(false)
       setupPage.container.isHidden = true
    }
 }

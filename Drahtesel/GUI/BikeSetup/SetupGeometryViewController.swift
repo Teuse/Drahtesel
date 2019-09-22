@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class SetupGeometryViewController: UIViewController, SetupController
+class SetupGeometryViewController: UIViewController, EmbeddedController
 {
    private let propertiesViewController: PropertiesViewController = Storyboard.create(name: UI.Storyboard.properties)
    
@@ -18,7 +18,7 @@ class SetupGeometryViewController: UIViewController, SetupController
       embed(propertiesViewController, in: propertiesContainer)
    }
    
-   func setupViewWillShow(_ animated: Bool)
+   func embeddedViewWillShow(_ animated: Bool)
    {
       subscribe(self) { subcription in
          subcription.select { state in state.setupGeometryState }
@@ -26,7 +26,7 @@ class SetupGeometryViewController: UIViewController, SetupController
       dispatch(action: MainViewAction.OpenedPage(page: .setupGeometry))
    }
    
-   func setupViewWillHide(_ animated: Bool) {
+   func embeddedViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }

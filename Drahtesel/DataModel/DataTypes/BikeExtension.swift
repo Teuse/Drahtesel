@@ -62,6 +62,6 @@ extension Bike
          let uicolor = color as! UIColor
          return ColorPalette.convert(uicolor: uicolor) ?? .black
       }
-      set { color = paletteColor.uicolor }
+      set { color = newValue.uicolor }
    }
 }

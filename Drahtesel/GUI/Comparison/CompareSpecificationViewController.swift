@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class CompareSpecificationViewController: UIViewController
+class CompareSpecificationViewController: UIViewController, EmbeddedController
 {
    //MARK: - Life Circle
    
@@ -12,8 +12,13 @@ class CompareSpecificationViewController: UIViewController
       subscribe(self)
    }
    
-   override func viewWillDisappear(_ animated: Bool)
+   func embeddedViewWillShow(_ animated: Bool)
    {
+      subscribe(self)
+      dispatch(action: MainViewAction.OpenedPage(page: .compareSpecification))
+   }
+   
+   func embeddedViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }

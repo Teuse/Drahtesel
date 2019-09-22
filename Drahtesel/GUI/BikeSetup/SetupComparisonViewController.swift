@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class SetupComparisonViewController: UIViewController, SetupController
+class SetupComparisonViewController: UIViewController, EmbeddedController
 {
    private var colorPicker: ColorPicker = Storyboard.create(name: UI.Storyboard.colorPicker)
    
@@ -17,7 +17,7 @@ class SetupComparisonViewController: UIViewController, SetupController
       embed(colorPicker, in: colorPickerContainer)
    }
    
-   func setupViewWillShow(_ animated: Bool)
+   func embeddedViewWillShow(_ animated: Bool)
    {
       subscribe(self) { subcription in
          subcription.select { state in state.setupComparisonState }
@@ -25,7 +25,7 @@ class SetupComparisonViewController: UIViewController, SetupController
       dispatch(action: MainViewAction.OpenedPage(page: .setupComparison))
    }
    
-   func setupViewWillHide(_ animated: Bool) {
+   func embeddedViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }

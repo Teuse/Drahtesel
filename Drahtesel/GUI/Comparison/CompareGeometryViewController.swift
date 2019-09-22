@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-class CompareGeometryViewController: UIViewController
+class CompareGeometryViewController: UIViewController, EmbeddedController
 {
    @IBOutlet weak var scrollView: UIScrollView!
    @IBOutlet weak var zoomView: UIView!
@@ -15,7 +15,6 @@ class CompareGeometryViewController: UIViewController
    override func viewWillAppear(_ animated: Bool)
    {
       super.viewWillAppear(animated)
-      dispatch(action: MainViewAction.OpenedPage(page: .compareGeometry))
       
       let height = CGFloat(self.view.frame.size.height)
       self.xPixelConvertionFactor = height * 0.001
@@ -27,12 +26,15 @@ class CompareGeometryViewController: UIViewController
       let tabGesture = UITapGestureRecognizer(target: self, action: #selector(CompareGeometryViewController.doubleTap(recognizer:)))
       tabGesture.numberOfTapsRequired = 2
       self.view.addGestureRecognizer(tabGesture)
-      
-      subscribe(self)
    }
    
-   override func viewWillDisappear(_ animated: Bool)
+   func embeddedViewWillShow(_ animated: Bool)
    {
+      subscribe(self)
+      dispatch(action: MainViewAction.OpenedPage(page: .compareGeometry))
+   }
+   
+   func embeddedViewWillHide(_ animated: Bool) {
       super.viewWillDisappear(animated)
       unsubscribe(self)
    }

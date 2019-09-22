@@ -9,10 +9,6 @@ extension UIViewController
       addChild(viewController)
       container.embed(view: viewController.view)
    }
-   
-//   override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//      resignFirstResponder()
-//   }
 }
 
 extension UIViewController

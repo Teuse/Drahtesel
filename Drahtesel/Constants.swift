@@ -14,6 +14,8 @@ struct UI
       static let setupGeometry = "SetupGeometry"
       static let setupSpecification = "SetupSpecification"
       static let comparisson = "Comparrison"
+      static let compareGeometry = "CompareGeometry"
+      static let compareSpecification = "CompareSpecification"
       static let settings = "Settings"
       
       static let alert = "Alert"

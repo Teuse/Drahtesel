@@ -44,4 +44,8 @@ extension PropertiesCell: UITextFieldDelegate
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       appDelegate.appStore.dispatch(action as! Action)
    }
+   
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      return true
+   }
 }
