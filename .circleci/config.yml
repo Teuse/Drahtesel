@@ -9,7 +9,7 @@ jobs:
   # ##############################
   build:
     docker:
-      xcode: "11.0"
+      xcode: "10.2.0"
 
     steps:
       - checkout
