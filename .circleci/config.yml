@@ -8,7 +8,7 @@ jobs:
   # ### BUILD
   # ##############################
   build:
-    docker:
+    macos:
       xcode: "10.2.0"
 
     steps:
